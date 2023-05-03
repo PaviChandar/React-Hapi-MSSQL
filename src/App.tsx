@@ -6,7 +6,6 @@ const App: React.FC = () => {
     return(
       <div> 
         <h1>Employee Details</h1>
-        {/* <GetAllEmployee /> */}
         <Router />
       </div>
     )

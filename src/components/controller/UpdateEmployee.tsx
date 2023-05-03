@@ -1,8 +1,11 @@
 import { Dispatch, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
-import { getSingleEmployee } from "../../store/action/action"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate, useParams } from "react-router-dom"
+import { getSingleEmployee, updateEmployee } from "../../store/action/action"
 import { store } from "../../store/store"
+import { InputField } from "../shared/types/type"
+
+// const dispatch = useDispatch()
 
 const UpdateEmployee = () => {
 
@@ -11,40 +14,94 @@ const UpdateEmployee = () => {
     console.log("id in update : ", id)
     const data = useSelector((state: any) => state.employeeData.employee)
     console.log("Data in update : ", data)
-    const [credentials, setCredentials] = useState({
-        id:'',
+    const [credentials, setCredentials] = useState<InputField>({
+        id:0,
         name:'',
-        age:'',
+        age:0,
         city:'',
-        salary:''
+        salary:0
     })
+    const [formError, setFormError] = useState<any>(false)
+    const [submit, setSubmit] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const navigate = useNavigate()
 
     const handleChange = (e: any) => {
-        console.log("inside handlechange")
-        e.preventDefault()
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+        console.log("name : ", e.target.name)
+        console.log("value : ", e.target.value)
+        setFormError(() => validate(credentials))
+    }
+
+    useEffect(() => {   
+        dispatchStore(getSingleEmployee(id))
+    }, [])
+
+    useEffect(() => {
+        if(data) {
+            setCredentials({ ...data })
+        }
+    }, [data])
+
+    const updateHandler = (e: any) => {
+        e.preventDefault()
+        setFormError(() => validate(credentials))
+        setSubmit(true)
+        if (Object.keys(formError).length === 0 && submit) {
+            dispatchStore(updateEmployee(id, credentials))
+            setSuccess(true)
+        }
     }
 
     useEffect(() => {
-        console.log("inside useeffect update")
-        dispatchStore(getSingleEmployee(id))
-    },[])
+        if (success) {
+            alert("Employee updated successfully!")
+            navigate('/')
+        }
+    }, [success])
 
-    const updateHandler = () => {
-        console.log("inside handle update")
+    const validate = (value: InputField) => {
+        const errors: any = {}
+
+        if(!value.name) {
+            errors.name = "*Employee name is required"
+        }
+        if(!value.age) {
+            errors.age = "*Employee age is required"
+        }
+        if(!value.city) {
+            errors.city = "*Employee city is required"
+        }
+        if(!value.salary) {
+            errors.salary = "*Employee salary is required"
+        }
+
+        return errors
     }
 
     return(
         <div>
            <h2>Update employee</h2>
            <div>
-            <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} />
-            <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
-            <input type="number" placeholder="age" name="age" min={0} onChange={(e) => handleChange(e)} value={credentials.age} />
-            <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={credentials.city} />
-            <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={credentials.salary} />
-            <button onClick={updateHandler}>Update details</button>
+                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} readOnly />
+                <div>
+                    <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
+                    <span>{formError.name}</span>
+                </div>
+                <div>
+                    <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={credentials.age} />
+                    <span>{formError.age}</span>
+                </div>
+                <div>
+                    <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={credentials.city} />
+                    <span>{formError.city}</span>
+                </div>
+              <div>
+                    <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={credentials.salary} />
+                    <span>{formError.salary}</span>
+              </div>
            </div>
+           <button onClick={(e) => updateHandler(e)}>Update details</button>
         </div>
     )
 }
