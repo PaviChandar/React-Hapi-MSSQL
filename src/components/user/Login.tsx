@@ -1,7 +1,7 @@
 import { Dispatch, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { UserInputField } from "../../interface/type"
+import { UserInputField } from "../../interface/user.interface"
 import { loginUser } from "../../redux/action/action"
 import { store } from "../../redux/store/store"
 

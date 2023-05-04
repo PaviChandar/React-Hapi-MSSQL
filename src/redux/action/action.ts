@@ -1,5 +1,6 @@
 import axios from "axios"
-import { InputField, UserState } from "../../interface/type"
+import { InputField } from "../../interface/employee.interface"
+import { UserState } from "../../interface/user.interface"
 import { baseUrl } from "../../utils/Config"
 import * as types from "./action-type"
 
@@ -52,7 +53,6 @@ export const addEmployee = (user : any) =>  {
         await axios
             .post(`${baseUrl}/employees`, user)
             .then((res) => {
-                console.log("response from api : ", res.data)
                 dispatch(employeeAdded(res.data))
             })
             .catch((error) => {
@@ -67,8 +67,7 @@ export const getAllEmployee = () => {
             console.log("inside get emp action try")
              await axios.get(`${baseUrl}/employees`)
                                     .then((res) => {
-                                        dispatch(retreiveEmployees(res.data.data))
-                                        console.log("Response : ", res.data.data)                                        
+                                        dispatch(retreiveEmployees(res.data.data))                                       
                                     })
                                     .catch((error) => {
                                         console.log("Cannot get employee : ", error)
@@ -82,15 +81,11 @@ export const getAllEmployee = () => {
 export const getSingleEmployee = (id: any) => {
     return async (dispatch:any) => {
         try {
-            console.log("inside get single emp try")
-            console.log("id in action : ", id)
             await axios.get(`${baseUrl}/employees/${id}`, id)
                         .then((res) => {
                             dispatch(retreiveEmployee(res.data))
-                            console.log("single emp data : ", res.data)
                         })
         } catch (error) {
-            console.log("inside get single emp catch")
             console.log("Error in getting single employee", error)
         }
     }
@@ -99,16 +94,13 @@ export const getSingleEmployee = (id: any) => {
 export const updateEmployee = (id: any, values: InputField) => {
     return async (dispatch: any) => {
         try {
-            console.log("inside update action try")
             axios
                 .put(`${baseUrl}/employees/${id}`, values)
                 .then((res) => {
                     dispatch(editEmployee(res.data))
-                    console.log("inside res then")
                     console.log("update data : ", res.data)
                 })
         } catch(error) {
-            console.log("inside update action catch")
             console.log("Cannot update employee : ", error)
         }
     }
@@ -117,16 +109,12 @@ export const updateEmployee = (id: any, values: InputField) => {
 export const deleteEmployee = (id: any) => {
     return async (dispatch: any) => {
         try {
-            console.log("inside delete try")
             axios
                 .delete(`${baseUrl}/employees/${id}`)
                 .then((res) => {
-                    console.log("inside delete res")
-                    console.log("deleted data : ", res.data)
                     dispatch(removeEmployee(id))
             })
         } catch (error) {
-            console.log("inside delete catch")
             console.log("Cannot delete employee", error)
         }
     }
@@ -137,7 +125,6 @@ export const registerUser = (user: any) => {
         axios
             .post(`${baseUrl}/users`, user)
             .then((res) => {
-                console.log("res from api : ", res.data)
                 dispatch(userRegistered)
             })
             .catch((error) => {
@@ -150,9 +137,7 @@ export const loginUser = (user: any) => {
     return async (dispatch: any) => {
         axios
             .post(`${baseUrl}/login`, user)
-            .then((res) => {
-                console.log("res from login :", res.data) 
-                console.log("res data from login :", res.data.data)     
+            .then((res) => {    
                 dispatch(userLoggedIn(res.data.data))
                 sessionStorage.setItem('token', res.data.token)
                 sessionStorage.setItem('login', res.data.data.login)

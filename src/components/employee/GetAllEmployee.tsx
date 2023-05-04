@@ -1,7 +1,7 @@
 import { Dispatch, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { InputField } from "../../interface/type";
+import { InputField } from "../../interface/employee.interface";
 import { deleteEmployee, getAllEmployee } from "../../redux/action/action";
 import { store } from "../../redux/store/store";
 import Navbar from "../user/Navbar";
@@ -21,12 +21,10 @@ const GetAllEmployee = () => {
   }
 
   const handleUpdate = (id: any) => {
-    console.log("inside single emp", id)
     navigate(`/update/${id}`)
   }
 
   const handleDelete = (id: any) => {
-    console.log("inside delete : ", id)
     dispatchStore(deleteEmployee(id))
     if(window.confirm("Are you sure that you want to delete the Employee?")) {
       setSuccess(true)
