@@ -1,13 +1,14 @@
 import { Dispatch, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { addEmployee } from "../../store/action/action";
-import { store } from "../../store/store";
-import { InputField } from "../shared/types/type";
+import { addEmployee } from "../../redux/action/action";
+import { store } from "../../redux/store/store";
+import { InputField } from "../../interface/type";
 
 const AddEmployee = () => {
 
-    const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>;
-    const [credentials, setCredentials] = useState<InputField>({
+    const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>; //useDispatch
+    const [credentials, setCredentials] = useState 
+    ({
         id:0,
         name:'',
         age:0,
@@ -15,11 +16,11 @@ const AddEmployee = () => {
         salary:0
     })
     const navigate = useNavigate()
-    const [formError, setFormError] = useState<any>(false)
+    const [formError, setFormError] = useState<any>(false) //parse
     const [submit, setSubmit] = useState(false)
     const [success,setSuccess] = useState(false)
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: any) => { //method typeOf
         e.preventDefault()
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
         setFormError(() => validate(credentials))

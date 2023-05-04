@@ -1,9 +1,10 @@
 import { Dispatch, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteEmployee, getAllEmployee } from "../../store/action/action";
-import { store } from "../../store/store";
-import { InputField } from "../shared/types/type";
+import { InputField } from "../../interface/type";
+import { deleteEmployee, getAllEmployee } from "../../redux/action/action";
+import { store } from "../../redux/store/store";
+import Navbar from "../user/Navbar";
 
 const GetAllEmployee = () => {
 
@@ -40,6 +41,7 @@ const GetAllEmployee = () => {
 
   return(
       <div>
+          <Navbar />
           <button onClick={handleEmployee}> Get all employees </button>
           <table>
             <tbody>

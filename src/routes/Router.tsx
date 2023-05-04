@@ -1,7 +1,9 @@
 import { Route, Routes } from "react-router-dom"
-import AddEmployee from "../components/controller/AddEmployee"
-import GetAllEmployee from "../components/controller/GetAllEmployee"
-import UpdateEmployee from "../components/controller/UpdateEmployee"
+import AddEmployee from "../components/employee/AddEmployee"
+import GetAllEmployee from "../components/employee/GetAllEmployee"
+import Login from "../components/user/Login"
+import SignUp from "../components/user/SignUp"
+import UpdateEmployee from "../components/employee/UpdateEmployee"
 
 const Router = () =>{
     return(
@@ -10,6 +12,8 @@ const Router = () =>{
                 <Route path='/' element={<GetAllEmployee />} />
                 <Route path='/update/:id' element={<UpdateEmployee />} />
                 <Route path='/create' element={<AddEmployee />}  />
+                <Route path='/login' element={<Login />} />
+                <Route path='/sign-up' element={<SignUp />} />
             </Routes>
        </>
     )

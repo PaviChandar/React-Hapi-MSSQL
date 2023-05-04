@@ -1,7 +1,21 @@
 import axios from "axios"
-import { baseUrl } from "../../components/shared/constants/Constant"
-import { InputField, UserState } from "../../components/shared/types/type"
+import { InputField, UserState } from "../../interface/type"
+import { baseUrl } from "../../utils/Config"
 import * as types from "./action-type"
+
+export const userRegistered = () => ({
+    type: types.REGISTER_USER
+})
+
+export const userLoggedIn = (userDetail: UserState) => ({
+    type: types.LOGIN_USER,
+    payload: userDetail
+})
+
+export const isLogin = (login: UserState) => ({
+    type: types.ISLOGIN,
+    payload: login
+})
 
 export const employeeAdded = (employee: UserState) => ({
     type: types.ADD_EMPLOYEE,
@@ -115,5 +129,37 @@ export const deleteEmployee = (id: any) => {
             console.log("inside delete catch")
             console.log("Cannot delete employee", error)
         }
+    }
+}
+
+export const registerUser = (user: any) => {
+    return async (dispatch: any) => {
+        axios
+            .post(`${baseUrl}/users`, user)
+            .then((res) => {
+                console.log("res from api : ", res.data)
+                dispatch(userRegistered)
+            })
+            .catch((error) => {
+                console.log("error in register : ",error)
+            })
+    }
+}
+
+export const loginUser = (user: any) => {
+    return async (dispatch: any) => {
+        axios
+            .post(`${baseUrl}/login`, user)
+            .then((res) => {
+                console.log("res from login :", res.data) 
+                console.log("res data from login :", res.data.data)     
+                dispatch(userLoggedIn(res.data.data))
+                sessionStorage.setItem('token', res.data.token)
+                sessionStorage.setItem('login', res.data.data.login)
+                dispatch(isLogin(res.data.data.login))
+            })
+            .catch((error) => {
+                console.log("error in login : ",error)
+            })
     }
 }

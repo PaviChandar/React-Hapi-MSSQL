@@ -1,7 +1,6 @@
-import GetAllEmployee from "./components/controller/GetAllEmployee";
 import Router from "./routes/Router";
 
-const App: React.FC = () => {
+const App = () => {
 
     return(
       <div> 

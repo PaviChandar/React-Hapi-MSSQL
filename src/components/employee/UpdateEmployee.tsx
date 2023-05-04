@@ -1,9 +1,9 @@
 import { Dispatch, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { getSingleEmployee, updateEmployee } from "../../store/action/action"
-import { store } from "../../store/store"
-import { InputField } from "../shared/types/type"
+import { getSingleEmployee, updateEmployee } from "../../redux/action/action";
+import { store } from "../../redux/store/store";
+import { InputField } from "../../interface/type";
 
 // const dispatch = useDispatch()
 
@@ -38,16 +38,22 @@ const UpdateEmployee = () => {
     }, [])
 
     useEffect(() => {
+        console.log("data in useefect : ", data)
         if(data) {
             setCredentials({ ...data })
         }
     }, [data])
 
+    useEffect(() => {
+    },[credentials])
+
     const updateHandler = (e: any) => {
+        console.log("update handle : ", credentials)
         e.preventDefault()
         setFormError(() => validate(credentials))
         setSubmit(true)
         if (Object.keys(formError).length === 0 && submit) {
+            console.log("inside if", credentials)
             dispatchStore(updateEmployee(id, credentials))
             setSuccess(true)
         }

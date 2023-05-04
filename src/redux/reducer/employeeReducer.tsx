@@ -1,5 +1,5 @@
+import { EmployeeActionType, InputField, UserState } from "../../interface/type"
 import * as types from "../action/action-type"
-import { EmployeeActionType, InputField, UserState } from "../../components/shared/types/type"
 
 const initialState: UserState | InputField = {
     employees: [],
@@ -10,7 +10,6 @@ const initialState: UserState | InputField = {
         city: '',
         salary: 0
     },
-    // employee: Inputfield
 }
 
 const employeeReducer = (state: UserState = initialState, action: EmployeeActionType): UserState => {
