@@ -1,4 +1,4 @@
-import { UserActionType, UserInputField, UserState } from "../../interface/type"
+import { UserActionType, UserInputField, UserState } from "../../interface/user.interface"
 import * as types from "../action/action-type"
 
 const initialState: UserState | UserInputField = {

@@ -1,7 +1,7 @@
-import { EmployeeActionType, InputField, UserState } from "../../interface/type"
+import { EmployeeActionType, EmployeeState, InputField } from "../../interface/employee.interface"
 import * as types from "../action/action-type"
 
-const initialState: UserState | InputField = {
+const initialState: EmployeeState | InputField = {
     employees: [],
     employee: {
         id: 0,
@@ -12,7 +12,7 @@ const initialState: UserState | InputField = {
     },
 }
 
-const employeeReducer = (state: UserState = initialState, action: EmployeeActionType): UserState => {
+const employeeReducer = (state:EmployeeState = initialState, action: EmployeeActionType):EmployeeState => {
     switch(action.type) {
         case types.GET_ALL_EMPLOYEE:
             return {

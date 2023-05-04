@@ -1,6 +1,7 @@
 import { Dispatch, useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
+
 import { getSingleEmployee, updateEmployee } from "../../redux/action/action";
 import { store } from "../../redux/store/store";
 import { InputField } from "../../interface/employee.interface";

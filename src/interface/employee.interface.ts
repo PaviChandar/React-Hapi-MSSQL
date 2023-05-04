@@ -22,3 +22,5 @@ export interface Employees {
     type: string,            
     payload: InputField[]
 }
+
+export type EmployeeActionType = Employee & Employees

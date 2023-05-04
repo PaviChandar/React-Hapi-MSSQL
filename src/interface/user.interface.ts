@@ -20,3 +20,5 @@ export interface UserInputField {
     username?: string,
     password: string
 }
+
+export type UserActionType = User
