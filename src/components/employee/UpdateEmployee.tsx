@@ -48,6 +48,7 @@ const UpdateEmployee = () => {
 
     const updateHandler = (e: any) => {
         console.log("update handle : ", credentials)
+        console.log("id in update : ", id)
         e.preventDefault()
         setFormError(() => validate(credentials))
         setSubmit(true)

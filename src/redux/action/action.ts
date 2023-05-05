@@ -1,8 +1,8 @@
 import axios from "axios"
 
-import { InputField } from "../../interface/employee.interface"
+import { EmployeeState, InputField } from "../../interface/employee.interface"
 import { UserState } from "../../interface/user.interface"
-import { baseUrl } from "../../utils/Config"
+import { baseUrl } from "../../utils/config"
 import * as types from "./action-type"
 
 export const userRegistered = () => ({
@@ -19,40 +19,40 @@ export const isLogin = (login: UserState) => ({
     payload: login
 })
 
-export const employeeAdded = (employee: UserState) => ({
+export const employeeAdded = (employee: EmployeeState) => ({
     type: types.ADD_EMPLOYEE,
     payload: employee
 })
 
-export const retreiveEmployees = (employees: UserState) => ({
+export const retreiveEmployees = (employees: EmployeeState) => ({
     type: types.GET_ALL_EMPLOYEE,
     payload: employees
 })
 
-export const retreiveEmployee = (employee: UserState) => ({
+export const retreiveEmployee = (employee: EmployeeState) => ({
     type: types.GET_EMPLOYEE,
     payload: employee
 })
 
-// export const editEmployee = (employee: UserState) => ({
-//     type: types.UPDATE_EMPLOYEE,
-//     payload: employee
-// })
-export const editEmployee = (values:InputField) => ({
+export const editEmployee = (employee: EmployeeState) => ({
     type: types.UPDATE_EMPLOYEE,
-    payload: values
+    payload: employee
 })
+
+// export const editEmployee = () => ({
+//     type: types.UPDATE_EMPLOYEE
+// })
 
 export const removeEmployee = (id: any) => ({
     type: types.DELETE_EMPLOYEE,
     payload: id
 })
 
-export const addEmployee = (user : any) =>  {
+export const addEmployee = (employee : InputField) =>  {
     return async (dispatch: any) => {
-        console.log("User in dispatch : ", user)
+        console.log("User in dispatch : ", employee)
         await axios
-            .post(`${baseUrl}/employees`, user)
+            .post(`${baseUrl}/employees`, employee)
             .then((res) => {
                 dispatch(employeeAdded(res.data))
             })
@@ -65,7 +65,6 @@ export const addEmployee = (user : any) =>  {
 export const getAllEmployee = () => {
     return async (dispatch:any) => {
         try {
-            console.log("inside get emp action try")
              await axios.get(`${baseUrl}/employees`)
                                     .then((res) => {
                                         dispatch(retreiveEmployees(res.data.data))                                       
@@ -92,14 +91,16 @@ export const getSingleEmployee = (id: any) => {
     }
 }
 
-export const updateEmployee = (id: any, values: InputField) => {
+export const updateEmployee = (id: any, employee: InputField) => {
     return async (dispatch: any) => {
         try {
+            console.log("id in action : ", id)
+            console.log("employee in acton : ", employee)
             axios
-                .put(`${baseUrl}/employees/${id}`, values)
+                .put(`${baseUrl}/employees/${id}`, employee)
                 .then((res) => {
                     dispatch(editEmployee(res.data))
-                    console.log("update data : ", res.data)
+                    console.log("update data in action : ", res.data)
                 })
         } catch(error) {
             console.log("Cannot update employee : ", error)
@@ -126,7 +127,7 @@ export const registerUser = (user: any) => {
         axios
             .post(`${baseUrl}/users`, user)
             .then((res) => {
-                dispatch(userRegistered)
+                dispatch(userRegistered())
             })
             .catch((error) => {
                 console.log("error in register : ",error)

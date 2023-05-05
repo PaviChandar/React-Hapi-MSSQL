@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { InputField } from "../../interface/employee.interface";
 import { deleteEmployee, getAllEmployee } from "../../redux/action/action";
 import { store } from "../../redux/store/store";
-import Navbar from "../user/Navbar";
+import Navbar from "../shared/navbar";
 
 const GetAllEmployee = () => {
 
@@ -13,7 +13,7 @@ const GetAllEmployee = () => {
   const [data, setdata] = useState<InputField>()
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: any) => state.employeeData.employees)
-  console.log("userdata : ", userdata)
+  // console.log("userdata : ", userdata)
   const navigate = useNavigate()
 
   const handleEmployee = () => {

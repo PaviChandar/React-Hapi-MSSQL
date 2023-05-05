@@ -7,15 +7,15 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navigate = useNavigate()
 
-    const {user} = useSelector((state:any) => state.userData)
-    console.log("USER in navbar : ", user)
+    // const {user} = useSelector((state:any) => state.userData)
+    // console.log("USER in navbar : ", user)
 
-    useEffect(() => {
-        if(sessionStorage.getItem("token")) {
-            setIsLoggedIn(true)
-            console.log(" received token Token val")
-        }
-    },[user])
+    // useEffect(() => {
+    //     if(sessionStorage.getItem("token")) {
+    //         setIsLoggedIn(true)
+    //         console.log(" received token Token val")
+    //     }
+    // },[user])
 
     // const x = sessionStorage.getItem("token")
     // console.log("token val : ", jwtDecode("x"))

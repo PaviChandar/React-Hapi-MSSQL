@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom"
 
-import GetAllEmployee from "../components/employee/GetAllEmployee"
-import Login from "../components/user/Login"
-import SignUp from "../components/user/SignUp"
-import UpdateEmployee from "../components/employee/UpdateEmployee"
-import AddEmployee from "../components/employee/AddEmployee"
+import GetAllEmployee from "../components/employee/getallemployee"
+import Login from "../components/user/login"
+import SignUp from "../components/user/signup"
+import UpdateEmployee from "../components/employee/updateemployee"
+import AddEmployee from "../components/employee/addemployee"
 
 const Router = () =>{
     return(
