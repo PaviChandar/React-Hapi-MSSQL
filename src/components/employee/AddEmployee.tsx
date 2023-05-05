@@ -1,15 +1,15 @@
-import { Dispatch, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addHandler } from "../../container/employee/addemployee";
 
 import { InputField } from "../../interface/employee.interface";
-import { addEmployee } from "../../redux/action/action";
-import { store } from "../../redux/store/store";
+import { validate } from "../shared/validate";
 
 const AddEmployee = () => {
 
-    const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>; //useDispatch
-    const [credentials, setCredentials] = useState 
-    ({
+    const dispatchStore = useDispatch()
+    const [credentials, setCredentials] = useState({
         id:0,
         name:'',
         age:0,
@@ -21,19 +21,10 @@ const AddEmployee = () => {
     const [submit, setSubmit] = useState(false)
     const [success,setSuccess] = useState(false)
 
-    const handleChange = (e: any) => { //method typeOf
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault()
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
         setFormError(() => validate(credentials))
-    }
-
-    const addHandler = () => {
-        setFormError(() => validate(credentials))
-        setSubmit(true)
-        if(Object.keys(formError).length === 0 && submit) {
-            dispatchStore(addEmployee(credentials))
-            setSuccess(true)
-        }
     }
 
     useEffect(() => {
@@ -42,28 +33,6 @@ const AddEmployee = () => {
             navigate('/')
         }
     },[success])
-
-    const validate = (value: InputField) => {
-        const errors: any = {}
-
-        if(!value.id) {
-            errors.id = "*Employee ID is required"
-        }
-        if(!value.name) {
-            errors.name = "*Employee name is required"
-        }
-        if(!value.age) {
-            errors.age = "*Employee age is required"
-        }
-        if(!value.city) {
-            errors.city = "*Employee city is required"
-        }
-        if(!value.salary) {
-            errors.salary = "*Employee salary is required"
-        }
-
-        return errors
-    }
 
     return(
         <div>
@@ -90,7 +59,7 @@ const AddEmployee = () => {
                         <span>{formError.salary}</span>
                     </div>
                 </div>
-                <button onClick={addHandler}>Add employee</button>
+                <button onClick={() => addHandler(dispatchStore, setFormError, formError, setSubmit, submit, credentials, setSuccess)}>Add employee</button>
         </div>
     )
 }

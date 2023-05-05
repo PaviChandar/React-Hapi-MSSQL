@@ -1,5 +1,5 @@
 import { Dispatch, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { InputField } from "../../interface/employee.interface";
@@ -15,17 +15,18 @@ const GetAllEmployee = () => {
   const userdata  = useSelector((state: any) => state.employeeData.employees)
   // console.log("userdata : ", userdata)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleEmployee = () => {
     dispatchStore(getAllEmployee())
     setdata(userdata)
   }
 
-  const handleUpdate = (id: any) => {
+  const handleUpdate = (id: number) => {
     navigate(`/update/${id}`)
   }
 
-  const handleDelete = (id: any) => {
+  const handleDelete = (id: number) => {
     dispatchStore(deleteEmployee(id))
     if(window.confirm("Are you sure that you want to delete the Employee?")) {
       setSuccess(true)

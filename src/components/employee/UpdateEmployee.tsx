@@ -5,16 +5,13 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getSingleEmployee, updateEmployee } from "../../redux/action/action";
 import { store } from "../../redux/store/store";
 import { InputField } from "../../interface/employee.interface";
-
-// const dispatch = useDispatch()
+import { validate } from "../shared/validate";
 
 const UpdateEmployee = () => {
 
     const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>;
     let { id } = useParams()
-    console.log("id in update : ", id)
     const data = useSelector((state: any) => state.employeeData.employee)
-    console.log("Data in update : ", data)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
         name:'',
@@ -27,12 +24,14 @@ const UpdateEmployee = () => {
     const [success, setSuccess] = useState(false)
     const navigate = useNavigate()
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
         setFormError(() => validate(credentials))
     }
 
     useEffect(() => {   
+        console.log("inside useeffect getsing")
+        // let id:number
         dispatchStore(getSingleEmployee(id))
     }, [])
 
@@ -46,10 +45,9 @@ const UpdateEmployee = () => {
     useEffect(() => {
     },[credentials])
 
-    const updateHandler = (e: any) => {
+    const updateHandler = () => {
         console.log("update handle : ", credentials)
         console.log("id in update : ", id)
-        e.preventDefault()
         setFormError(() => validate(credentials))
         setSubmit(true)
         if (Object.keys(formError).length === 0 && submit) {
@@ -65,25 +63,6 @@ const UpdateEmployee = () => {
             navigate('/')
         }
     }, [success])
-
-    const validate = (value: InputField) => {
-        const errors: any = {}
-
-        if(!value.name) {
-            errors.name = "*Employee name is required"
-        }
-        if(!value.age) {
-            errors.age = "*Employee age is required"
-        }
-        if(!value.city) {
-            errors.city = "*Employee city is required"
-        }
-        if(!value.salary) {
-            errors.salary = "*Employee salary is required"
-        }
-
-        return errors
-    }
 
     return(
         <div>
@@ -107,7 +86,7 @@ const UpdateEmployee = () => {
                     <span>{formError.salary}</span>
               </div>
            </div>
-           <button onClick={(e) => updateHandler(e)}>Update details</button>
+           <button onClick={ updateHandler }>Update details</button>
         </div>
     )
 }

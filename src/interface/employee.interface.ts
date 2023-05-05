@@ -23,4 +23,8 @@ export interface Employees {
     payload: InputField[]
 }
 
+export interface IEmployeeContainer {
+    addEmployee: (credentials: InputField) => any
+}
+
 export type EmployeeActionType = Employee & Employees
