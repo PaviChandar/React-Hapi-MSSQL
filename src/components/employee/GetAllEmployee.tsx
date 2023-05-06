@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { handleDelete, handleEmployee } from "../../container/employee/getallemployee";
@@ -8,6 +9,8 @@ import Header from "../header/header";
 import Navbar from "../shared/navbar";
 
 const GetAllEmployee = () => {
+  const { t, i18n } = useTranslation()
+  i18n.changeLanguage()
 
   const [data, setdata] = useState<InputField>()
   const [success, setSuccess] = useState(false)
@@ -29,7 +32,7 @@ const GetAllEmployee = () => {
       <div>
           <Navbar />
           <Header />
-          <button onClick={() => handleEmployee(dispatch, setdata, userdata)}> Get all employees </button>
+          <button onClick={() => handleEmployee(dispatch, setdata, userdata)}>{t("employee.getall")}</button>
           <table>
             <tbody>
             <tr>
@@ -49,8 +52,8 @@ const GetAllEmployee = () => {
                         <td>{user.age}</td>
                         <td>{user.city}</td>
                         <td>{user.salary}</td>
-                        <button onClick={() => handleUpdate(user.id)}>Update employee</button>
-                        <button onClick={() => handleDelete(dispatch, user.id, setSuccess)} >Delete employee</button>
+                        <button onClick={() => handleUpdate(user.id)}>{t("employee.update")}</button>
+                        <button onClick={() => handleDelete(dispatch, user.id, setSuccess)} >{t("employee.delete")}</button>
                       </div> 
                     )
                   })
@@ -58,7 +61,7 @@ const GetAllEmployee = () => {
               </tr>
             </tbody>
           </table>
-          <button onClick={() => navigate('/create')} >Add Employee</button>
+          <button onClick={() => navigate('/create')} >{t("employee.add")}</button>
       </div>
   )
 }
