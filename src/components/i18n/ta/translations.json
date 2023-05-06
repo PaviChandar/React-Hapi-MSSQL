@@ -1,0 +1,12 @@
+{
+    "validation": {
+        "employee_id":"பணியாளர் ஐடி தேவை",
+        "employee_name": "பணியாளர் பெயர் தேவை",
+        "employee_city": "பணியாளர் நகரம் தேவை",
+        "employee_age": "பணியாளர் வயது தேவை",
+        "employee_salary": "பணியாளர் சம்பளம் தேவை"
+    },
+    "employee": {
+        "details": "பணியாளர் விவரம்"
+    }
+}

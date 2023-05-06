@@ -1,0 +1,12 @@
+{
+    "validation": {
+        "employee_id":"Employee id is required",
+        "employee_name": "Employee name is required",
+        "employee_city": "Employee city is required",
+        "employee_age": "Employee age is required",
+        "employee_salary": "Employee salary is required"
+    },
+    "employee": {
+        "details": "Employee Details"
+    }
+}

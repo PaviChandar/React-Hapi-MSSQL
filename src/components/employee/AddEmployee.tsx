@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +9,7 @@ import { validate } from "../shared/validate";
 const AddEmployee = () => {
 
     const dispatchStore = useDispatch()
+    const { t, i18n } = useTranslation()
     const [credentials, setCredentials] = useState({
         id:0,
         name:'',
@@ -40,6 +42,7 @@ const AddEmployee = () => {
                     <div>
                         <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} />
                         <span>{formError.id}</span>
+                        {/* <span>{formError.id}</span> */}
                     </div>
                     <div>
                         <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
