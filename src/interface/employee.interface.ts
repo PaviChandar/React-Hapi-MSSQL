@@ -25,6 +25,7 @@ export interface Employees {
 
 export interface IEmployeeContainer {
     addEmployee: (credentials: InputField) => any
+    updateEmployee: (credentials: InputField) => any
 }
 
 export type EmployeeActionType = Employee & Employees

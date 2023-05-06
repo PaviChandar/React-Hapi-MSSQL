@@ -67,6 +67,6 @@ export const registerUser = (user: UserInputField) => {
     return registerUserApi(user)
 }
 
-export const loginUser = (user: any) => {
+export const loginUser = (user: UserInputField) => {
    return loginUserApi(user)
 }

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addHandler } from "../../container/employee/addemployee";
 
-import { InputField } from "../../interface/employee.interface";
+import { addHandler } from "../../container/employee/addemployee";
 import { validate } from "../shared/validate";
 
 const AddEmployee = () => {
@@ -17,7 +16,7 @@ const AddEmployee = () => {
         salary:0
     })
     const navigate = useNavigate()
-    const [formError, setFormError] = useState<any>(false) //parse
+    const [formError, setFormError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
     const [success,setSuccess] = useState(false)
 

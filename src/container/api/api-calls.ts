@@ -19,7 +19,7 @@ export const addEmployeeApi = (employee : InputField): any => {
     }
 }
 
-export const getAllEmployeeApi = () => {
+export const getAllEmployeeApi = (): any => {
      return function (dispatch: Dispatch<Action>) {
         axiosInstance
             .get(`/employees`)
@@ -32,7 +32,7 @@ export const getAllEmployeeApi = () => {
     }
 }
 
-export const getSingleEmployeeApi = (id: number) => {
+export const getSingleEmployeeApi = (id: number): any => {
     return function (dispatch: Dispatch<Action>) {
         const params = {id: id}
         axiosInstance
@@ -47,7 +47,7 @@ export const getSingleEmployeeApi = (id: number) => {
     }
 }
 
-export const updateEmployeeApi = (id: number, employee: InputField) => {
+export const updateEmployeeApi = (id: number, employee: InputField): any => {
     return function (dispatch: Dispatch<Action>) {
         axiosInstance
             .put(`/employees/${id}`, employee)
@@ -60,7 +60,7 @@ export const updateEmployeeApi = (id: number, employee: InputField) => {
     }
 }
 
-export const deleteEmployeeApi = (id: number) => {
+export const deleteEmployeeApi = (id: number): any => {
     return function (dispatch: Dispatch<Action>) {
         console.log("id in apicall : ", id)
         axiosInstance
@@ -74,10 +74,10 @@ export const deleteEmployeeApi = (id: number) => {
     }
 }
 
-export const registerUserApi = (user: UserInputField) => {
+export const registerUserApi = (user: UserInputField): any => {
     return function (dispatch: Dispatch<Action>) {
         axiosInstance
-            .post(`/users/`, user)
+            .post(`/users`, user)
             .then((res) => {
                 dispatch(userRegistered())
             })
@@ -87,10 +87,10 @@ export const registerUserApi = (user: UserInputField) => {
     } 
 }
 
-export const loginUserApi = (user: any) => {
+export const loginUserApi = (user: UserInputField): any => {
     return function (dispatch: Dispatch<Action>) {
         axiosInstance
-            .post(`/login/`, user)
+            .post(`/login`, user)
             .then((res) => {
                 dispatch(userLoggedIn(res.data.data))
                 console.log("login data : ", res.data.data)

@@ -1,6 +1,7 @@
 import { Dispatch, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { handleDelete, handleEmployee } from "../../container/employee/getallemployee";
 
 import { InputField } from "../../interface/employee.interface";
 import { deleteEmployee, getAllEmployee } from "../../redux/action/action";
@@ -9,30 +10,16 @@ import Navbar from "../shared/navbar";
 
 const GetAllEmployee = () => {
 
-  const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>;
   const [data, setdata] = useState<InputField>()
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: any) => state.employeeData.employees)
-  // console.log("userdata : ", userdata)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  const handleEmployee = () => {
-    dispatchStore(getAllEmployee())
-    setdata(userdata)
-  }
 
   const handleUpdate = (id: number) => {
     navigate(`/update/${id}`)
   }
-
-  const handleDelete = (id: number) => {
-    dispatchStore(deleteEmployee(id))
-    if(window.confirm("Are you sure that you want to delete the Employee?")) {
-      setSuccess(true)
-    }
-  }
-
+  
   useEffect(() => {
     if(success) {
       alert("Employee deleted successfully!")
@@ -42,7 +29,7 @@ const GetAllEmployee = () => {
   return(
       <div>
           <Navbar />
-          <button onClick={handleEmployee}> Get all employees </button>
+          <button onClick={() => handleEmployee(dispatch, setdata, userdata)}> Get all employees </button>
           <table>
             <tbody>
             <tr>
@@ -63,8 +50,8 @@ const GetAllEmployee = () => {
                         <td>{user.city}</td>
                         <td>{user.salary}</td>
                         <button onClick={() => handleUpdate(user.id)}>Update employee</button>
-                        <button onClick={() => handleDelete(user.id)} >Delete employee</button>
-                      </div>
+                        <button onClick={() => handleDelete(dispatch, user.id, setSuccess)} >Delete employee</button>
+                      </div> 
                     )
                   })
                 }

@@ -1,15 +1,15 @@
 import { Dispatch, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { getSingleEmployee, updateEmployee } from "../../redux/action/action";
 import { store } from "../../redux/store/store";
 import { InputField } from "../../interface/employee.interface";
 import { validate } from "../shared/validate";
+import { updateHandler } from "../../container/employee/updateemployee";
 
 const UpdateEmployee = () => {
 
-    const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>;
     let { id } = useParams()
     const data = useSelector((state: any) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
@@ -23,6 +23,7 @@ const UpdateEmployee = () => {
     const [submit, setSubmit] = useState(false)
     const [success, setSuccess] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -30,13 +31,10 @@ const UpdateEmployee = () => {
     }
 
     useEffect(() => {   
-        console.log("inside useeffect getsing")
-        // let id:number
-        dispatchStore(getSingleEmployee(id))
+        dispatch(getSingleEmployee(id))
     }, [])
 
     useEffect(() => {
-        console.log("data in useefect : ", data)
         if(data) {
             setCredentials({ ...data })
         }
@@ -44,18 +42,6 @@ const UpdateEmployee = () => {
 
     useEffect(() => {
     },[credentials])
-
-    const updateHandler = () => {
-        console.log("update handle : ", credentials)
-        console.log("id in update : ", id)
-        setFormError(() => validate(credentials))
-        setSubmit(true)
-        if (Object.keys(formError).length === 0 && submit) {
-            console.log("inside if", credentials)
-            dispatchStore(updateEmployee(id, credentials))
-            setSuccess(true)
-        }
-    }
 
     useEffect(() => {
         if (success) {
@@ -86,7 +72,7 @@ const UpdateEmployee = () => {
                     <span>{formError.salary}</span>
               </div>
            </div>
-           <button onClick={ updateHandler }>Update details</button>
+           <button onClick={() => updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>Update details</button>
         </div>
     )
 }
