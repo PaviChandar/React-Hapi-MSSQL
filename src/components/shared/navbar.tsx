@@ -16,17 +16,21 @@ const Navbar = () => {
     useEffect(() => {
         if(sessionStorage.getItem("token")) {
             setIsLoggedIn(true)
-            console.log(" received token Token val")
         }
     },[user])
 
-    // let token
-    // if (sessionStorage.getItem("token")) {
-    //     token = jwtDecode(sessionStorage.getItem("token"))
-    //  }
+    let token: string, decodeToken: string|any
+    if(sessionStorage.getItem("token")) {
+        token = JSON.stringify(sessionStorage.getItem("token"))
+        decodeToken = jwtDecode(token)
+    }
 
     const handleLogout = () => {
         console.log("inside logout")
+        sessionStorage.removeItem("token")
+        sessionStorage.removeItem("login")
+        setIsLoggedIn(false)
+        navigate('/login')
     }
 
     return (
@@ -34,7 +38,7 @@ const Navbar = () => {
             {
                 isLoggedIn ?
                 <>
-                    <h4>Hello</h4>
+                    <h4>Hello, {decodeToken.username}</h4>
                     <button onClick={handleLogout} >Logout</button>
                 </> :
                 <>

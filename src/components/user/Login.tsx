@@ -1,31 +1,20 @@
-import { Dispatch, useState } from "react"
-import { useSelector } from "react-redux"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
+import { loginHandler } from "../../container/user/login"
 import { UserInputField } from "../../interface/user.interface"
-import { loginUser } from "../../redux/action/action"
-import { store } from "../../redux/store/store"
 
 const Login = () => {
     const navigate = useNavigate()
-    const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>;
+    const dispatchStore = useDispatch()
     const [credentials, setCredentials] = useState<UserInputField>({
         email:'',
         password:''
     })
 
-    const { user } = useSelector((state: any) => state.userData.user)
-    console.log("User data : ", user)
-
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value}))
-    }
-
-    const loginHandler = () => {
-        console.log("inside login handler")
-        dispatchStore(loginUser(credentials))
-        alert("Logged in successfully")
-        navigate('/')
     }
 
     return(
@@ -34,7 +23,7 @@ const Login = () => {
                 <input type="text" name="email" placeholder="email" value={credentials.email} onChange={handleChange} />
                 <input type="password" name="password" placeholder="password" value={credentials.password} onChange={handleChange} />
             </form>
-            <button onClick={loginHandler} >Login</button>
+            <button onClick={() => loginHandler(credentials, dispatchStore, navigate)} >Login</button>
             <div>
                 <h4>If not an user, Sign Up</h4>
                 <button onClick={() => navigate('/sign-up')} >Sign Up</button>

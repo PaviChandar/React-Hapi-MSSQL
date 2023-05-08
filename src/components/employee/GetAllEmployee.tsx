@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { handleDelete, handleEmployee } from "../../container/employee/getallemployee";
+import {  AnyAction, Dispatch } from "redux";
+import GetAllEmployeeContainer from "../../container/employee/getallemployee";
 
 import { InputField } from "../../interface/employee.interface";
 import Header from "../header/header";
@@ -32,7 +33,9 @@ const GetAllEmployee = () => {
       <div>
           <Navbar />
           <Header />
-          <button onClick={() => handleEmployee(dispatch, setdata, userdata)}>{t("employee.getall")}</button>
+          <GetAllEmployeeContainer handleEmployee={userdata}  />
+          {/* <button onClick={() => handleEmployee(dispatch, setdata, userdata)}>{t("employee.getall")}</button> */}
+          <button onClick={() => handleEmployee()}>{t("employee.getall")}</button>
           <table>
             <tbody>
             <tr>
@@ -47,6 +50,7 @@ const GetAllEmployee = () => {
                   userdata && userdata.map((user: any) => {
                     return(
                       <div>
+                        <GetAllEmployeeContainer handleDelete={user.id} />
                         <td>{user.id}</td>
                         <td>{user.name}</td>
                         <td>{user.age}</td>
@@ -66,4 +70,4 @@ const GetAllEmployee = () => {
   )
 }
 
-export default GetAllEmployee
+export default connect() (GetAllEmployee)

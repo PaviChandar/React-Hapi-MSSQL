@@ -1,24 +1,22 @@
-import { Dispatch, useState } from "react"
+import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
+import { registerHandler } from "../../container/user/signup";
 import { UserInputField } from "../../interface/user.interface"
-import { registerUser } from "../../redux/action/action";
-import { store } from "../../redux/store/store";
+
 
 const SignUp = () => {
-    // const navigate = useNavigate()
-    const dispatchStore = store.dispatch as typeof store.dispatch | Dispatch<any>;
+    const dispatchStore = useDispatch()
+    const navigate = useNavigate()
     const [credentials, setCredentials] = useState<UserInputField>({
         username:'',
         email:'',
         password:'',
     })
 
-    const changeHandler = (e: any) => {
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({...prev, [e.target.name]: e.target.value}))
-    }
-
-    const registerHandler = () => {
-        dispatchStore(registerUser(credentials))
     }
 
     return(
@@ -28,7 +26,7 @@ const SignUp = () => {
                 <input type="text" placeholder="email" name="email" value={credentials.email} onChange={changeHandler} />
                 <input type="text" placeholder="password" name="password" value={credentials.password} onChange={changeHandler} />
             </form>
-            <button onClick={registerHandler}>Register User</button>
+            <button onClick={() => registerHandler(dispatchStore, credentials, navigate)}>Register User</button>
         </div>
     )
 }
