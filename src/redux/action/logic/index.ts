@@ -1,5 +1,5 @@
-import getAllEmployeeApi from "./getall"
+import {getAllEmployeeApi} from "./getall"
 
 export default [
-    ...getAllEmployeeApi
+    getAllEmployeeApi
 ]

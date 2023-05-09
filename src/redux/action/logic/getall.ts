@@ -5,28 +5,46 @@ import axiosInstance from "../../../container/api/axios"
 import * as types from "../../action/action-type"
 import { retreiveEmployees } from "../action"
 
-const getAllEmployeeApi = createLogic({
+export const getAllEmployeeApi = createLogic({
     type: types.GET_ALL_EMPLOYEE,
     latest: true,
     processOptions: {
         dispatchReturn: true
     },
-    process({ action }) {
-        return function (dispatch: Dispatch<Action>) {
-            console.log("get action type : ", action.type)
+    process({ action }, dispatch, done) {
+        return (
             axiosInstance
                 .get(`/employees`)
                 .then((res) => {
                     dispatch(retreiveEmployees(res.data.data))
-                    console.log("res data : ", res.data.data)
                 })
                 .catch((error) => {
                     console.log("Cannot get employees : ", error)
-                })
-        }
-    },
+                }),
+            done
+        )
+    }
 })
 
-export default [ getAllEmployeeApi ]
 
-//mapstatetodispatch
+// export const getAllEmployeeApi = createLogic({
+//     type: types.GET_ALL_EMPLOYEE,
+//     latest: true,
+//     processOptions: {
+//         dispatchReturn: true
+//     },
+//     process({ action }, done) {
+//         return function (dispatch: Dispatch<Action>){
+//             axiosInstance
+//                 .get(`/employees`)
+//                 .then((res) => {
+//                     dispatch(retreiveEmployees(res.data.data))
+//                 })
+//                 .catch((error) => {
+//                     console.log("Cannot get employees : ", error)
+//                 }),
+//             done
+//         }
+        
+//     }
+// })

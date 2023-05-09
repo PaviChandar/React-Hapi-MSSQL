@@ -5,8 +5,13 @@ import Login from "../components/user/login"
 import SignUp from "../components/user/signup"
 import UpdateEmployee from "../components/employee/updateemployee"
 import AddEmployee from "../components/employee/addemployee"
+import { useSelector } from "react-redux"
 
 const Router = () =>{
+
+    const employee  = useSelector((state: any) => state.employeeData.employees)
+    console.log("User data : ", employee)
+
     return(
        <>
             <Routes>

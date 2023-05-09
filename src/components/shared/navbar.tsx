@@ -11,7 +11,7 @@ const Navbar = () => {
     i18n.changeLanguage()
 
     const { user } = useSelector((state:any) => state.userData)
-    console.log("USER in navbar : ", user)
+    // console.log("USER in navbar : ", user)
 
     useEffect(() => {
         if(sessionStorage.getItem("token")) {

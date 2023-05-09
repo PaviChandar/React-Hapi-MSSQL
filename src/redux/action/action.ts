@@ -1,5 +1,4 @@
 import { addEmployeeApi, deleteEmployeeApi, getAllEmployeeApi, getSingleEmployeeApi, loginUserApi, registerUserApi, updateEmployeeApi } from "../../container/api/api-calls"
-// import getAllEmployeeApi from "../../container/api/api-calls"
 import { EmployeeState, InputField } from "../../interface/employee.interface"
 import { UserInputField, UserState } from "../../interface/user.interface"
 import * as types from "./action-type"
@@ -46,11 +45,6 @@ export const removeEmployee = (id: any) => ({
 export const addEmployee = (employee: InputField) =>  {
     return addEmployeeApi(employee)
 }
-
-// export const getAllEmployee = () => {
-//     const x = [...getAllEmployeeApi]
-//     return x
-// }
 
 export const getAllEmployee = () => {
     return getAllEmployeeApi()
