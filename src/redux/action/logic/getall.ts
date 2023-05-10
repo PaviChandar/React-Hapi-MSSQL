@@ -1,9 +1,8 @@
-import { Dispatch } from "react"
-import { Action } from "redux"
 import { createLogic } from "redux-logic"
+
 import axiosInstance from "../../../container/api/axios"
 import * as types from "../../action/action-type"
-import { retreiveEmployees } from "../action"
+import { retreiveEmployee, retreiveEmployees } from "../action"
 
 export const getAllEmployeeApi = createLogic({
     type: types.GET_ALL_EMPLOYEE,
@@ -17,14 +16,38 @@ export const getAllEmployeeApi = createLogic({
                 .get(`/employees`)
                 .then((res) => {
                     dispatch(retreiveEmployees(res.data.data))
+                    console.log("retreive employees : ", res.data.data)
                 })
                 .catch((error) => {
                     console.log("Cannot get employees : ", error)
                 }),
-            done
+                done
+                
         )
     }
 })
+
+// export const getSingleEmployeeApi = createLogic({
+//     type: types.GET_EMPLOYEE,
+//     latest: true,
+//     processOptions: {
+//         dispatchReturn: true
+//     },
+//     process({ action }, dispatch, done) {
+//         return (
+//             axiosInstance
+//                 .get(`/employees/${id}`)
+//                 .then((res) => {
+//                     dispatch(retreiveEmployee(res.data.data))
+//                     console.log("emp retreive : ", res.data.data)
+//                 })
+//                 .catch((error) => {
+//                     console.log("Cannot get employee : ", error)
+//                 })
+//                 .then(() => done())
+//         )
+//     }
+// })
 
 
 // export const getAllEmployeeApi = createLogic({

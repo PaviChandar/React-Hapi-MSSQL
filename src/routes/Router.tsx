@@ -1,23 +1,23 @@
 import { Route, Routes } from "react-router-dom"
+import { useSelector } from "react-redux"
 
-import GetAllEmployee from "../components/employee/getallemployee"
 import Login from "../components/user/login"
 import SignUp from "../components/user/signup"
-import UpdateEmployee from "../components/employee/updateemployee"
-import AddEmployee from "../components/employee/addemployee"
-import { useSelector } from "react-redux"
+import GetAllEmployeeContainer from "../container/employee/getallemployee"
+import AddEmployeeContainer from "../container/employee/addemployee"
+import UpdateEmployeeContainer from "../container/employee/updateemployee"
 
 const Router = () =>{
 
-    const employee  = useSelector((state: any) => state.employeeData.employees)
-    console.log("User data : ", employee)
+    const employee  = useSelector((state: any) => state.employeeData.employee)
+    console.log("User data in route : ", employee)
 
     return(
        <>
             <Routes>
-                <Route path='/' element={<GetAllEmployee />} />
-                <Route path='/update/:id' element={<UpdateEmployee />} />
-                <Route path='/create' element={<AddEmployee />}  />
+                <Route path='/' element={<GetAllEmployeeContainer />} />
+                <Route path='/update/:id' element={<UpdateEmployeeContainer />} />
+                <Route path='/create' element={<AddEmployeeContainer />}  />
                 <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
             </Routes>

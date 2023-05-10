@@ -1,13 +1,12 @@
-import { Dispatch, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { getSingleEmployee } from "../../redux/action/action";
 import { InputField } from "../../interface/employee.interface";
 import { validate } from "../shared/validate";
-import { updateHandler } from "../../container/employee/updateemployee";
 
-const UpdateEmployee = () => {
+const UpdateEmployee = (props: any) => {
 
     let { id } = useParams()
     const data = useSelector((state: any) => state.employeeData.employee)
@@ -71,7 +70,7 @@ const UpdateEmployee = () => {
                     <span>{formError.salary}</span>
               </div>
            </div>
-           <button onClick={() => updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>Update details</button>
+           <button onClick={() => props.updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>Update details</button>
         </div>
     )
 }

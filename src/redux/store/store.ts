@@ -5,17 +5,19 @@ import { createLogicMiddleware } from 'redux-logic';
 import axios from 'axios';
 
 import rootReducer from '../reducer/rootReducer';
-import rootLogic from "../action/logic"
+import rootLogic from "../action/logic/index"
 
+// const middlewares = [thunk]
 
-const middlewares = [thunk]
-
-const deps:  any = {
+const deps: any = {
     httpClient: axios
 }
 
-const logicMiddleware = createLogicMiddleware( rootLogic, deps)
+const logicMiddleware = createLogicMiddleware([rootLogic], deps)
+const middleware = applyMiddleware(thunk, logicMiddleware)
+const enhancer = compose(middleware)
 
-export const store = () => createStore(rootReducer, compose(applyMiddleware(logicMiddleware)))
+export const store = () => createStore(rootReducer, enhancer)
+
 
 // export const store = createStore(rootReducer, composeWithDevTools((applyMiddleware(...middlewares))));

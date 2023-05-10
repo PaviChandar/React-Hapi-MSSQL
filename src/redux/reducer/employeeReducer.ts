@@ -14,11 +14,12 @@ const initialState: EmployeeState | InputField = {
 
 const employeeReducer = (state:EmployeeState = initialState, action: EmployeeActionType):EmployeeState => {
     switch(action.type) {
-        case types.GET_ALL_EMPLOYEE:
+        case types.GET_ALL_EMPLOYEE:{
+            console.log('redux',action.payload)
             return {
                 ...state,
                 employees: action.payload
-            }
+            }}
         case types.GET_EMPLOYEE:
             return {
                 ...state,

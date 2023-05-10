@@ -3,10 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { addHandler } from "../../container/employee/addemployee";
 import { validate } from "../shared/validate";
 
-const AddEmployee = () => {
+const AddEmployee = (props: any) => {
     const { t, i18n } = useTranslation()
     i18n.changeLanguage()
 
@@ -37,8 +36,7 @@ const AddEmployee = () => {
                 <div>
                     <div>
                         <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} />
-                        {/* <span>{formError.id}</span> */}
-                        <span>{t("validation.employee_id")}</span>
+                        <span>{formError.id}</span>
                     </div>
                     <div>
                         <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
@@ -57,7 +55,7 @@ const AddEmployee = () => {
                         <span>{formError.salary}</span>
                     </div>
                 </div>
-                <button onClick={() => addHandler(dispatchStore, setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("employee.add")}</button>
+                <button onClick={() => props.addHandler(dispatchStore, setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("employee.add")}</button>
         </div>
     )
 }
