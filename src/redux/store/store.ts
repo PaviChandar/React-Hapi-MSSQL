@@ -13,7 +13,7 @@ const deps: any = {
     httpClient: axios
 }
 
-const logicMiddleware = createLogicMiddleware([rootLogic], deps)
+const logicMiddleware = createLogicMiddleware(rootLogic, deps)
 const middleware = applyMiddleware(thunk, logicMiddleware)
 const enhancer = compose(middleware)
 
