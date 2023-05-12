@@ -2,7 +2,7 @@ import { Dispatch, Action } from "redux"
 
 import GetAllEmployee from "../../components/employee/getallemployee"
 import { deleteEmployee } from "../../redux/action/action"
-import { getAllEmployeeApi } from "../../redux/action/logic/getall"
+import  {getAllEmployeeApi}   from "../../redux/action/logic/getall"
 
 const GetAllEmployeeContainer = () => {
 
@@ -11,7 +11,6 @@ const GetAllEmployeeContainer = () => {
     dispatch(getAllEmployeeApi)
     setdata(userdata)
   }
-
 
   const handleDelete = (dispatch: Dispatch<Action>, id: number, setSuccess: (arg0: boolean) => void) => {
     console.log("inside delete", id)

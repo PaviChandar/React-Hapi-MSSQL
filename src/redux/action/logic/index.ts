@@ -1,10 +1,21 @@
-import { addEmployeeApi }  from "./addemployee"
-import { getAllEmployeeApi } from "./getall"
-import { updateEmployeeApi } from "./updateemployee"
+import   {addEmployeeApi}    from "./getall"
+import  {getAllEmployeeApi}   from "./getall"
+import   updateEmployeeApi   from "./updateemployee"
 
 export default [
     getAllEmployeeApi,
-    // getSingleEmployeeApi,
     addEmployeeApi,
     updateEmployeeApi
 ]
+
+// export default [
+//     ...getAllEmployeeApi,
+//     ...addEmployeeApi,
+//      ...updateEmployeeApi
+// ]
+
+// module.exports = {
+//     ...getAllEmployeeApi,
+//     ...addEmployeeApi,
+//     ...updateEmployeeApi
+// }

@@ -5,20 +5,20 @@ import { InputField } from "../../../interface/employee.interface"
 import * as types from "../../action/action-type"
 import { employeeAdded } from "../action"
 
-export const addEmployeeApi = createLogic({
+const addEmployeeApi = createLogic({
     type: types.ADD_EMPLOYEE,
     latest: true,
     processOptions: {
         dispatchReturn: true
     },
-    process( {action}  , dispatch, done) {
+    process({ action }, dispatch, done) {
         console.log("action in add emp : ", action)
-        const employee = action.payload
-        console.log("employee data : ", employee)
-        console.log("action type : ",action.payload)
+        // const employee = action.payload
+        // console.log("employee data : ", employee)
+        // console.log("action type : ",action.payload)
         return (
             axiosInstance
-                .post(`/employees`, employee)
+                .post(`/employees`)
                 .then((res) => {
                     dispatch(employeeAdded(res.data))
                     console.log("res data : ", res.data)
@@ -31,4 +31,6 @@ export const addEmployeeApi = createLogic({
     }
 })
 
-// export default [addEmployeeApi]
+export default [addEmployeeApi]
+// export default addEmployeeApi
+// module.exports = { addEmployeeApi }

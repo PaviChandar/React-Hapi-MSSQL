@@ -4,6 +4,7 @@ import UpdateEmployee from "../../components/employee/updateemployee"
 import { validate } from "../../components/shared/validate"
 import { InputField } from "../../interface/employee.interface"
 import { updateEmployee } from "../../redux/action/action"
+import { store } from "../../redux/store/store"
 
 const UpdateEmployeeContainer = () => {
     const updateHandler = (dispatch: Dispatch<Action>, formError: {},setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void,credentials: InputField, id: any, setSuccess: (arg0: boolean) => void) => {
@@ -17,6 +18,7 @@ const UpdateEmployeeContainer = () => {
             setSuccess(true)
         }
     }
+    
     return <UpdateEmployee updateHandler = {updateHandler} />
 }
 

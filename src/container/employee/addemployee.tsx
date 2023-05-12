@@ -3,7 +3,7 @@ import AddEmployee from "../../components/employee/addemployee"
 
 import { validate } from "../../components/shared/validate"
 import { InputField } from "../../interface/employee.interface"
-import { addEmployeeApi } from "../../redux/action/logic/addemployee"
+import  { addEmployeeApi }  from "../../redux/action/logic/addemployee"
 
 
 const AddEmployeeContainer = () => {

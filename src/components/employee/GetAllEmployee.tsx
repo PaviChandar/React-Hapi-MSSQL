@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState, MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,12 @@ import { InputField } from "../../interface/employee.interface";
 import Header from "../header/header";
 import Navbar from "../shared/navbar";
 
-const GetAllEmployee = (props: any) => {
+interface Props extends MouseEvent<FormEvent> {
+  handleEmployee: Function,
+  handleDelete: Function
+}
+
+const GetAllEmployee = (props : any) => {
 
   const { t, i18n } = useTranslation()
   i18n.changeLanguage()
@@ -15,7 +20,7 @@ const GetAllEmployee = (props: any) => {
   const [data, setdata] = useState<InputField>()
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: any) => state.employeeData.employees)
-  console.log("state atda : ", userdata)
+  console.log("state data : ", userdata)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -29,15 +34,11 @@ const GetAllEmployee = (props: any) => {
     }
   }, [success])
 
-  useEffect(()=>{
-    console.log('ddd',userdata)
-  },[userdata])
-
   return(
       <div>
           <Navbar />
           <Header />
-          <button onClick={() => props.handleEmployee(dispatch, setdata, userdata)}>{t("employee.getall")}</button>
+          <button onClick={() => props.handleEmployee(dispatch, setdata, userdata) }>{t("employee.getall")}</button>
           <table>
             <tbody>
             <tr>
