@@ -6,11 +6,11 @@ interface Props {
     children: ReactNode
 }
 
-const PrivateRoutes = ({ children }: Props) => {
-    const { login } = useSelector((state: any) => state.userData.login)
-    console.log("login value : ", login)
+const PrivateRoutes = ({ children }: any) => {
+    const login  = useSelector((state: any) => state.userData.user.login)
+    console.log("login value in private routes : ", login)
 
-    return login ? children : <Navigate to='/' />
+    return login ? children : <Navigate to='/' /> 
 }
 
 export default PrivateRoutes

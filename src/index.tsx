@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import i18next from './components/i18n/config';
-import  {store}  from './redux/store/store';
+import  { store }  from './redux/store/store';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <I18nextProvider i18n={i18next}>
-      <Provider store={store()}>
+      <Provider store={store}>
         <App />
       </Provider>
     </I18nextProvider>

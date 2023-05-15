@@ -106,5 +106,3 @@ export const loginUserApi = (user: UserInputField): any => {
             })
     } 
 }
-
-export default [ getAllEmployeeApi ]

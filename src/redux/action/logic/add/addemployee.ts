@@ -1,11 +1,10 @@
 import { createLogic } from "redux-logic"
 
-import axiosInstance from "../../../container/api/axios"
-import { InputField } from "../../../interface/employee.interface"
-import * as types from "../../action/action-type"
-import { employeeAdded } from "../action"
+import axiosInstance from "../../../../container/api/axios"
+import * as types from "../../action-type"
+import { employeeAdded } from "../../action"
 
-const addEmployeeApi = createLogic({
+export const addEmployeeApi = createLogic({
     type: types.ADD_EMPLOYEE,
     latest: true,
     processOptions: {
@@ -31,6 +30,6 @@ const addEmployeeApi = createLogic({
     }
 })
 
-export default [addEmployeeApi]
+// export default  [ addEmployeeApi ]
 // export default addEmployeeApi
 // module.exports = { addEmployeeApi }
