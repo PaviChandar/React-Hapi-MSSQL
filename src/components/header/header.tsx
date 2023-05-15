@@ -1,3 +1,4 @@
+import Button from "antd/es/button";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
@@ -9,8 +10,8 @@ const Header = () => {
 
     return (
         <header>
-            <button onClick={() => handleClick("en")} >English</button>
-            <button onClick={() => handleClick("ta")} >Tamil</button>
+            <Button onClick={() => handleClick("en")} >English</Button>
+            <Button onClick={() => handleClick("ta")} >Tamil</Button>
         </header>
     )
 }

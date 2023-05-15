@@ -1,11 +1,13 @@
+import { Button, Space } from "antd";
+import Table from "antd/es/table";
 import { FormEvent, useEffect, useState, MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { InputField } from "../../interface/employee.interface";
 import Header from "../header/header";
 import Navbar from "../shared/navbar";
+import "../../assets/getall.module.css"
 
 interface Props extends MouseEvent<FormEvent> {
   handleEmployee: Function,
@@ -17,60 +19,76 @@ const GetAllEmployee = (props : any) => {
   const { t, i18n } = useTranslation()
   i18n.changeLanguage()
 
-  const [data, setdata] = useState<InputField>()
+  const [data, setdata] = useState([])
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: any) => state.employeeData.employees)
-  console.log("state data : ", userdata)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleUpdate = (id: number) => {
-    navigate(`/update/${id}`)
+    navigate(`/admin/update/${id}`)
   }
   
   useEffect(() => {
     if(success) {
       alert("Employee deleted successfully!")
     }
-  }, [success])
+  }, [success, userdata])
+
+  useEffect(() => {
+    const dataSource = userdata.map((e: any) => {
+      return({
+          "Employee_ID": e.id,
+          "Name": e.name,
+          "City": e.city,
+          "Age": e.age,
+          "Salary": e.salary
+      })
+    })
+    setdata(dataSource)
+  },[userdata])
+
+  const column = [
+    {
+      title: 'Name',
+      dataIndex: 'Name',
+      key: 'Name'
+    },
+    {
+      title: 'City',
+      dataIndex: 'City',
+      key: 'City'
+    },
+    {
+      title: 'Age',
+      dataIndex: 'Age',
+      key: 'Age'
+    },
+    {
+      title: 'Salary',
+      dataIndex: 'Salary',
+      key: 'Salary'
+    },
+    {
+      title: 'Action',
+      key: 'Action',
+      render: (userdata: { Employee_ID: number }) => (
+          <Space size="middle">
+              <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action">Update</Button>
+              <Button onClick={() => props.handleDelete(dispatch, userdata.Employee_ID, setSuccess)} className="action" >Delete</Button>
+          </Space>
+      )
+  },
+  ]
 
   return(
       <div>
           <Navbar />
           <Header />
-          <button onClick={() => props.handleEmployee(dispatch, setdata, userdata) }>{t("employee.getall")}</button>
-          <table>
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>City</th>
-                <th>Salary</th>
-              </tr>
-              <tr>
-                {
-                  userdata && userdata.map((user: any) => {
-                    // console.log("user datda : ", userdata)
-                    return(
-                     <div>
-                       <div>
-                          <td>{user.id}</td>
-                          <td>{user.name}</td>
-                          <td>{user.age}</td>
-                          <td>{user.city}</td>
-                          <td>{user.salary}</td>
-                          <button onClick={() => handleUpdate(user.id)}>{t("employee.update")}</button>
-                          <button onClick={() => props.handleDelete(dispatch, user.id, setSuccess)} >{t("employee.delete")}</button>
-                        </div> 
-                     </div>
-                    )
-                  })
-                }
-              </tr>
-            </tbody>
-          </table>
-          <button onClick={() => navigate('/create')} >{t("employee.add")}</button>
+          {
+            userdata.length? userdata.length===0 ? <h5>No Employees Found</h5>: <Table columns={ column } dataSource= { data } /> : <h3>Loading</h3>
+          }
+          <Button onClick={() => navigate('/admin/create')} className="create" >{t("employee.add")}</Button>
       </div>
   )
 }

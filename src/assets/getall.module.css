@@ -1,0 +1,16 @@
+/* @import 'antd/dist/antd.css'; */
+/* @import '~antd/dist/antd.css'; */
+
+@import 'antd/dist/reset.css';
+
+.action {
+    background-color: black;
+    font-weight: bolder;
+}
+
+.create {
+    background-color: black;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+}

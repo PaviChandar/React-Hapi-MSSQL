@@ -1,3 +1,4 @@
+import { Button } from "antd"
 import jwtDecode from "jwt-decode"
 import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -11,7 +12,6 @@ const Navbar = () => {
     i18n.changeLanguage()
 
     const { user } = useSelector((state:any) => state.userData)
-    // console.log("USER in navbar : ", user)
 
     useEffect(() => {
         if(sessionStorage.getItem("token")) {
@@ -26,7 +26,6 @@ const Navbar = () => {
     }
 
     const handleLogout = () => {
-        console.log("inside logout")
         sessionStorage.removeItem("token")
         sessionStorage.removeItem("login")
         setIsLoggedIn(false)
@@ -39,7 +38,7 @@ const Navbar = () => {
                 isLoggedIn ?
                 <>
                     <h4>Hello, {decodeToken.username}</h4>
-                    <button onClick={handleLogout} >Logout</button>
+                    <Button onClick={handleLogout} >Logout</Button>
                 </> :
                 <>
                     <button onClick={() => navigate('/login')} >{t("login.login")}</button>

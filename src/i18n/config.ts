@@ -8,7 +8,7 @@ i18next
         debug: true,
         resources: {
             en: {
-                translations: require('./en/translations.json')
+                translations: require('./en/translations.json') //BE , get from dynamic url
             },
             ta: {
                 translations: require('./ta/translations.json')

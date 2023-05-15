@@ -11,7 +11,7 @@ export const addEmployeeApi = createLogic({
         dispatchReturn: true
     },
     process({ action }, dispatch, done) {
-        console.log("action in add emp : ", action)
+        // console.log("action in add emp : ", action.payload)
         // const employee = action.payload
         // console.log("employee data : ", employee)
         // console.log("action type : ",action.payload)
@@ -25,7 +25,7 @@ export const addEmployeeApi = createLogic({
                 .catch((error) => {
                     console.log("Cannot add employee : ", error)
                 })
-                .then(() => done())
+                .then(() => done()) //app block
         )
     }
 })

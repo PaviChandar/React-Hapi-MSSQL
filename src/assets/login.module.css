@@ -1,0 +1,11 @@
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.loginEmail {
+    width: 30px;
+    height: 40px;
+    border: red;
+    margin-bottom: 40px;
+}

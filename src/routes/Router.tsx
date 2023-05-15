@@ -1,7 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-import Login from "../components/user/login"
 import SignUp from "../components/user/signup"
 import GetAllEmployeeContainer from "../container/employee/getallemployee"
 import AddEmployeeContainer from "../container/employee/addemployee"
@@ -12,17 +11,19 @@ import ProtectedRoutes from "./protectedroutes"
 import PrivateRoutes from "./privateroutes"
 import AdminOutlet from "../components/admin/adminoutlet"
 import Home from "../components/employee/home"
+import LoginContainer from "../container/user/login"
 
 const Router = () => {
 
-    // ValidateSession()
-
-    const user  = useSelector((state: any) => state.userData.user)
-    console.log("User data in route : ", user.login)
+    ValidateSession()
 
     return(
        <>
             <Routes>
+
+                <Route path='/login' element={<LoginContainer />} />
+                <Route path='/sign-up' element={<SignUp />} />
+
                 <Route path='/' element={
                     <ProtectedRoutes>
                         <Home />
@@ -31,24 +32,26 @@ const Router = () => {
                 <Route path='/admin' element={
                     <PrivateRoutes>
                         <AdminOutlet />
-                    </PrivateRoutes>}>
+                     </PrivateRoutes>
+                }>
                         
                     <Route path='' element={ 
                         <PrivateRoutes>
                             <Admin />
-                        </PrivateRoutes>} />
+                         </PrivateRoutes>
+                    } />
                     <Route path='update/:id' element={
                         <PrivateRoutes>
                             <UpdateEmployeeContainer />
-                        </PrivateRoutes>} />
+                         </PrivateRoutes>
+                    } />
                     <Route path='create' element={
                         <PrivateRoutes>
                             <AddEmployeeContainer />
-                        </PrivateRoutes>}  />
-                </Route>
+                        </PrivateRoutes>
+                    }  />
 
-                <Route path='/login' element={<Login />} />
-                <Route path='/sign-up' element={<SignUp />} />
+                </Route>
             </Routes>
        </>
     )

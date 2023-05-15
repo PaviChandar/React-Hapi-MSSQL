@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import i18next from './components/i18n/config';
+import i18next from './i18n/config';
 import  { store }  from './redux/store/store';
 import reportWebVitals from './reportWebVitals';
 

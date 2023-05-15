@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next";
 
 import { getSingleEmployee } from "../../redux/action/action";
 import { InputField } from "../../interface/employee.interface";
@@ -8,6 +9,9 @@ import { validate } from "../shared/validate";
 
 const UpdateEmployee = (props: any) => {
 
+    const { t, i18n } = useTranslation()
+    i18n.changeLanguage()
+    
     let { id } = useParams()
     const data = useSelector((state: any) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
@@ -52,25 +56,25 @@ const UpdateEmployee = (props: any) => {
         <div>
            <h2>Update employee</h2>
            <div>
-                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} readOnly />
+                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} />
                 <div>
                     <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
-                    <span>{formError.name}</span>
+                    <span className="error">{formError.name}</span>
                 </div>
                 <div>
                     <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={credentials.age} />
-                    <span>{formError.age}</span>
+                    <span className="error">{formError.age}</span>
                 </div>
                 <div>
                     <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={credentials.city} />
-                    <span>{formError.city}</span>
+                    <span className="error">{formError.city}</span>
                 </div>
               <div>
                     <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={credentials.salary} />
-                    <span>{formError.salary}</span>
+                    <span className="error">{formError.salary}</span>
               </div>
            </div>
-           <button onClick={() => props.updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>Update details</button>
+           <button onClick={() => props.updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>{t("employee.update")}</button>
         </div>
     )
 }

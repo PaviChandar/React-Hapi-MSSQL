@@ -1,4 +1,5 @@
 import { InputField } from "../../interface/employee.interface"
+import { UserInputField } from "../../interface/user.interface"
 
 export const validate = (value: InputField) => {
     const errors: any = {}
@@ -17,6 +18,20 @@ export const validate = (value: InputField) => {
     }
     if(!value.salary) {
         errors.salary = "*Employee salary is required"
+    }
+
+    return errors
+}
+
+export const validateUser = (value: UserInputField) => {
+    const errors: any = {}
+
+    if(!value.email) {
+        errors.email = '*User Email is required'
+    }
+
+    if(!value.password) {
+        errors.password = '*User Password is required'
     }
 
     return errors
