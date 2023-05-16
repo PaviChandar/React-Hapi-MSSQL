@@ -1,5 +1,5 @@
-import { InputField } from "../../interface/employee.interface"
-import { UserInputField } from "../../interface/user.interface"
+import { InputField } from "../interface/employee.interface"
+import { UserInputField } from "../interface/user.interface"
 
 export const validate = (value: InputField) => {
     const errors: any = {}

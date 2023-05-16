@@ -3,12 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { validate } from "../shared/validate";
+import { validate } from "../../shared/validation/validate";
 import "../../assets/add.module.css"
 
 const AddEmployee = (props: any) => {
-    const { t, i18n } = useTranslation()
-    i18n.changeLanguage()
+    const { t } = useTranslation()
 
     const dispatchStore = useDispatch()
     const [credentials, setCredentials] = useState({id:0, name:'', age:0, city:'', salary:0 })

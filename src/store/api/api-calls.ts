@@ -1,9 +1,9 @@
 import { Dispatch } from "react"
 import { Action } from "redux"
 
-import axiosInstance from "../../container/api/axios"
-import { InputField } from "../../interface/employee.interface"
-import { UserInputField } from "../../interface/user.interface"
+import axiosInstance from "./axios"
+import { InputField } from "../../shared/interface/employee.interface"
+import { UserInputField } from "../../shared/interface/user.interface"
 import { editEmployee, employeeAdded, isLogin, removeEmployee, retreiveEmployee, retreiveEmployees, userLoggedIn, userRegistered } from "../../redux/action/action"
 
 export const addEmployeeApi = (employee : InputField): any => {

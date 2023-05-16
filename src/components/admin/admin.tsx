@@ -1,4 +1,4 @@
-import GetAllEmployeeContainer from "../../container/employee/getallemployee"
+import GetAllEmployeeContainer from "../../container/employee/get-all-employee"
 
 const Admin = () => {
     return (

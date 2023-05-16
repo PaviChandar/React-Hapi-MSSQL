@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux"
 import { Dispatch, Action } from "redux"
 
-import GetAllEmployee from "../../components/employee/getallemployee"
-import { deleteEmployeeApi, getAllEmployeeApi } from "../api/api-calls"
+import GetAllEmployee from "../../components/employee/get-all-employee"
+import { deleteEmployeeApi, getAllEmployeeApi } from "../../store/api/api-calls"
 // import { deleteEmployee } from "../../redux/action/action"
 // import  { getAllEmployeeApi }   from "../../redux/action/logic/get/getall"
 

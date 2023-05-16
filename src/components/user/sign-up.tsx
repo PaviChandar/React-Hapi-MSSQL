@@ -2,8 +2,8 @@ import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { registerHandler } from "../../container/user/signup";
-import { UserInputField } from "../../interface/user.interface"
+import { registerHandler } from "../../container/user/sign-up";
+import { UserInputField } from "../../shared/interface/user.interface"
 
 
 const SignUp = () => {

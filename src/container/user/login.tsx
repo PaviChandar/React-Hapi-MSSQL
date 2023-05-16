@@ -1,6 +1,6 @@
-import { validateUser } from "../../components/shared/validate"
+import { validateUser } from "../../shared/validation/validate"
 import Login from "../../components/user/login"
-import { UserInputField } from "../../interface/user.interface"
+import { UserInputField } from "../../shared/interface/user.interface"
 import { loginUser } from "../../redux/action/action"
 
 const LoginContainer = () => {

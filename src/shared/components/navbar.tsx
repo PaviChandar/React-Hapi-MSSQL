@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom"
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navigate = useNavigate()
-    const { t, i18n } = useTranslation()
-    i18n.changeLanguage()
+    const { t } = useTranslation()
 
     const { user } = useSelector((state:any) => state.userData)
 

@@ -1,10 +1,10 @@
 import { Dispatch, Action } from "redux"
-import UpdateEmployee from "../../components/employee/updateemployee"
+import UpdateEmployee from "../../components/employee/update-employee"
 
-import { validate } from "../../components/shared/validate"
-import { InputField } from "../../interface/employee.interface"
+import { validate } from "../../shared/validation/validate"
+import { InputField } from "../../shared/interface/employee.interface"
 // import { updateEmployee } from "../../redux/action/action"
-import { updateEmployeeApi } from "../api/api-calls"
+import { updateEmployeeApi } from "../../store/api/api-calls"
 
 const UpdateEmployeeContainer = () => {
     const updateHandler = (dispatch: Dispatch<Action>, formError: {},setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void,credentials: InputField, id: any, setSuccess: (arg0: boolean) => void) => {

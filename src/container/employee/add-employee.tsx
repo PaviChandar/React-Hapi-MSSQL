@@ -1,9 +1,9 @@
 import { Dispatch, Action } from "redux"
 
-import AddEmployee from "../../components/employee/addemployee"
-import { validate } from "../../components/shared/validate"
-import { InputField } from "../../interface/employee.interface"
-import { addEmployeeApi } from "../api/api-calls"
+import AddEmployee from "../../components/employee/add-employee"
+import { validate } from "../../shared/validation/validate"
+import { InputField } from "../../shared/interface/employee.interface"
+import { addEmployeeApi } from "../../store/api/api-calls"
 
 
 const AddEmployeeContainer = () => {

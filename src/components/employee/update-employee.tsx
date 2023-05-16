@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 
-import { getSingleEmployee } from "../../redux/action/action";
-import { InputField } from "../../interface/employee.interface";
-import { validate } from "../shared/validate";
+import { getSingleEmployee } from "../../store/action/action";
+import { InputField } from "../../shared/interface/employee.interface";
+import { validate } from "../../shared/validation/validate";
 
 const UpdateEmployee = (props: any) => {
 
-    const { t, i18n } = useTranslation()
-    i18n.changeLanguage()
+    const { t } = useTranslation()
     
     let { id } = useParams()
     const data = useSelector((state: any) => state.employeeData.employee)

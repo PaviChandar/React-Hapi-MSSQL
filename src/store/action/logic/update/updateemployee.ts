@@ -1,7 +1,7 @@
 import { createLogic } from "redux-logic"
 
-import axiosInstance from "../../../../container/api/axios"
-import { InputField } from "../../../../interface/employee.interface"
+import axiosInstance from "../../../api/axios"
+import { InputField } from "../../../../shared/interface/employee.interface"
 import * as types from "../../action-type"
 import { editEmployee } from "../../action"
 

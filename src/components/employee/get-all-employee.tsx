@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../header/header";
-import Navbar from "../shared/navbar";
+import Header from "../../shared/components/header";
+import Navbar from "../../shared/components/navbar";
 import "../../assets/getall.module.css"
 
 interface Props extends MouseEvent<FormEvent> {
@@ -16,8 +16,7 @@ interface Props extends MouseEvent<FormEvent> {
 
 const GetAllEmployee = (props : any) => {
 
-  const { t, i18n } = useTranslation()
-  i18n.changeLanguage()
+  const { t } = useTranslation()
 
   const [data, setdata] = useState([])
   const [success, setSuccess] = useState(false)

@@ -1,4 +1,4 @@
-import { EmployeeActionType, EmployeeState, InputField } from "../../interface/employee.interface"
+import { EmployeeActionType, EmployeeState, InputField } from "../../shared/interface/employee.interface"
 import * as types from "../action/action-type"
 
 const initialState: EmployeeState | InputField = {

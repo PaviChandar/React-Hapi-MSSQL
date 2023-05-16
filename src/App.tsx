@@ -4,8 +4,7 @@ import Router from "./routes/router";
 
 const App = () => {
 
-  const { t, i18n } = useTranslation()
-  i18n.changeLanguage()
+  const { t } = useTranslation()
 
   return(
     <div> 

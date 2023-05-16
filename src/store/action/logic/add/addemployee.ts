@@ -1,6 +1,6 @@
 import { createLogic } from "redux-logic"
 
-import axiosInstance from "../../../../container/api/axios"
+import axiosInstance from "../../../api/axios"
 import * as types from "../../action-type"
 import { employeeAdded } from "../../action"
 

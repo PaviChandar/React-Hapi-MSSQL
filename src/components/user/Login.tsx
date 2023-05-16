@@ -4,13 +4,12 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { UserInputField } from "../../interface/user.interface"
-import { validateUser } from "../shared/validate"
+import { UserInputField } from "../../shared/interface/user.interface"
+import { validateUser } from "../../shared/validation/validate"
 import "../../assets/login.module.css"
 
 const Login = (props: any) => {
-    const { t, i18n } = useTranslation()
-    i18n.changeLanguage()
+    const { t } = useTranslation()
 
     const navigate = useNavigate()
     const dispatchStore = useDispatch()

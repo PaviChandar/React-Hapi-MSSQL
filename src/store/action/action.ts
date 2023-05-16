@@ -1,6 +1,6 @@
-import { addEmployeeApi, deleteEmployeeApi, getAllEmployeeApi, getSingleEmployeeApi, loginUserApi, registerUserApi, updateEmployeeApi } from "../../container/api/api-calls"
-import { EmployeeState, InputField } from "../../interface/employee.interface"
-import { UserInputField, UserState } from "../../interface/user.interface"
+import { addEmployeeApi, deleteEmployeeApi, getAllEmployeeApi, getSingleEmployeeApi, loginUserApi, registerUserApi, updateEmployeeApi } from "../api/api-calls"
+import { EmployeeState, InputField } from "../../shared/interface/employee.interface"
+import { UserInputField, UserState } from "../../shared/interface/user.interface"
 import * as types from "./action-type"
 
 export const userRegistered = () => ({
