@@ -21,6 +21,7 @@ const GetAllEmployee = (props : any) => {
   const [data, setdata] = useState([])
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: any) => state.employeeData.employees)
+  console.log("userdatda in state : ", userdata)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -36,6 +37,7 @@ const GetAllEmployee = (props : any) => {
 
   useEffect(() => {
     const dataSource = userdata.map((e: any) => {
+      console.log("userdata in table : ", userdata)
       return({
           "Employee_ID": e.id,
           "Name": e.name,

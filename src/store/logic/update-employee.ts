@@ -1,11 +1,10 @@
 import { createLogic } from "redux-logic"
 
-import axiosInstance from "../../../api/axios"
-import { InputField } from "../../../../shared/interface/employee.interface"
-import * as types from "../../action-type"
-import { editEmployee } from "../../action"
+import { editEmployee } from "../action/action"
+import * as types from "../action/action-type"
+import axiosInstance from "../api/axios"
 
-export const updateEmployeeApi = createLogic({
+export const updateEmployeeApiLogic = createLogic({
     type: types.UPDATE_EMPLOYEE,
     latest: true,
     processOptions: {

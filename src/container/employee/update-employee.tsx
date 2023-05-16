@@ -3,7 +3,7 @@ import UpdateEmployee from "../../components/employee/update-employee"
 
 import { validate } from "../../shared/validation/validate"
 import { InputField } from "../../shared/interface/employee.interface"
-// import { updateEmployee } from "../../redux/action/action"
+// import { updateEmployee } from "../../store/action/action"
 import { updateEmployeeApi } from "../../store/api/api-calls"
 
 const UpdateEmployeeContainer = () => {

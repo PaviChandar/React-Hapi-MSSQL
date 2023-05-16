@@ -3,20 +3,15 @@ import { Dispatch, Action } from "redux"
 
 import GetAllEmployee from "../../components/employee/get-all-employee"
 import { deleteEmployeeApi, getAllEmployeeApi } from "../../store/api/api-calls"
-// import { deleteEmployee } from "../../redux/action/action"
-// import  { getAllEmployeeApi }   from "../../redux/action/logic/get/getall"
+import { getAllEmployeeApiLogic } from "../../store/logic/get-all"
+// import { deleteEmployee } from "../../store/action/action"
+// import  { getAllEmployeeApi }   from "../../store/action/logic/get/getall"
 
 const GetAllEmployeeContainer = () => {
   const dispatch = useDispatch()
-  
-  // const handleEmployee = (dispatch: any,setdata: (arg0: any) => void, userdata: any) => {
-  //   console.log("inside handle emp :", userdata)    
-  //   dispatch(getAllEmployeeApi)
-  //   dispatch(getAllEmployeeApi())
-  //   setdata(userdata)
-  // }
 
-  dispatch(getAllEmployeeApi())
+  // dispatch(getAllEmployeeApi())
+  dispatch(getAllEmployeeApiLogic)
 
   const handleDelete = (dispatch: Dispatch<Action>, id: number, setSuccess: (arg0: boolean) => void) => {
     console.log("inside delete", id)
@@ -26,9 +21,7 @@ const GetAllEmployeeContainer = () => {
     }
   }
 
-  return <GetAllEmployee 
-  // handleEmployee={handleEmployee}
-   handleDelete={handleDelete} />
+  return <GetAllEmployee handleDelete={handleDelete} />
 
 }
 

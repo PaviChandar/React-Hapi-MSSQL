@@ -22,12 +22,10 @@ export const employeeAdded = (employee: EmployeeState) => ({
     payload: employee
 })
 
-export const retreiveEmployees = (employees: EmployeeState) =>{ 
-    console.log('sss',employees)
-    return {
+export const retreiveEmployees = (employees: EmployeeState) => ({ 
     type: types.GET_ALL_EMPLOYEE,
     payload: employees
-}}
+})
 
 export const retreiveEmployee = (employee: EmployeeState) => ({
     type: types.GET_EMPLOYEE,

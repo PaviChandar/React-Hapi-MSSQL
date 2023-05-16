@@ -3,7 +3,7 @@ import { Dispatch, Action } from "redux"
 import AddEmployee from "../../components/employee/add-employee"
 import { validate } from "../../shared/validation/validate"
 import { InputField } from "../../shared/interface/employee.interface"
-import { addEmployeeApi } from "../../store/action/logic/add/addemployee"
+import { addEmployeeApiLogic } from "../../store/logic/add-employee"
 // import { addEmployeeApi } from "../../store/api/api-calls"
 
 
@@ -16,7 +16,7 @@ const AddEmployeeContainer = () => {
         if(Object.keys(formError).length === 0 && submit) { 
             console.log("credentials : ", credentials)
             // dispatchStore(addEmployeeApi(credentials))
-            dispatchStore(addEmployeeApi(credentials))
+            dispatchStore(addEmployeeApiLogic(credentials))
             setSuccess(true)
         }
     }

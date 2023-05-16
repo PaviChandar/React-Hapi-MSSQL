@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { removeToken } from "./remove-token"
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -25,8 +26,7 @@ const Navbar = () => {
     }
 
     const handleLogout = () => {
-        sessionStorage.removeItem("token")
-        sessionStorage.removeItem("login")
+        removeToken()
         setIsLoggedIn(false)
         navigate('/login')
     }
@@ -36,7 +36,7 @@ const Navbar = () => {
             {
                 isLoggedIn ?
                 <>
-                    <h4>Hello, {decodeToken.username}</h4>
+                    <h4>Hello, { decodeToken.username }</h4>
                     <Button onClick={handleLogout} >Logout</Button>
                 </> :
                 <>

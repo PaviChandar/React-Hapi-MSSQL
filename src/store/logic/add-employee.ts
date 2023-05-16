@@ -1,10 +1,10 @@
 import { createLogic } from "redux-logic"
 
-import axiosInstance from "../../../api/axios"
-import * as types from "../../action-type"
-import { employeeAdded } from "../../action"
+import { employeeAdded } from "../action/action"
+import * as types from "../action/action-type"
+import axiosInstance from "../api/axios"
 
-export const addEmployeeApi: any = createLogic({
+export const addEmployeeApiLogic: any = createLogic({
     type: types.ADD_EMPLOYEE,
     latest: true,
     processOptions: {

@@ -8,8 +8,7 @@ interface Props {
 
 const PrivateRoutes = ({ children }: any) => {
     const login  = useSelector((state: any) => state.userData.user.login)
-    console.log("login value in private routes : ", login)
-
+    
     return login ? children : <Navigate to='/' /> 
 }
 

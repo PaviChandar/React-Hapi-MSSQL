@@ -5,7 +5,6 @@ function ValidateSession() {
     const navigate = useNavigate()
 
     const ValidateSession = () => {
-        console.log("inside validate session")
         let url = window.location.href
         if(url.indexOf('login') > -1 || url.indexOf('sign-up') > -1) {
             return true
@@ -20,7 +19,6 @@ function ValidateSession() {
 
     useEffect(() => {
         if(!ValidateSession()) {
-            console.log("inside validate useeffect")
             navigate('/login')
         }
     })

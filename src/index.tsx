@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import i18next from './i18n/config';
-import  { store }  from './redux/store/store';
+import  { store }  from './store/store';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(

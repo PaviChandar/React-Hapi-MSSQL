@@ -1,10 +1,11 @@
 import { createLogic } from "redux-logic"
+import { Employees } from "../../shared/interface/employee.interface"
 
-import axiosInstance from "../../../api/axios"
-import * as types from "../../action-type"
-import { employeeAdded, retreiveEmployee, retreiveEmployees } from "../../action"
+import { retreiveEmployees } from "../action/action"
+import * as types from "../action/action-type"
+import axiosInstance from "../api/axios"
 
-export const getAllEmployeeApi = createLogic({
+export const getAllEmployeeApiLogic: any = createLogic({
     type: types.GET_ALL_EMPLOYEE,
     latest: true,
     processOptions: {
@@ -22,7 +23,7 @@ export const getAllEmployeeApi = createLogic({
                 .catch((error) => {
                     console.log("Cannot get employees : ", error)
                 }),
-                done
+                done()
                 
         )
     }

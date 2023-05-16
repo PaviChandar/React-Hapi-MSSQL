@@ -22,9 +22,7 @@ const Login = (props: any) => {
     const [success, setSuccess] = useState(false)
 
     const user = useSelector((state:any) => state.userData.user)
-    console.log("User in login : ", user)
     const employee = useSelector((state:any) => state.employeeData.employee)
-    console.log("Employee in login : ", employee)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -37,7 +35,7 @@ const Login = (props: any) => {
                 alert("Successfully admin logged in!")
                 navigate('/admin')
             } else {
-                alert("Successfully logged in!")
+                alert("Successfully user logged in!")
                 navigate('/')
             }
         }
