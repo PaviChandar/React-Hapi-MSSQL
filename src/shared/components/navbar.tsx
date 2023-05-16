@@ -40,7 +40,7 @@ const Navbar = () => {
                     <Button onClick={handleLogout} >Logout</Button>
                 </> :
                 <>
-                    <button onClick={() => navigate('/login')} >{t("login.login")}</button>
+                    <button onClick={() => navigate('/login')} >{t("login")}</button>
                 </>
             }
         </div>

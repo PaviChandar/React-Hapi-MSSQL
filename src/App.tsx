@@ -8,7 +8,7 @@ const App = () => {
 
   return(
     <div> 
-      <h1>{ t("employee.details") }</h1>
+      <h1>{ t("details") }</h1>
       <Router />
     </div>
   )

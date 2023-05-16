@@ -87,7 +87,7 @@ const GetAllEmployee = (props : any) => {
           {
             userdata.length? userdata.length===0 ? <h5>No Employees Found</h5>: <Table columns={ column } dataSource= { data } /> : <h3>Loading</h3>
           }
-          <Button onClick={() => navigate('/admin/create')} className="create" >{t("employee.add")}</Button>
+          <Button onClick={() => navigate('/admin/create')} className="create" >{t("add")}</Button>
       </div>
   )
 }

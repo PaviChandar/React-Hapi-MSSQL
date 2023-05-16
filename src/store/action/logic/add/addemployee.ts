@@ -4,14 +4,14 @@ import axiosInstance from "../../../api/axios"
 import * as types from "../../action-type"
 import { employeeAdded } from "../../action"
 
-export const addEmployeeApi = createLogic({
+export const addEmployeeApi: any = createLogic({
     type: types.ADD_EMPLOYEE,
     latest: true,
     processOptions: {
         dispatchReturn: true
     },
     process({ action }, dispatch, done) {
-        // console.log("action in add emp : ", action.payload)
+        console.log("action in add emp : ", action)
         // const employee = action.payload
         // console.log("employee data : ", employee)
         // console.log("action type : ",action.payload)

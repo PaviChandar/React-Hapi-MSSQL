@@ -73,7 +73,7 @@ const UpdateEmployee = (props: any) => {
                     <span className="error">{formError.salary}</span>
               </div>
            </div>
-           <button onClick={() => props.updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>{t("employee.update")}</button>
+           <button onClick={() => props.updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>{t("update")}</button>
         </div>
     )
 }

@@ -55,10 +55,10 @@ const Login = (props: any) => {
                     <span className="error">{formError.password}</span>
                 </div>
             </form>
-            <button onClick={() => props.loginHandler(credentials, dispatchStore, formError, setFormError, submit, setSubmit, setSuccess)} >{t("login.login")}</button>
+            <button onClick={() => props.loginHandler(credentials, dispatchStore, formError, setFormError, submit, setSubmit, setSuccess)} >{t("login")}</button>
             <div>
                 <h4>If not an user, Sign Up</h4>
-                <button onClick={() => navigate('/sign-up')} >{t("login.sign_up")}</button>
+                <button onClick={() => navigate('/sign-up')} >{t("sign_up")}</button>
             </div>
         </div>
     )

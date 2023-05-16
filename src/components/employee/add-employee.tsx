@@ -55,7 +55,7 @@ const AddEmployee = (props: any) => {
                         <span className="error">{formError.salary}</span>
                     </div>
                 </div>
-                <button onClick={() => props.addHandler(dispatchStore, setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("employee.add")}</button>
+                <button onClick={() => props.addHandler(dispatchStore, setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("add")}</button>
         </div>
     )
 }

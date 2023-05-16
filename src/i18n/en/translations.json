@@ -1,20 +1,14 @@
 {
-    "validation": {
-        "employee_id":"Employee id is required",
-        "employee_name": "Employee name is required",
-        "employee_city": "Employee city is required",
-        "employee_age": "Employee age is required",
-        "employee_salary": "Employee salary is required"
-    },
-    "employee": {
-        "details": "Employee Details",
-        "add": "Add Employee",
-        "update": "Update Employee",
-        "getall": "Get All Employees",
-        "delete": "Delete Employee"
-    },
-    "login":{
-        "login": "Login",
-        "sign_up": "Sign Up"
-    }
+    "employee_id":"Employee id is required",
+    "employee_name": "Employee name is required",
+    "employee_city": "Employee city is required",
+    "employee_age": "Employee age is required",
+    "employee_salary": "Employee salary is required",
+    "details": "Employee Details",
+    "add": "Add Employee",
+    "update": "Update Employee",
+    "getall": "Get All Employees",
+    "delete": "Delete Employee",
+    "login": "Login",
+    "sign_up": "Sign Up"
 }
