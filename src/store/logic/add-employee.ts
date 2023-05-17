@@ -1,35 +1,37 @@
 import { createLogic } from "redux-logic"
+import { EmployeeState } from '../../shared/interface/employee.interface'
 
 import { employeeAdded } from "../action/action"
 import * as types from "../action/action-type"
 import axiosInstance from "../api/axios"
 
-export const addEmployeeApiLogic: any = createLogic({
+ const addEmployeeApiLogic: any = createLogic({
     type: types.ADD_EMPLOYEE,
     latest: true,
-    processOptions: {
+    processOptions:<any>{
         dispatchReturn: true
     },
-    process({ action }, dispatch, done) {
-        console.log("action in add emp : ", action)
-        // const employee = action.payload
-        // console.log("employee data : ", employee)
-        // console.log("action type : ",action.payload)
+    // warnTimeout:6000,
+    process({ action }: any, dispatch: (arg0: { type: string; payload: EmployeeState }) => void, done: () => void) {
+        console.log("action in add emp : ", action.payload)
+        const employee = action.payload
+        console.log("employee data : ", employee)
         return (
             axiosInstance
-                .post(`/employees`)
+                .post(`/employees`, employee)
                 .then((res) => {
                     dispatch(employeeAdded(res.data))
                     console.log("res data : ", res.data)
+                    done()
                 })
                 .catch((error) => {
                     console.log("Cannot add employee : ", error)
                 })
-                .then(() => done()) //app block
         )
     }
 })
 
-// export default  [ addEmployeeApi ]
-// export default addEmployeeApi
+// export default  [ addEmployeeApiLogic ]
+export default addEmployeeApiLogic
+
 // module.exports = { addEmployeeApi }

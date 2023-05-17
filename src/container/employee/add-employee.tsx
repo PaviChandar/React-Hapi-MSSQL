@@ -1,9 +1,9 @@
-import { Dispatch, Action } from "redux"
+import React from "react"
 
 import AddEmployee from "../../components/employee/add-employee"
 import { validate } from "../../shared/validation/validate"
 import { InputField } from "../../shared/interface/employee.interface"
-import { addEmployeeApiLogic } from "../../store/logic/add-employee"
+import addEmployeeApiLogic  from "../../store/logic/add-employee"
 // import { addEmployeeApi } from "../../store/api/api-calls"
 
 

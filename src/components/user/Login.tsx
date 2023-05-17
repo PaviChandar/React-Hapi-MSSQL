@@ -22,7 +22,6 @@ const Login = (props: any) => {
     const [success, setSuccess] = useState(false)
 
     const user = useSelector((state:any) => state.userData.user)
-    const employee = useSelector((state:any) => state.employeeData.employee)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -39,7 +38,7 @@ const Login = (props: any) => {
                 navigate('/')
             }
         }
-    }, [success, user, employee])
+    }, [success, user, navigate])
 
     return(
         <div>

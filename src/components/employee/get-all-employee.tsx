@@ -9,11 +9,6 @@ import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/getall.module.css"
 
-interface Props extends MouseEvent<FormEvent> {
-  handleEmployee: Function,
-  handleDelete: Function
-}
-
 const GetAllEmployee = (props : any) => {
 
   const { t } = useTranslation()
@@ -74,23 +69,23 @@ const GetAllEmployee = (props : any) => {
       title: 'Action',
       key: 'Action',
       render: (userdata: { Employee_ID: number }) => (
-          <Space size="middle">
-              <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action">Update</Button>
-              <Button onClick={() => props.handleDelete(dispatch, userdata.Employee_ID, setSuccess)} className="action" >Delete</Button>
-          </Space>
+        <Space size="middle">
+          <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action">Update</Button>
+          <Button onClick={() => props.handleDelete(dispatch, userdata.Employee_ID, setSuccess)} className="action" >Delete</Button>
+        </Space>
       )
   },
   ]
 
   return(
-      <div>
-          <Navbar />
-          <Header />
-          {
-            userdata.length? userdata.length===0 ? <h5>No Employees Found</h5>: <Table columns={ column } dataSource= { data } /> : <h3>Loading</h3>
-          }
-          <Button onClick={() => navigate('/admin/create')} className="create" >{t("add")}</Button>
-      </div>
+    <div>
+      <Navbar />
+      <Header />
+      {
+        userdata.length? userdata.length===0 ? <h5>No Employees Found</h5>: <Table columns={ column } dataSource= { data } /> : <h3>Loading</h3>
+      }
+      <Button onClick={() => navigate('/admin/create')} className="create" >{t("add")}</Button>
+    </div>
   )
 }
 

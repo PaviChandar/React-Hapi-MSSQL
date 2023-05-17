@@ -3,26 +3,45 @@ import { Dispatch, Action } from "redux"
 
 import GetAllEmployee from "../../components/employee/get-all-employee"
 import { deleteEmployeeApi, getAllEmployeeApi } from "../../store/api/api-calls"
-import { getAllEmployeeApiLogic } from "../../store/logic/get-all"
-// import { deleteEmployee } from "../../store/action/action"
-// import  { getAllEmployeeApi }   from "../../store/action/logic/get/getall"
+import getAllEmployeeLogic from "../../store/logic/get-all"
+import * as types from "../../store/action/action-type"
 
-const GetAllEmployeeContainer = () => {
-  const dispatch = useDispatch()
+// const GetAllEmployeeContainer = () => {
+//   const dispatch = useDispatch()
 
-  // dispatch(getAllEmployeeApi())
-  dispatch(getAllEmployeeApiLogic)
+//   // dispatch(getAllEmployeeApi())
+//   // getAllEmployeeLogic()
+//   // dispatch({ type: types.GET_ALL_EMPLOYEE})
+//   dispatch(getAllEmployeeLogic)
 
-  const handleDelete = (dispatch: Dispatch<Action>, id: number, setSuccess: (arg0: boolean) => void) => {
-    console.log("inside delete", id)
-    dispatch(deleteEmployeeApi(id))
-    if(window.confirm("Are you sure that you want to delete the Employee?")) {
-      setSuccess(true)
-    }
+//   const handleDelete = (dispatch: Dispatch<Action>, id: number, setSuccess: (arg0: boolean) => void) => {
+//     console.log("inside delete", id)
+//     dispatch(deleteEmployeeApi(id))
+//     if(window.confirm("Are you sure that you want to delete the Employee?")) {
+//       setSuccess(true)
+//     }
+//   }
+
+//  return <GetAllEmployee handleDelete={handleDelete} />
+
+// }
+
+// export default GetAllEmployeeContainer
+
+
+const employeeContainer = () => { 
+
+  const dispatch = useDispatch() 
+
+  const getAllEmployee = () => { 
+    console.log("get employee"); 
+    dispatch(getAllEmployeeLogic) 
   }
 
-  return <GetAllEmployee handleDelete={handleDelete} />
+   const getSingleEmployee = (employeeId: number) => {
+   dispatch({type: types.GET_EMPLOYEE, payload: employeeId}) } 
 
-}
+     return { getAllEmployee, getSingleEmployee } 
+} 
 
-export default GetAllEmployeeContainer
+export default employeeContainer
