@@ -1,10 +1,6 @@
-import { Route, Routes, useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { Route, Routes } from "react-router-dom"
 
 import SignUp from "../components/user/sign-up"
-import GetAllEmployeeContainer from "../container/employee/get-all-employee"
-import AddEmployeeContainer from "../container/employee/add-employee"
-import UpdateEmployeeContainer from "../container/employee/update-employee"
 import Admin from "../components/admin/admin"
 import ValidateSession from "../shared/validation/validate-session"
 import ProtectedRoutes from "./protectedroutes"
@@ -12,6 +8,8 @@ import PrivateRoutes from "./privateroutes"
 import AdminOutlet from "../components/admin/admin-outlet"
 import Home from "../components/employee/home"
 import LoginContainer from "../container/user/login"
+import AddEmployee from "../components/employee/add-employee"
+import UpdateEmployee from "../components/employee/update-employee"
 
 const Router = () => {
 
@@ -42,12 +40,12 @@ const Router = () => {
                     } />
                     <Route path='update/:id' element={
                         <PrivateRoutes>
-                            <UpdateEmployeeContainer />
+                            <UpdateEmployee />
                          </PrivateRoutes>
                     } />
                     <Route path='create' element={
                         <PrivateRoutes>
-                            <AddEmployeeContainer />
+                            <AddEmployee />
                         </PrivateRoutes>
                     }  />
 

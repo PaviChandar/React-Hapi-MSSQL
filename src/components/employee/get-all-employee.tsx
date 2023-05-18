@@ -1,27 +1,35 @@
 import { Button, Space } from "antd";
 import Table from "antd/es/table";
-import { FormEvent, useEffect, useState, MouseEvent } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/getall.module.css"
+import employeeContainer from "../../container/employee/employee_container";
 
-const GetAllEmployee = (props : any) => {
+const GetAllEmployee = () => {
 
   const { t } = useTranslation()
+  const { deleteEmployee } = employeeContainer()
 
   const [data, setdata] = useState([])
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: any) => state.employeeData.employees)
-  console.log("userdatda in state : ", userdata)
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const handleUpdate = (id: number) => {
     navigate(`/admin/update/${id}`)
+  }
+
+  const handleDelete = (id: number) => {
+    console.log("inside delete", id)
+    deleteEmployee(id)
+    if(window.confirm("Are you sure that you want to delete the Employee?")) {
+      setSuccess(true)
+    }
   }
   
   useEffect(() => {
@@ -32,7 +40,6 @@ const GetAllEmployee = (props : any) => {
 
   useEffect(() => {
     const dataSource = userdata.map((e: any) => {
-      console.log("userdata in table : ", userdata)
       return({
           "Employee_ID": e.id,
           "Name": e.name,
@@ -71,7 +78,7 @@ const GetAllEmployee = (props : any) => {
       render: (userdata: { Employee_ID: number }) => (
         <Space size="middle">
           <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action">Update</Button>
-          <Button onClick={() => props.handleDelete(dispatch, userdata.Employee_ID, setSuccess)} className="action" >Delete</Button>
+          <Button onClick={() => handleDelete(userdata.Employee_ID)} className="action" >Delete</Button>
         </Space>
       )
   },

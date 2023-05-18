@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react"
+import { Dispatch, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import { Action } from "redux";
 
-import { getSingleEmployee } from "../../store/action/action";
 import { InputField } from "../../shared/interface/employee.interface";
 import { validate } from "../../shared/validation/validate";
+import employeeContainer from "../../container/employee/employee_container";
 
-const UpdateEmployee = (props: any) => {
+const UpdateEmployee = () => {
 
     const { t } = useTranslation()
+
+    const { updateEmployee, getSingleEmployee } = employeeContainer()
     
     let { id } = useParams()
+    console.log("id in params : ", id)
     const data = useSelector((state: any) => state.employeeData.employee)
+    console.log("data from state in update comp : ", data)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
         name:'',
@@ -32,11 +37,29 @@ const UpdateEmployee = (props: any) => {
     }
 
     useEffect(() => {   
-        dispatch(getSingleEmployee(id))
+        console.log("inside get sing emp useeffect")
+        console.log("id inside useeffect update : ", id)
+        getSingleEmployee(id)
     }, [])
+
+    const updateHandler = (formError: {},setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void,credentials: InputField, id: any, setSuccess: (arg0: boolean) => void) => {
+        console.log("update handle : ", credentials)
+        console.log("id in update : ", id)
+        setFormError(() => validate(credentials))
+        setSubmit(true)
+        if (Object.keys(formError).length === 0 && submit) {
+            console.log("inside if", credentials)
+            console.log("inside if id", id)
+            updateEmployee(credentials)
+            setSuccess(true)
+        }
+    }
+
+    console.log("data outside ; ", data)
 
     useEffect(() => {
         if(data) {
+            console.log("data in useef : ", data)
             setCredentials({ ...data })
         }
     }, [data])
@@ -73,7 +96,7 @@ const UpdateEmployee = (props: any) => {
                     <span className="error">{formError.salary}</span>
               </div>
            </div>
-           <button onClick={() => props.updateHandler(dispatch, formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>{t("update")}</button>
+           <button onClick={() => updateHandler(formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>{t("update")}</button>
         </div>
     )
 }

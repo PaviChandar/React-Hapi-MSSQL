@@ -7,8 +7,8 @@ interface Props {
 }
 
 const ProtectedRoutes = ({ children }: any) => {
-    const login = useSelector((state: any) => state.userData.user.login)
-    console.log("login in protected routes : ", login)
+    // const login = useSelector((state: any) => state.userData.user.login)
+    const login = sessionStorage.getItem('login')
 
     return !login ? children : <Navigate to='/admin' />
 }

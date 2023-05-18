@@ -14,23 +14,6 @@ const LoginContainer = () => {
         }
     }
 
-    // const getToken = (navigate: (arg0: string) => void) => {
-    //     if (sessionStorage.getItem('token')) {
-    //         console.log("if get token")
-    //         if (sessionStorage.getItem('login') === 'true') { //string not allowed
-    //             console.log("inside if - if get token")
-    //             alert("Successfully admin logged in!")
-    //             navigate('/admin')
-    //         } else {
-    //             console.log("inside get token else")
-    //             alert("Successfully user logged in!")
-    //             navigate('/')
-    //         }
-    //     }
-    // }
-
-    return <Login loginHandler={loginHandler} 
-    // getToken={getToken}
-     />
+    return <Login loginHandler={loginHandler}  />
 }
 export default LoginContainer

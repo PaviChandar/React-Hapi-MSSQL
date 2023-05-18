@@ -5,17 +5,17 @@ import { useNavigate } from "react-router-dom";
 
 import { validate } from "../../shared/validation/validate";
 import "../../assets/add.module.css"
+import employeeContainer from "../../container/employee/employee_container";
+import { InputField } from "../../shared/interface/employee.interface";
 
 const AddEmployee = (props: any) => {
     const { t } = useTranslation()
 
-    const dispatchStore = useDispatch()
     const [credentials, setCredentials] = useState({id:0, name:'', age:0, city:'', salary:0 })
     const navigate = useNavigate()
     const [formError, setFormError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
     const [success,setSuccess] = useState(false)
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault()
@@ -29,6 +29,19 @@ const AddEmployee = (props: any) => {
             navigate('/')
         }
     },[success])
+
+    const { addEmployee } = employeeContainer()
+
+    const addHandler = ( setFormError: (arg0: () => any) => void, formError: {}, setSubmit: (arg0: boolean) => void, submit: any, credentials: InputField, setSuccess: (arg0: boolean) => void) => {
+        console.log("inside add handleer")
+        setFormError(() => validate(credentials))
+        setSubmit(true)
+        if(Object.keys(formError).length === 0 && submit) { 
+            console.log("credentials : ", credentials)
+            addEmployee(credentials)
+            setSuccess(true)
+        }
+    }
 
     return(
         <div>
@@ -55,7 +68,7 @@ const AddEmployee = (props: any) => {
                         <span className="error">{formError.salary}</span>
                     </div>
                 </div>
-                <button onClick={() => props.addHandler(dispatchStore, setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("add")}</button>
+                <button onClick={() => addHandler(setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("add")}</button>
         </div>
     )
 }

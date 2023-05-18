@@ -1,35 +1,28 @@
+import { useParams } from "react-router-dom"
 import { createLogic } from "redux-logic"
 
-import { editEmployee } from "../action/action"
 import * as types from "../action/action-type"
 import axiosInstance from "../api/axios"
 
-export const updateEmployeeApiLogic = createLogic({
-    type: types.UPDATE_EMPLOYEE,
-    latest: true,
-    processOptions: {
-        dispatchReturn: true
-    },
-    process({ action } , dispatch, done) {
-        console.log("action in update emp : ", action)
-        // const employee = action.payload
-        // console.log("employee data : ", employee)
-        console.log("action type : ",action.type)
-        return (
-            axiosInstance
-                .put(`/employees/`)
-                .then((res) => {
-                    dispatch(editEmployee(res.data))
-                    console.log("res data : ", res.data)
-                })
-                .catch((error) => {
-                    console.log("Cannot update employees : ", error)
-                })
-                .then(() => done())
-        )
+const updateEmployeeApiLogic: any = createLogic({
+    type: 'UPDATE_EMP',
+    async process({ action }: any, dispatch, done) {
+        const { id }  = action.payload
+        console.log("id in update logic : ", id)
+        const employee = action.payload
+        console.log("action payload in add : ", employee)
+        try {
+            const response = await axiosInstance
+                                .put(`/employees/${id}`, employee)
+            dispatch({
+                type: types.UPDATE_EMPLOYEE,
+                payload: response.data
+            })
+        } catch (error) {
+            console.log("error in update emp-logic : ", error)
+        }
+        done()
     }
 })
 
-// export default updateEmployeeApi
-// export default [ updateEmployeeApi ]
-// module.exports = { updateEmployeeApi }
+export default updateEmployeeApiLogic

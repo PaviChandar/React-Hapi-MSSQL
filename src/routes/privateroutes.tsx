@@ -7,8 +7,8 @@ interface Props {
 }
 
 const PrivateRoutes = ({ children }: any) => {
-    const login  = useSelector((state: any) => state.userData.user.login)
-    
+    // const login  = useSelector((state: any) => state.userData.user.login)
+    const login = sessionStorage.getItem('login')
     return login ? children : <Navigate to='/' /> 
 }
 
