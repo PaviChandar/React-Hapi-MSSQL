@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux"
 
 import { InputField } from "../../shared/interface/employee.interface"
-import getAllEmployeeApiLogic from "../../store/logic/get-all"
 
 const employeeContainer = () => { 
 
@@ -12,8 +11,6 @@ const employeeContainer = () => {
   }
 
   const getSingleEmployee = (employeeId: number) => {
-    console.log("inside single emp container")
-    console.log("id in get sing cont : ", employeeId)
     dispatch({ type: 'GET_SINGLE', payload: employeeId })
   } 
 
@@ -22,8 +19,6 @@ const employeeContainer = () => {
   }
 
   const updateEmployee = (employee: InputField) => {
-    console.log("inside update emp container")
-    console.log("update in cont : ", employee)
     dispatch({ type: 'UPDATE_EMP', payload: employee })
   }
 

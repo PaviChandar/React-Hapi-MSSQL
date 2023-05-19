@@ -1,8 +1,7 @@
-import { Dispatch, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { useTranslation } from "react-i18next";
-import { Action } from "redux";
 
 import { InputField } from "../../shared/interface/employee.interface";
 import { validate } from "../../shared/validation/validate";
@@ -14,10 +13,8 @@ const UpdateEmployee = () => {
 
     const { updateEmployee, getSingleEmployee } = employeeContainer()
     
-    let { id } = useParams()
-    console.log("id in params : ", id)
+    let { id }: any = useParams()
     const data = useSelector((state: any) => state.employeeData.employee)
-    console.log("data from state in update comp : ", data)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
         name:'',

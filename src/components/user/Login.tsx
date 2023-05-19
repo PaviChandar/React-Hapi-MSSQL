@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { UserInputField } from "../../shared/interface/user.interface"
 import { validateUser } from "../../shared/validation/validate"
 import "../../assets/login.module.css"
+import userContainer from "../../container/user/user_container"
 
-const Login = (props: any) => {
+const Login = () => {
     const { t } = useTranslation()
+    const { loginUser } = userContainer()
 
     const navigate = useNavigate()
-    const dispatchStore = useDispatch()
     const [credentials, setCredentials] = useState<UserInputField>({
         email:'',
         password:''
@@ -28,9 +28,18 @@ const Login = (props: any) => {
         setFormError(() => validateUser(credentials))
     }
 
+    const loginHandler = (credentials: UserInputField, formError: {}, setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void, setSuccess: (arg0: boolean) => void) => {
+        setFormError(() => validateUser(credentials))
+        setSubmit(true)
+        if(Object.keys(formError).length === 0 && submit) { 
+            loginUser(credentials)
+            setSuccess(true)
+        }
+    }
+
     useEffect(() => {
-        if (sessionStorage.getItem('token')) {
-            if (sessionStorage.getItem('login') === 'true') { //string not allowed
+        if (localStorage.getItem('token')) {
+            if (localStorage.getItem('login') === 'true') { //string not allowed
                 alert("Successfully admin logged in!")
                 navigate('/admin')
             } else {
@@ -38,7 +47,7 @@ const Login = (props: any) => {
                 navigate('/')
             }
         }
-    }, [success, user, navigate])
+    }, [success, user])
 
     return(
         <div>
@@ -52,7 +61,7 @@ const Login = (props: any) => {
                     <span className="error">{formError.password}</span>
                 </div>
             </form>
-            <button onClick={() => props.loginHandler(credentials, dispatchStore, formError, setFormError, submit, setSubmit, setSuccess)} >{t("login")}</button>
+            <button onClick={() => loginHandler(credentials, formError, setFormError, submit, setSubmit, setSuccess)} >{t("login")}</button>
             <div>
                 <h4>If not an user, Sign Up</h4>
                 <button onClick={() => navigate('/sign-up')} >{t("sign_up")}</button>

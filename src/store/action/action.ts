@@ -69,5 +69,3 @@ export const registerUser = (user: UserInputField) => {
 export const loginUser = (user: UserInputField) => {
    return loginUserApi(user)
 }
-
-// export default getAllEmployee

@@ -97,8 +97,8 @@ export const loginUserApi = (user: UserInputField): any => {
             .then((res) => {
                 dispatch(userLoggedIn(res.data.data))
                 console.log("login data : ", res.data.data)
-                sessionStorage.setItem('token', res.data.token)
-                sessionStorage.setItem('login', res.data.data.login)
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('login', res.data.data.login)
                 dispatch(isLogin(res.data.data.login))
             })
             .catch((error) => {

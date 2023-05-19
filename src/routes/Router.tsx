@@ -7,9 +7,9 @@ import ProtectedRoutes from "./protectedroutes"
 import PrivateRoutes from "./privateroutes"
 import AdminOutlet from "../components/admin/admin-outlet"
 import Home from "../components/employee/home"
-import LoginContainer from "../container/user/login"
 import AddEmployee from "../components/employee/add-employee"
 import UpdateEmployee from "../components/employee/update-employee"
+import Login from "../components/user/login"
 
 const Router = () => {
 
@@ -19,7 +19,7 @@ const Router = () => {
        <>
             <Routes>
 
-                <Route path='/login' element={<LoginContainer />} />
+                <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
 
                 <Route path='/' element={

@@ -14,14 +14,14 @@ const Navbar = () => {
     const { user } = useSelector((state:any) => state.userData)
 
     useEffect(() => {
-        if(sessionStorage.getItem("token")) {
+        if(localStorage.getItem("token")) {
             setIsLoggedIn(true)
         }
     },[user])
 
     let token: string, decodeToken: string|any
-    if(sessionStorage.getItem("token")) {
-        token = JSON.stringify(sessionStorage.getItem("token"))
+    if(localStorage.getItem("token")) {
+        token = JSON.stringify(localStorage.getItem("token"))
         decodeToken = jwtDecode(token)
     }
 

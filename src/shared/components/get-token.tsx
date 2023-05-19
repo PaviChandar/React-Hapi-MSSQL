@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 // export class GetToken {
 
 //     getToken() {
-//         if (sessionStorage.getItem('token')) {
+//         if (localStorage.getItem('token')) {
 //             console.log("if get token")
-//             if (sessionStorage.getItem('login') === 'true') { //string not allowed
+//             if (localStorage.getItem('login') === 'true') { //string not allowed
 //                 console.log("inside if - if get token")
 //                 alert("Successfully admin logged in!")                
 //             } else {
@@ -15,22 +15,14 @@ import { useNavigate } from "react-router-dom";
 //         }
 //     }
 
-//     removeToken() {
-//         console.log("inside remove token")
-//         sessionStorage.removeItem('token')
-//         sessionStorage.removeItem('login')
-//     }
-
-// }
-
 // const GetToken = () => {
     // const navigate = useNavigate()
 
 const GetToken = () => {
         const navigate = useNavigate()
-        if (sessionStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             console.log("if get token")
-            if (sessionStorage.getItem('login') === 'true') { //string not allowed
+            if (localStorage.getItem('login') === 'true') { //string not allowed
                 console.log("inside if - if get token")
                 alert("Successfully admin logged in!")
                 navigate('/admin')
