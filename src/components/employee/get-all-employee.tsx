@@ -1,6 +1,6 @@
 import { Button, Space } from "antd";
 import Table from "antd/es/table";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,6 @@ import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/getall.module.css"
 import employeeContainer from "../../container/employee/employee_container";
-import { HandleMethod } from "../../container/handler/handler-methods";
 
 const GetAllEmployee = () => {
 

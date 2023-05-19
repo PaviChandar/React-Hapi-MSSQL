@@ -39,7 +39,7 @@ const AddEmployee = (props: any) => {
         setSubmit(true)
         if(Object.keys(formError).length === 0 && submit) { 
             console.log("credentials : ", credentials)
-            EmployeeContainer().addEmployee(credentials)
+            addEmployee(credentials)
             setSuccess(true)
         }
     }
