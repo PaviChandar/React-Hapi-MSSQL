@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { createLogic } from "redux-logic"
 
 import * as types from "../action/action-type"
-import axiosInstance from "../api/axios"
+import axiosInstance from "../../shared/utils/axios"
 
 const deleteEmployeeApiLogic: any = createLogic({
     type: 'REMOVE_EMP',

@@ -7,10 +7,12 @@ import { UserInputField } from "../../shared/interface/user.interface"
 import { validateUser } from "../../shared/validation/validate"
 import "../../assets/login.module.css"
 import userContainer from "../../container/user/user_container"
+import useUserContainer from "../../container/user/user_container"
+import UserContainer from "../../container/user/user_container"
 
 const Login = () => {
     const { t } = useTranslation()
-    const { loginUser } = userContainer()
+    const { loginUser } = UserContainer()
 
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState<UserInputField>({
@@ -32,14 +34,14 @@ const Login = () => {
         setFormError(() => validateUser(credentials))
         setSubmit(true)
         if(Object.keys(formError).length === 0 && submit) { 
-            loginUser(credentials)
-            setSuccess(true)
+           loginUser(credentials)
+           setSuccess(true)
         }
     }
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            if (localStorage.getItem('login') === 'true') { //string not allowed
+            if (localStorage.getItem('login') === 'true') {
                 alert("Successfully admin logged in!")
                 navigate('/admin')
             } else {

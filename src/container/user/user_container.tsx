@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { UserInputField } from "../../shared/interface/user.interface"
 
-const userContainer = () => { 
+const UserContainer = () => { 
 
   const dispatch = useDispatch() 
 
@@ -23,4 +23,4 @@ const userContainer = () => {
   }
 } 
 
-export default userContainer
+export default UserContainer

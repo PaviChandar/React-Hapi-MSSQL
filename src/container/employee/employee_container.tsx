@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 
 import { InputField } from "../../shared/interface/employee.interface"
 
-const employeeContainer = () => { 
+const EmployeeContainer = () => { 
 
   const dispatch = useDispatch() 
 
@@ -35,4 +35,4 @@ const employeeContainer = () => {
   } 
 } 
 
-export default employeeContainer
+export default EmployeeContainer
