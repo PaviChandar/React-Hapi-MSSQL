@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { validate } from "../../shared/validation/validate";
 import "../../assets/add.module.css"
 import employeeContainer from "../../container/employee/employee_container";
-import { InputField } from "../../shared/interface/employee.interface";
 import useEmployeeContainer from "../../container/employee/employee_container";
 import EmployeeContainer from "../../container/employee/employee_container";
 
-const AddEmployee = (props: any) => {
+const AddEmployee = () => {
     const { t } = useTranslation()
 
     const [credentials, setCredentials] = useState({id:0, name:'', age:0, city:'', salary:0 })
@@ -33,16 +32,16 @@ const AddEmployee = (props: any) => {
 
     const { addEmployee } = EmployeeContainer()
 
-    const addHandler = ( setFormError: (arg0: () => any) => void, formError: {}, setSubmit: (arg0: boolean) => void, submit: any, credentials: InputField, setSuccess: (arg0: boolean) => void) => {
-        console.log("inside add handleer")
-        setFormError(() => validate(credentials))
-        setSubmit(true)
-        if(Object.keys(formError).length === 0 && submit) { 
-            console.log("credentials : ", credentials)
-            addEmployee(credentials)
-            setSuccess(true)
-        }
-    }
+    // const addHandler = ( setFormError: (arg0: () => any) => void, formError: {}, setSubmit: (arg0: boolean) => void, submit: any, credentials: InputField, setSuccess: (arg0: boolean) => void) => {
+    //     console.log("inside add handleer")
+    //     setFormError(() => validate(credentials))
+    //     setSubmit(true)
+    //     if(Object.keys(formError).length === 0 && submit) { 
+    //         console.log("credentials : ", credentials)
+    //         addEmployee(credentials)
+    //         setSuccess(true)
+    //     }
+    // }
 
     return(
         <div>
