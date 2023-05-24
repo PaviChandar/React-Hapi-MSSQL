@@ -14,7 +14,7 @@ const EmployeeContainer = () => {
     dispatch({ type: 'GET_SINGLE', payload: employeeId })
   } 
 
-  const addEmployee = (employee: InputField) => {
+  const addEmployee = (employee: any): any => {
     dispatch({ type: 'POST_EMP', payload: employee })
   }
 

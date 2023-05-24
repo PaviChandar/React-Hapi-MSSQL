@@ -1,14 +1,17 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { validate } from "../../shared/validation/validate";
 import "../../assets/add.module.css"
-import employeeContainer from "../../container/employee/employee_container";
-import useEmployeeContainer from "../../container/employee/employee_container";
-import EmployeeContainer from "../../container/employee/employee_container";
+import { InputField } from "../../shared/interface/employee.interface";
+import Addd  from "../../container/handler/handler-methods";
+
 
 const AddEmployee = () => {
+
+    // const addContainer = new Addd()
+
     const { t } = useTranslation()
 
     const [credentials, setCredentials] = useState({id:0, name:'', age:0, city:'', salary:0 })
@@ -29,8 +32,6 @@ const AddEmployee = () => {
             navigate('/')
         }
     },[success])
-
-    const { addEmployee } = EmployeeContainer()
 
     // const addHandler = ( setFormError: (arg0: () => any) => void, formError: {}, setSubmit: (arg0: boolean) => void, submit: any, credentials: InputField, setSuccess: (arg0: boolean) => void) => {
     //     console.log("inside add handleer")
@@ -68,7 +69,7 @@ const AddEmployee = () => {
                         <span className="error">{formError.salary}</span>
                     </div>
                 </div>
-                <button onClick={() => addHandler(setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("add")}</button>
+                {/* <button onClick={() => addHandler(setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("add")}</button> */}
         </div>
     )
 }

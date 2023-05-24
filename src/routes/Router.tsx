@@ -10,6 +10,8 @@ import Home from "../components/employee/home"
 import AddEmployee from "../components/employee/add-employee"
 import UpdateEmployee from "../components/employee/update-employee"
 import Login from "../components/user/login"
+import AddEmployeeClass from "../components/employee/class-add"
+import { ReactNode } from "react"
 
 const Router = () => {
 
@@ -43,9 +45,11 @@ const Router = () => {
                             <UpdateEmployee />
                          </PrivateRoutes>
                     } />
+
                     <Route path='create' element={
                         <PrivateRoutes>
                             <AddEmployee />
+                            {/* <AddEmployeeClass /> */}
                         </PrivateRoutes>
                     }  />
 
