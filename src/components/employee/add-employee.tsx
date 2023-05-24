@@ -1,75 +1,39 @@
-import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Button } from "antd";
+import add from "../../container/handler/add";
+import AddEmployeeClass from "./class-add";
 
-import { validate } from "../../shared/validation/validate";
-import "../../assets/add.module.css"
-import { InputField } from "../../shared/interface/employee.interface";
-import Addd  from "../../container/handler/handler-methods";
+interface MyProps {
+    dummy?: any
+}
 
+type ClassProps = {
+    addHandler: () => void
+    handleChange: (e: any) => void
+    someState: any
+}
 
-const AddEmployee = () => {
-
-    // const addContainer = new Addd()
-
-    const { t } = useTranslation()
-
-    const [credentials, setCredentials] = useState({id:0, name:'', age:0, city:'', salary:0 })
-    const navigate = useNavigate()
-    const [formError, setFormError] = useState<any>(false)
-    const [submit, setSubmit] = useState(false)
-    const [success,setSuccess] = useState(false)
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        e.preventDefault()
-        setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-        setFormError(() => validate(credentials))
-    }
-
-    useEffect(() => {
-        if(success) {
-            alert("Employee added succesfully!")
-            navigate('/')
-        }
-    },[success])
-
-    // const addHandler = ( setFormError: (arg0: () => any) => void, formError: {}, setSubmit: (arg0: boolean) => void, submit: any, credentials: InputField, setSuccess: (arg0: boolean) => void) => {
-    //     console.log("inside add handleer")
-    //     setFormError(() => validate(credentials))
-    //     setSubmit(true)
-    //     if(Object.keys(formError).length === 0 && submit) { 
-    //         console.log("credentials : ", credentials)
-    //         addEmployee(credentials)
-    //         setSuccess(true)
-    //     }
-    // }
+const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState }) => {
+    console.log("somestate : ", someState)
 
     return(
         <div>
             <h2>Create New Employee</h2>
-                <div>
-                    <div>
-                        <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} />
-                        <span className="error">{formError.id}</span>
-                    </div>
-                    <div>
-                        <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
-                        <span className="error">{formError.name}</span>
-                    </div>
-                    <div>
-                        <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={credentials.age} />
-                        <span className="error">{formError.age}</span>
-                    </div>
-                    <div>
-                        <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={credentials.city} />
-                        <span className="error">{formError.city}</span>
-                    </div>
-                    <div>
-                        <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={credentials.salary} />
-                        <span className="error">{formError.salary}</span>
-                    </div>
-                </div>
-                {/* <button onClick={() => addHandler(setFormError, formError, setSubmit, submit, credentials, setSuccess)}>{t("add")}</button> */}
+            <div>
+                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={someState.id} />
+            </div>
+            <div>
+                <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={someState.name} />
+            </div>
+            <div>
+                <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={someState.age} />
+            </div>
+            <div>
+                <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={someState.city} />
+            </div>
+            <div>
+                <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={someState.salary} />
+            </div>
+            <Button onClick={ addHandler } >Add Employee</Button>
         </div>
     )
 }

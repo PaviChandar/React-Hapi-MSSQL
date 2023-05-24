@@ -7,11 +7,11 @@ import ProtectedRoutes from "./protectedroutes"
 import PrivateRoutes from "./privateroutes"
 import AdminOutlet from "../components/admin/admin-outlet"
 import Home from "../components/employee/home"
-import AddEmployee from "../components/employee/add-employee"
 import UpdateEmployee from "../components/employee/update-employee"
 import Login from "../components/user/login"
-import AddEmployeeClass from "../components/employee/class-add"
 import { ReactNode } from "react"
+import AddEmployee from "../components/employee/add-employee"
+import AddEmployeeClass from "../components/employee/class-add"
 
 const Router = () => {
 
@@ -48,8 +48,7 @@ const Router = () => {
 
                     <Route path='create' element={
                         <PrivateRoutes>
-                            <AddEmployee />
-                            {/* <AddEmployeeClass /> */}
+                            <AddEmployeeClass />
                         </PrivateRoutes>
                     }  />
 

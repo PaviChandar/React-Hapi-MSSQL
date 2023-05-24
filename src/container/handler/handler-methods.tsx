@@ -95,12 +95,12 @@ import { bindActionCreators } from 'redux';
 
 const { addEmployee } = EmployeeContainer()
 
-import { Dispatch } from "react"
-import ts from 'typescript'
+// import { Dispatch } from "react"
+// import ts from 'typescript'
 
-type MyDispatch = Dispatch<any>
+// type MyDispatch = Dispatch<any>
 
-class Addd  {
+class Addd extends React.Component  {
 
     constructor(props){
         super(props)
@@ -134,6 +134,9 @@ class Addd  {
 // }
 
 export default Addd
+
+
+
 
 // export const addHandler = ( setFormError: (arg0: () => any) => void, formError: {}, setSubmit: (arg0: boolean) => void, submit: any, credentials: InputField, setSuccess: (arg0: boolean) => void) => {
 //     console.log("inside add handleer")

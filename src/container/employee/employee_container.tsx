@@ -15,6 +15,7 @@ const EmployeeContainer = () => {
   } 
 
   const addEmployee = (employee: any): any => {
+    console.log("inside add emp container")
     dispatch({ type: 'POST_EMP', payload: employee })
   }
 

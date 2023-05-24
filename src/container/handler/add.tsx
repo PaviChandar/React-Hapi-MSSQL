@@ -20,4 +20,4 @@ class Add extends React.Component<any, any> {
     }
 }
 
-export default connect(null, {  }) (Add)
+export default connect(null, {}) (Add)
