@@ -1,17 +1,14 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import useUserContainer from "../../container/user/user_container";
-import UserContainer from "../../container/user/user_container";
 
-import userContainer from "../../container/user/user_container";
 import { UserInputField } from "../../shared/interface/user.interface"
+import UserAction from "../../store/action/user_action";
 
 
 const SignUp = () => {
     const navigate = useNavigate()
 
-    const { registerUser } = UserContainer()
+    const { registerUser } = UserAction()
     const [credentials, setCredentials] = useState<UserInputField>({
         username:'',
         email:'',

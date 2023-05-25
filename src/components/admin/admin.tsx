@@ -1,8 +1,6 @@
-import { Dispatch, SetStateAction, useEffect } from "react"
-import employeeContainer from "../../container/employee/employee_container"
-import EmployeeContainer from "../../container/employee/employee_container"
-import useEmployeeContainer from "../../container/employee/employee_container"
-import GetAllEmployeeContainer from "../../container/employee/employee_container"
+import { useEffect } from "react"
+
+import EmployeeContainer from "../../store/action/employee_action"
 import GetAllEmployee from "../employee/get-all-employee"
 
 const Admin = () => {

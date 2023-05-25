@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 
 import { InputField } from "../../shared/interface/employee.interface"
 
-const EmployeeContainer = () => { 
+const EmployeeAction = () => { 
 
   const dispatch = useDispatch() 
 
@@ -14,7 +14,7 @@ const EmployeeContainer = () => {
     dispatch({ type: 'GET_SINGLE', payload: employeeId })
   } 
 
-  const addEmployee = (employee: any): any => {
+  const addEmployee = (employee: InputField): any => {
     console.log("inside add emp container")
     dispatch({ type: 'POST_EMP', payload: employee })
   }
@@ -36,4 +36,4 @@ const EmployeeContainer = () => {
   } 
 } 
 
-export default EmployeeContainer
+export default EmployeeAction

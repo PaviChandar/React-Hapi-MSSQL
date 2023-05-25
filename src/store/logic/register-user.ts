@@ -2,6 +2,7 @@ import { createLogic } from "redux-logic"
 
 import * as types from "../action/action-type"
 import axiosInstance from "../../shared/utils/axios"
+import { registerUser } from "../action/action"
 
 const registerUserApiLogic: any = createLogic({
     type: 'REG_USER',
@@ -13,10 +14,7 @@ const registerUserApiLogic: any = createLogic({
             const response = await axiosInstance
                                 .post('/users', user)
                                 console.log("response from reg : ", response.data.data)
-            dispatch({
-                type: types.REGISTER_USER
-                // payload: response.data.data
-            })
+            dispatch(registerUser(response.data.data))
         } catch (error) {
             console.log("error in register user-logic : ", error)
         }

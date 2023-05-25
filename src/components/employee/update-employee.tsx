@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { InputField } from "../../shared/interface/employee.interface";
 import { validate } from "../../shared/validation/validate";
-import employeeContainer from "../../container/employee/employee_container";
+import employeeContainer from "../../store/action/employee_action";
 
 const UpdateEmployee = () => {
 
@@ -26,37 +26,27 @@ const UpdateEmployee = () => {
     const [submit, setSubmit] = useState(false)
     const [success, setSuccess] = useState(false)
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
         setFormError(() => validate(credentials))
     }
 
-    useEffect(() => {   
-        console.log("inside get sing emp useeffect")
-        console.log("id inside useeffect update : ", id)
+    useEffect(() => { 
         getSingleEmployee(id)
     }, [])
 
     const updateHandler = (formError: {},setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void,credentials: InputField, id: any, setSuccess: (arg0: boolean) => void) => {
-        console.log("update handle : ", credentials)
-        console.log("id in update : ", id)
         setFormError(() => validate(credentials))
         setSubmit(true)
         if (Object.keys(formError).length === 0 && submit) {
-            console.log("inside if", credentials)
-            console.log("inside if id", id)
             updateEmployee(credentials)
             setSuccess(true)
         }
     }
 
-    console.log("data outside ; ", data)
-
     useEffect(() => {
         if(data) {
-            console.log("data in useef : ", data)
             setCredentials({ ...data })
         }
     }, [data])

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/getall.module.css"
-import employeeContainer from "../../container/employee/employee_container";
+import employeeContainer from "../../store/action/employee_action";
 
 const GetAllEmployee = () => {
 
@@ -25,7 +25,6 @@ const GetAllEmployee = () => {
   }
 
   const handleDelete = (id: number) => {
-    console.log("inside delete", id)
     deleteEmployee(id)
     if(window.confirm("Are you sure that you want to delete the Employee?")) {
       setSuccess(true)

@@ -1,10 +1,4 @@
 import { Button } from "antd";
-import add from "../../container/handler/add";
-import AddEmployeeClass from "./class-add";
-
-interface MyProps {
-    dummy?: any
-}
 
 type ClassProps = {
     addHandler: () => void

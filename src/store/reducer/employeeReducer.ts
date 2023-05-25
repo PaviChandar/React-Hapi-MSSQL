@@ -20,8 +20,6 @@ const employeeReducer = (state:EmployeeState = initialState, action: EmployeeAct
                 employees: action.payload
             }
         case types.GET_EMPLOYEE:
-            console.log("get sing action in red : ", action)
-            console.log("get sing pay in red : ", action.payload)
             return {
                 ...state,
                 employee: action.payload
@@ -37,8 +35,6 @@ const employeeReducer = (state:EmployeeState = initialState, action: EmployeeAct
                 employee: action.payload
             }
         case types.DELETE_EMPLOYEE:
-            console.log("inside red : ", action)
-            console.log("inside red payload : ", action.payload)
             return {
                 ...state,
                 employee: action.payload

@@ -6,13 +6,12 @@ import { useNavigate } from "react-router-dom"
 import { UserInputField } from "../../shared/interface/user.interface"
 import { validateUser } from "../../shared/validation/validate"
 import "../../assets/login.module.css"
-import userContainer from "../../container/user/user_container"
-import useUserContainer from "../../container/user/user_container"
-import UserContainer from "../../container/user/user_container"
+import loginUserApiLogic from "../../store/logic/login-user"
+import UserAction from "../../store/action/user_action"
 
 const Login = () => {
     const { t } = useTranslation()
-    const { loginUser } = UserContainer()
+    const { loginUser } = UserAction()
 
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState<UserInputField>({
@@ -35,6 +34,7 @@ const Login = () => {
         setSubmit(true)
         if(Object.keys(formError).length === 0 && submit) { 
            loginUser(credentials)
+        // loginUserApiLogic(credentials)
            setSuccess(true)
         }
     }

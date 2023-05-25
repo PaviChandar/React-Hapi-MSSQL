@@ -9,9 +9,7 @@ import AdminOutlet from "../components/admin/admin-outlet"
 import Home from "../components/employee/home"
 import UpdateEmployee from "../components/employee/update-employee"
 import Login from "../components/user/login"
-import { ReactNode } from "react"
-import AddEmployee from "../components/employee/add-employee"
-import AddEmployeeClass from "../components/employee/class-add"
+import AddEmployeeClass from "../container/employee/add-employee-container"
 
 const Router = () => {
 

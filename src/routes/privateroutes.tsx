@@ -7,9 +7,7 @@ interface Props {
 }
 
 const PrivateRoutes = ({ children }: any) => {
-    // const { login } = useSelector((state: any) => state.userData.user.login)
     const login = localStorage.getItem('login')
-    console.log("login in private : ", login)
     
     return login ? children : <Navigate to='/' /> 
 }
