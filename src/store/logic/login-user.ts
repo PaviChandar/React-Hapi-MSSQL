@@ -1,16 +1,18 @@
 import { createLogic } from "redux-logic"
 
 import axiosInstance from "../../shared/utils/axios"
-import { isLogin, loginUser } from "../action/action"
+import { isLogin, loggedInUser } from "../action/action"
 
-const loginUserApiLogic: any = createLogic({
+const loginUserApiLogic = createLogic({
     type: 'LOG_USER',
     async process({ action }: any, dispatch, done) {
+        console.log("inside lgn logic", action.payload)
         const user = action.payload
         try {
             const response = await axiosInstance
                                 .post('/login', user)
-            dispatch(loginUser(response.data.data))
+            dispatch(loggedInUser(response.data.data))
+            console.log("res data from login : ", response.data.data)
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('login', response.data.data.login)
             dispatch(isLogin())

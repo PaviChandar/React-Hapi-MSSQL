@@ -2,7 +2,7 @@ import { Button } from "antd";
 
 type ClassProps = {
     addHandler: () => void
-    handleChange: (e: any) => void
+    handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
     someState: any
 }
 

@@ -26,12 +26,12 @@ export const removeEmployee = () => ({
     type: types.DELETE_EMPLOYEE
 })
 
-export const registerUser = (user: UserInputField) => ({
+export const registeredUser = (user: UserInputField) => ({
     type: types.REGISTER_USER,
     payload: user
 })
 
-export const loginUser = (user: UserInputField) => ({
+export const loggedInUser = (user: UserInputField) => ({
     type: types.LOGIN_USER,
     payload: user
 })

@@ -76,15 +76,15 @@ const GetAllEmployee = () => {
       key: 'Action',
       render: (userdata: { Employee_ID: number }) => (
         <Space size="middle">
-          <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action">Update</Button>
-          <Button onClick={() => handleDelete(userdata.Employee_ID)} className="action" >Delete</Button>
+          <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action" id="update">Update</Button>
+          <Button onClick={() => handleDelete(userdata.Employee_ID)} className="action" id="delete">Delete</Button>
         </Space>
       )
   },
   ]
 
   return(
-    <div>
+    <div key={userdata.id}>
       <Navbar />
       <Header />
       {

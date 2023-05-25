@@ -1,6 +1,5 @@
 import { createLogic } from "redux-logic"
 
-import * as types from "../action/action-type"
 import axiosInstance from "../../shared/utils/axios"
 import { retreiveEmployee } from "../action/action"
 
