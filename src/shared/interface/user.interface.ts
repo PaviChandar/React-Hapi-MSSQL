@@ -1,3 +1,9 @@
+export interface UserInputField {
+    email: string,
+    password: string
+    username?: string
+}
+
 export interface UserState {
     user?: UserInputField;
     users?: Array<UserInputField>;
@@ -9,16 +15,11 @@ export interface User {
     type: string;
     payload: UserInputField
 }
+
 export interface Users {
     userData: any;
     type: string;
     payload: UserInputField[]
-}
-
-export interface UserInputField {
-    email: string,
-    password: string
-    username?: string
 }
 
 export type UserActionType = User

@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 
 import { InputField } from "../../shared/interface/employee.interface"
 import addEmployeeApiLogic from "../logic/add-employee"
+import { store } from "../store"
 
 const EmployeeAction = () => { 
 
@@ -16,7 +17,6 @@ const EmployeeAction = () => {
   } 
 
   const addEmployee = (employee: InputField): any => {
-    console.log("inside add emp container")
     dispatch({ type: 'POST_EMP', payload: employee })
   }
 

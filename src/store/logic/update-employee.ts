@@ -9,8 +9,7 @@ const updateEmployeeApiLogic: any = createLogic({
         const { id }  = action.payload
         const employee = action.payload
         try {
-            const response = await axiosInstance
-                                .put(`/employees/${id}`, employee)
+            const response = await axiosInstance.put(`/employees/${id}`, employee)
             dispatch(upgradeEmployee(response.data))
         } catch (error) {
             console.log("error in update emp-logic : ", error)

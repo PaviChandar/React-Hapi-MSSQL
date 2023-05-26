@@ -9,6 +9,7 @@ const addEmployeeApiLogic: any = createLogic({
         const employee = action.payload
         try {
             const response = await axiosInstance.post('/employees', employee)
+            console.log("res data from add : ", response.data)
             dispatch(registerEmployee(response.data))
         } catch (error) {
             console.log("error in add emp-logic : ", error)
@@ -16,6 +17,5 @@ const addEmployeeApiLogic: any = createLogic({
         done()
     }
 })
-
 
 export default addEmployeeApiLogic

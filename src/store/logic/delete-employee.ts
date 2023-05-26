@@ -8,8 +8,7 @@ const deleteEmployeeApiLogic: any = createLogic({
     async process({ action }: any, dispatch, done) {
         const id = action.payload
         try {
-            const response = await axiosInstance
-                                .delete(`/employees/${id}`, id)
+            const response = await axiosInstance.delete(`/employees/${id}`, id)
             dispatch(removeEmployee())
         } catch (error) {
             console.log("error in delete emp-logic : ", error)

@@ -8,8 +8,7 @@ const getSingleEmployeeApiLogic = createLogic({
     async process({ action }: any, dispatch, done) {
         const id  = action.payload
         try {
-            const response= await axiosInstance
-                                .get(`/employees/${id}`)
+            const response= await axiosInstance.get(`/employees/${id}`)
             dispatch(retreiveEmployee(response.data))
         } catch (error) {
             console.log("error in get single logic : ", error)
