@@ -5,6 +5,7 @@ type ClassProps = {
     addHandler: () => void
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
     someState: InputField
+    // validate: (errors: InputField) => void
 }
 
 const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState }) => {
@@ -14,7 +15,6 @@ const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState
             <h2>Create New Employee</h2>
             <div>
                 <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={someState.id} />
-                <span></span>
             </div>
             <div>
                 <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={someState.name} />
@@ -28,7 +28,7 @@ const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState
             <div>
                 <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={someState.salary} />
             </div>
-            <Button onClick={ addHandler } >Add Employee</Button>
+            <Button onClick={addHandler} >Add Employee</Button>
         </div>
     )
 }

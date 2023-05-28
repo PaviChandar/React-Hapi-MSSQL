@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// import { withRouter }  from "react-router-dom";
 import { Dispatch } from "redux";
 
 import AddEmployee from "../../components/employee/add-employee";
@@ -10,7 +11,6 @@ interface State {
     credentials: InputField
     errors: any
 }
-
 
 class AddEmployeeClass extends Component<any, State> {
     
@@ -30,15 +30,16 @@ class AddEmployeeClass extends Component<any, State> {
                 ageError: '',
                 cityError: '',
                 salaryError: ''
-            }
+            },
+            // success: false
         }
 
         this.handleChange = this.handleChange.bind(this)
         this.addHandler = this.addHandler.bind(this)
+        this.validate = this.validate.bind(this)
     }
 
     validate = (value: InputField) => {
-        console.log("inside emp validate func")
         const errors: any = {}
     
         if(!value.id) {
@@ -74,6 +75,8 @@ class AddEmployeeClass extends Component<any, State> {
     addHandler = () => {
         this.setState(() => this.validate(this.state.credentials))
         this.props.addEmployee(this.state.credentials)
+        alert('Employee added successfully!')
+        this.props.push('/admin')
     }
 
     render() {
@@ -101,5 +104,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
+// export default connect (mapStateToProps, mapDispatchToProps)(withRouter(AddEmployeeClass))
 export default connect (mapStateToProps, mapDispatchToProps)(AddEmployeeClass)
 

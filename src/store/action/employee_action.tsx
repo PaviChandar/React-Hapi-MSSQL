@@ -16,9 +16,7 @@ const EmployeeAction = () => {
     dispatch({ type: 'GET_SINGLE', payload: employeeId })
   } 
 
-  const addEmployee = (employee: InputField): any => {
-    console.log("inside add emp container")
-    console.log("payload in container : ", employee)
+  const addEmployee = (employee: InputField) => {
     dispatch({ type: 'POST_EMP', payload: employee })
   }
 

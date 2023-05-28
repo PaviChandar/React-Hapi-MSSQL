@@ -34,7 +34,6 @@ const Login = () => {
         setSubmit(true)
         if(Object.keys(formError).length === 0 && submit) { 
            loginUser(credentials)
-        // loginUserApiLogic(credentials)
            setSuccess(true)
         }
     }

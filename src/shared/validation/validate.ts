@@ -2,7 +2,6 @@ import { InputField } from "../interface/employee.interface"
 import { UserInputField } from "../interface/user.interface"
 
 export const validate = (value: InputField) => {
-    console.log("inside emp validate func")
     const errors: any = {}
 
     if(!value.id) {
