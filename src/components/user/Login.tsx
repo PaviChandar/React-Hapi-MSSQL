@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 import { UserInputField } from "../../shared/interface/user.interface"
 import { validateUser } from "../../shared/validation/validate"
-import "../../assets/login.module.css"
-import loginUserApiLogic from "../../store/logic/login-user"
+import "../../assets/login.css"
 import UserAction from "../../store/action/user_action"
 
 const Login = () => {
@@ -29,7 +28,7 @@ const Login = () => {
         setFormError(() => validateUser(credentials))
     }
 
-    const loginHandler = (credentials: UserInputField, formError: {}, setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void, setSuccess: (arg0: boolean) => void) => {
+    const loginHandler = () => {
         setFormError(() => validateUser(credentials))
         setSubmit(true)
         if(Object.keys(formError).length === 0 && submit) { 
@@ -51,21 +50,21 @@ const Login = () => {
     }, [success, user])
 
     return(
-        <div>
-            <form>
-                <div>
+        <div className="loginContainer">
+            <form className="loginInput" >
+                <div className="loginText">
                     <input type="text" name="email" placeholder="email" value={credentials.email} onChange={handleChange} className='loginEmail' />
                     <span className="error">{formError.email}</span>
                 </div>
-                <div>
+                <div className="loginText">
                     <input type="password" name="password" placeholder="password" value={credentials.password} onChange={handleChange} className='loginPassword' />
                     <span className="error">{formError.password}</span>
                 </div>
+                <button onClick={() => loginHandler()} className="loginButton" >{t("login")}</button>
             </form>
-            <button onClick={() => loginHandler(credentials, formError, setFormError, submit, setSubmit, setSuccess)} >{t("login")}</button>
-            <div>
-                <h4>If not an user, Sign Up</h4>
-                <button onClick={() => navigate('/sign-up')} >{t("sign_up")}</button>
+            <div className="loginSignInput">
+                <h3>If not an user, Sign Up</h3>
+                <button onClick={() => navigate('/sign-up')} className="loginButton" >{t("sign_up")}</button>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 
 import AddEmployee from "../../components/employee/add-employee";
 import { InputField } from "../../shared/interface/employee.interface";
-import { myfunction } from "../../store/action/new";
+import { myfunction } from "../../store/action/add_action";
 
 interface State {
     credentials: InputField

@@ -1,0 +1,38 @@
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.loginEmail, .loginPassword {
+    width: 200px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.loginInput {
+    text-align: center;
+    align-items: center;
+    margin-top: 150px;
+    margin-bottom: 20px;
+}
+
+.loginSignInput {
+    text-align: center;
+}
+
+.loginButton {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.loginText {
+    align-items: center;
+}

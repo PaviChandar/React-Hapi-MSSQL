@@ -1,6 +1,12 @@
 import { Navigate } from "react-router-dom"
 
-const ProtectedRoutes = ({ children }: any) => {
+interface Props {
+    children: any
+    // children: JSX.IntrinsicAttributes
+    // children: React.ComponentType<any>
+}
+
+const ProtectedRoutes = ({ children }: Props ) => {
     
     const login = localStorage.getItem('login')
 

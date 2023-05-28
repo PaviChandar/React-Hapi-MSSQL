@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
-import "../../assets/getall.module.css"
+import "../../assets/getall.css"
 import employeeContainer from "../../store/action/employee_action";
 
 const GetAllEmployee = () => {

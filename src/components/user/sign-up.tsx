@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { UserInputField } from "../../shared/interface/user.interface"
 import UserAction from "../../store/action/user_action";
@@ -19,7 +19,7 @@ const SignUp = () => {
         setCredentials((prev) => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    const registerHandler = ( credentials: UserInputField, navigate: NavigateFunction) => {
+    const registerHandler = () => {
         registerUser(credentials)
         alert("Employee registered successfully")
         navigate('/login')
@@ -32,7 +32,7 @@ const SignUp = () => {
                 <input type="text" placeholder="email" name="email" value={credentials.email} onChange={changeHandler} />
                 <input type="text" placeholder="password" name="password" value={credentials.password} onChange={changeHandler} />
             </form>
-            <button onClick={() => registerHandler(credentials, navigate)}>Register User</button>
+            <button onClick={() => registerHandler()}>Register User</button>
         </div>
     )
 }

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { InputField } from "../../shared/interface/employee.interface";
 import { validate } from "../../shared/validation/validate";
@@ -13,7 +13,7 @@ const UpdateEmployee = () => {
 
     const { updateEmployee, getSingleEmployee } = employeeContainer()
     
-    let { id }: any = useParams()
+    let { id }: any= useParams()
     const data = useSelector((state: any) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
@@ -36,7 +36,7 @@ const UpdateEmployee = () => {
         getSingleEmployee(id)
     }, [])
 
-    const updateHandler = (formError: {},setFormError: (arg0: () => any) => void, submit: any, setSubmit: (arg0: boolean) => void,credentials: InputField, id: any, setSuccess: (arg0: boolean) => void) => {
+    const updateHandler = () => {
         setFormError(() => validate(credentials))
         setSubmit(true)
         if (Object.keys(formError).length === 0 && submit) {
@@ -83,7 +83,7 @@ const UpdateEmployee = () => {
                     <span className="error">{formError.salary}</span>
               </div>
            </div>
-           <button onClick={() => updateHandler(formError, setFormError, submit, setSubmit, credentials, id, setSuccess) }>{t("update")}</button>
+           <button onClick={() => updateHandler() }>{t("update")}</button>
         </div>
     )
 }

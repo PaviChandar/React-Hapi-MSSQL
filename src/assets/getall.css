@@ -6,6 +6,7 @@
 .action {
     background-color: black;
     font-weight: bolder;
+    color: white;
 }
 
 .create {
@@ -13,4 +14,5 @@
     font-weight: bolder;
     border: none;
     border-radius: 5px;
+    color: white;
 }
