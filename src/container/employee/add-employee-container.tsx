@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import AddEmployee from "../../components/employee/add-employee";
-// import { validate } from "../../shared/validation/validate";
 import { InputField } from "../../shared/interface/employee.interface";
 import { myfunction } from "../../store/action/new";
-import { redirect } from "react-router-dom";
 
 interface State {
     credentials: InputField
@@ -76,7 +74,6 @@ class AddEmployeeClass extends Component<any, State> {
     addHandler = () => {
         this.setState(() => this.validate(this.state.credentials))
         this.props.addEmployee(this.state.credentials)
-        // redirect('/admin')
     }
 
     render() {
@@ -90,6 +87,7 @@ class AddEmployeeClass extends Component<any, State> {
 }
 
 const mapStateToProps = (state: any) => {
+    console.log("state in mapstate : ", state)
 
     return {
         employee: state.employeeData.employee
@@ -99,8 +97,6 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Dispatch) => { 
     
     return {
-        // addEmployee: (credentials: InputField) => dispatch(addEmployeeApiLogic(credentials))
-
         addEmployee: (credentials: InputField) => dispatch(myfunction(credentials))
     }
 }

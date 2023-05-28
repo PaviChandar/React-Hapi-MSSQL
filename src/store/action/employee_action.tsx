@@ -17,6 +17,8 @@ const EmployeeAction = () => {
   } 
 
   const addEmployee = (employee: InputField): any => {
+    console.log("inside add emp container")
+    console.log("payload in container : ", employee)
     dispatch({ type: 'POST_EMP', payload: employee })
   }
 

@@ -7,11 +7,14 @@ const addEmployeeApiLogic: any = createLogic({
     type: 'POST_EMP',
     async process({ action }: any, dispatch, done) {
         const employee = action.payload
+        console.log("payload in logic : ",employee )
         try {
+            console.log("inside try")
             const response = await axiosInstance.post('/employees', employee)
             console.log("res data from add : ", response.data)
             dispatch(registerEmployee(response.data))
         } catch (error) {
+            console.log("inside catch")
             console.log("error in add emp-logic : ", error)
         }
         done()

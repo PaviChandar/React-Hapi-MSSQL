@@ -5,7 +5,6 @@ type ClassProps = {
     addHandler: () => void
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
     someState: InputField
-    // validate: (value: InputField) => void
 }
 
 const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState }) => {
