@@ -6,7 +6,7 @@ interface Props {
     // children: React.ComponentType<any>
 }
 
-const ProtectedRoutes = ({ children }: Props ) => {
+const ProtectedRoutes = ({ children }: any ) => {
     
     const login = localStorage.getItem('login')
 

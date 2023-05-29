@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -60,11 +60,13 @@ const Login = () => {
                     <input type="password" name="password" placeholder="password" value={credentials.password} onChange={handleChange} className='loginPassword' />
                     <span className="error">{formError.password}</span>
                 </div>
-                <button onClick={() => loginHandler()} className="loginButton" >{t("login")}</button>
             </form>
-            <div className="loginSignInput">
-                <h3>If not an user, Sign Up</h3>
-                <button onClick={() => navigate('/sign-up')} className="loginButton" >{t("sign_up")}</button>
+            <div className="loginSignInput" >
+                <button onClick={() => loginHandler()} className="loginButton" >{t("login")}</button>
+                <div className="signInput">
+                    <h3>If not an user, Sign Up</h3>
+                    <button onClick={() => navigate('/sign-up')} className="loginButton" >{t("sign_up")}</button>
+                </div>
             </div>
         </div>
     )

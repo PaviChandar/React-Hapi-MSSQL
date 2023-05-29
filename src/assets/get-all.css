@@ -1,11 +1,7 @@
-/* @import 'antd/dist/antd.css'; */
-/* @import '~antd/dist/antd.css'; */
-
 @import 'antd/dist/reset.css';
 
 .action {
     background-color: black;
-    font-weight: bolder;
     color: white;
 }
 
@@ -15,4 +11,12 @@
     border: none;
     border-radius: 5px;
     color: white;
+    margin-top: 0px;
+    margin-left: 700px;
+}
+
+.home_table {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }

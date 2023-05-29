@@ -76,7 +76,7 @@ class AddEmployeeClass extends Component<any, State> {
         this.setState(() => this.validate(this.state.credentials))
         this.props.addEmployee(this.state.credentials)
         alert('Employee added successfully!')
-        this.props.push('/admin')
+        // this.props.push('/admin')
     }
 
     render() {

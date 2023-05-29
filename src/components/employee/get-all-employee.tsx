@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
-import "../../assets/getall.css"
+import "../../assets/get-all.css"
 import employeeContainer from "../../store/action/employee_action";
 
 const GetAllEmployee = () => {
@@ -84,7 +84,7 @@ const GetAllEmployee = () => {
   ]
 
   return(
-    <div key={userdata.id}>
+    <div key={userdata.id} className="home_table">
       <Navbar />
       <Header />
       {

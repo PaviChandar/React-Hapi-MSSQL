@@ -4,7 +4,9 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+
 import { removeToken } from "./remove-token"
+import "../../assets/navbar.css"
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -36,8 +38,8 @@ const Navbar = () => {
             {
                 isLoggedIn ?
                 <>
-                    <h4>Hello, { decodeToken.username }</h4>
-                    <Button onClick={handleLogout} >Logout</Button>
+                    <h4 className="tokenName" >Hello, { decodeToken.username }</h4>
+                    <Button onClick={handleLogout} className="logoutButton" >Logout</Button>
                 </> :
                 <>
                     <button onClick={() => navigate('/login')} >{t("login")}</button>

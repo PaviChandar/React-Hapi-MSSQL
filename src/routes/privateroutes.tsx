@@ -6,7 +6,7 @@ interface Props {
     // children: React.Component<any>
 }
 
-const PrivateRoutes = ({ children }: Props) => {
+const PrivateRoutes = ({ children }: any) => {
     const login = localStorage.getItem('login')
     
     return login ? children : <Navigate to='/' /> 

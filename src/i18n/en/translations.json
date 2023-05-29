@@ -6,7 +6,7 @@
     "employee_salary": "Employee salary is required",
     "details": "Employee Details",
     "add": "Add Employee",
-    "update": "Update Employee",
+    "update": "Update",
     "getall": "Get All Employees",
     "delete": "Delete Employee",
     "login": "Login",

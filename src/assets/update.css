@@ -1,0 +1,55 @@
+.updateContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.updateInputContainer {
+    margin-bottom: 180px;
+}
+
+.updateId {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.updateInput {
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 668px;
+}
+
+.updateButton {
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+    margin-left: 780px;
+    cursor: pointer;
+}
+
+.goBackButton {
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+    margin-top: -28px;
+    margin-left: 660px;
+    cursor: pointer;
+}
+
+.updateName {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 20px;
+}

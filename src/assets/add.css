@@ -1,7 +1,27 @@
-input [type="number"] {
-    width: 200px;
-    height: 20px;
+.addContainer {
+    text-align: center;
+    align-items: center;
+}
+
+input {
     margin-bottom: 20px;
+    width: 200px;
+    height: 35px;
+}
+
+.addInputContainer {
+    margin-bottom: 30px;
+}
+
+.addButton {
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+h2 {
+    font-weight: bold;
 }

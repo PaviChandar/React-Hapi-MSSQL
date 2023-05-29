@@ -26,13 +26,18 @@
     border: none;
     border-radius: 5px;
     padding: 8px 10px;
+    cursor: pointer;
 }
 
-h1{
+/* h1{
     text-align: center;
     margin-top: 50px;
-}
+} */
 
 .loginText {
     align-items: center;
+}
+
+.signInput {
+    margin-top: 20px;
 }

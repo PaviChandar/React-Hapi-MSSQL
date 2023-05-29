@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { InputField } from "../../shared/interface/employee.interface";
 import { validate } from "../../shared/validation/validate";
 import employeeContainer from "../../store/action/employee_action";
+import "../../assets/update.css"
 
 const UpdateEmployee = () => {
 
@@ -62,28 +63,31 @@ const UpdateEmployee = () => {
     }, [success])
 
     return(
-        <div>
+        <div className="updateContainer" >
            <h2>Update employee</h2>
-           <div>
-                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} />
-                <div>
-                    <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} />
-                    <span className="error">{formError.name}</span>
+           <div className="updateInputContainer" >
+                <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={credentials.id} className="updateId" readOnly  />
+                <div className="updateInput"  >
+                    <div >
+                        <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={credentials.name} className="updateName" />
+                        <span className="error">{formError.name}</span>
+                    </div>
+                    <div >
+                        <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={credentials.age} className="updateName" />
+                        <span className="error">{formError.age}</span>
+                    </div>
+                    <div >
+                        <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={credentials.city} className="updateName" />
+                        <span className="error">{formError.city}</span>
+                    </div>
+                    <div >
+                            <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={credentials.salary} className="updateName" />
+                            <span className="error">{formError.salary}</span>
+                    </div>
                 </div>
-                <div>
-                    <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={credentials.age} />
-                    <span className="error">{formError.age}</span>
-                </div>
-                <div>
-                    <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={credentials.city} />
-                    <span className="error">{formError.city}</span>
-                </div>
-              <div>
-                    <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={credentials.salary} />
-                    <span className="error">{formError.salary}</span>
-              </div>
-           </div>
-           <button onClick={() => updateHandler() }>{t("update")}</button>
+           </div> 
+           <button onClick={() => updateHandler() } className="updateButton" >{t("update")}</button>
+           <button onClick={() => navigate('/admin')} className="goBackButton" >Go Back</button>
         </div>
     )
 }
