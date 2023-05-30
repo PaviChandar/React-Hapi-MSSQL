@@ -22,7 +22,7 @@ const Router = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
 
-                <Route path='/' element={
+                <Route path='/user' element={
                     <ProtectedRoutes>
                         <Home />
                     </ProtectedRoutes>} />

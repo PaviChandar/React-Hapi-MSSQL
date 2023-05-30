@@ -44,7 +44,7 @@ const Login = () => {
                 navigate('/admin')
             } else {
                 alert("Successfully user logged in!")
-                navigate('/')
+                navigate('/user')
             }
         }
     }, [success, user])

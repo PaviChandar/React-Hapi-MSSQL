@@ -32,7 +32,6 @@ const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState
                 </div>
             </div>
             <Button onClick={addHandler} className="addButton" >Add Employee</Button>
-            {/* <Button onClick={} >Go Back</Button> */}
         </div>
     )
 }

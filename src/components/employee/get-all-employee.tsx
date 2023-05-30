@@ -9,6 +9,8 @@ import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/get-all.css"
 import employeeContainer from "../../store/action/employee_action";
+import { RootState } from "../../store/store";
+import { InputField } from "../../shared/interface/employee.interface";
 
 const GetAllEmployee = () => {
 
@@ -38,7 +40,7 @@ const GetAllEmployee = () => {
   }, [success, userdata])
 
   useEffect(() => {
-    const dataSource = userdata.map((e: any) => {
+    const dataSource = userdata.map((e: InputField) => {
       return({
           "Employee_ID": e.id,
           "Name": e.name,

@@ -1,0 +1,23 @@
+.signUpContainer {
+    text-align: center;
+}
+
+.signUpInput {
+    display: flex;
+    flex-direction: column;
+    margin-left: 350px;
+    margin-top: 180px;
+}
+
+.signUpButton {
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    margin-left: -100px;
+}
+
+h1 {
+    text-align: center;
+}

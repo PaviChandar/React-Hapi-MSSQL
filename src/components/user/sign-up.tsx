@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { UserInputField } from "../../shared/interface/user.interface"
 import UserAction from "../../store/action/user_action";
-
+import "../../assets/sign_up.css"
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -26,13 +26,13 @@ const SignUp = () => {
     }
 
     return(
-        <div>
-            <form>
+        <div className="signUpContainer">
+            <form className="signUpInput" >
                 <input type="text" placeholder="username" name="username" value={credentials.username} onChange={changeHandler} />
                 <input type="text" placeholder="email" name="email" value={credentials.email} onChange={changeHandler} />
                 <input type="text" placeholder="password" name="password" value={credentials.password} onChange={changeHandler} />
             </form>
-            <button onClick={() => registerHandler()}>Register User</button>
+            <button onClick={() => registerHandler()} className="signUpButton">Register User</button>
         </div>
     )
 }

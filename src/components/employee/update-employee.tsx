@@ -8,13 +8,17 @@ import { validate } from "../../shared/validation/validate";
 import employeeContainer from "../../store/action/employee_action";
 import "../../assets/update.css"
 
+type IdProps = {
+    id : string | number | any
+}
+
 const UpdateEmployee = () => {
 
     const { t } = useTranslation()
 
     const { updateEmployee, getSingleEmployee } = employeeContainer()
     
-    let { id }: any= useParams()
+    let { id }= useParams<IdProps>()
     const data = useSelector((state: any) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
@@ -34,7 +38,7 @@ const UpdateEmployee = () => {
     }
 
     useEffect(() => { 
-        getSingleEmployee(id)
+        getSingleEmployee(id);
     }, [])
 
     const updateHandler = () => {

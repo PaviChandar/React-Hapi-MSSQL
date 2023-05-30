@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { withRouter }  from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Dispatch } from "redux";
 
 import AddEmployee from "../../components/employee/add-employee";
 import { InputField } from "../../shared/interface/employee.interface";
-import { myfunction } from "../../store/action/add_action";
+import { addEmployee } from "../../store/action/add_action";
 
 interface State {
     credentials: InputField
-    errors: any
+    success: boolean
 }
 
 class AddEmployeeClass extends Component<any, State> {
     
-    constructor(props:any) {
+    constructor(props:Object) {
         super(props)
         this.state = {
             credentials: {
@@ -23,15 +23,8 @@ class AddEmployeeClass extends Component<any, State> {
                 age: 0,
                 city: '',
                 salary: 0
-            },
-            errors: {
-                idError: '',
-                nameError: '',
-                ageError: '',
-                cityError: '',
-                salaryError: ''
-            },
-            // success: false
+            }, 
+            success: false
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -73,10 +66,9 @@ class AddEmployeeClass extends Component<any, State> {
     }
 
     addHandler = () => {
-        this.setState(() => this.validate(this.state.credentials))
         this.props.addEmployee(this.state.credentials)
         alert('Employee added successfully!')
-        // this.props.push('/admin')
+        this.setState({ success : true })
     }
 
     render() {
@@ -84,13 +76,18 @@ class AddEmployeeClass extends Component<any, State> {
         return(
             <div>
                 <AddEmployee addHandler= {this.addHandler} handleChange= {this.handleChange} someState= {this.state.credentials} />
+                {
+                    this.state.success? <Navigate to='/admin'></Navigate>: null
+                }
             </div>
         )
     }
 }
 
 const mapStateToProps = (state: any) => {
-    console.log("state in mapstate : ", state)
+    console.log("state in map : ", typeof state)
+    console.log("data in state : ", state)
+    console.log("emp data type : ", state.employeeData)
 
     return {
         employee: state.employeeData.employee
@@ -100,10 +97,9 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Dispatch) => { 
     
     return {
-        addEmployee: (credentials: InputField) => dispatch(myfunction(credentials))
+        addEmployee: (credentials: InputField) => dispatch(addEmployee(credentials))
     }
 }
 
-// export default connect (mapStateToProps, mapDispatchToProps)(withRouter(AddEmployeeClass))
 export default connect (mapStateToProps, mapDispatchToProps)(AddEmployeeClass)
 

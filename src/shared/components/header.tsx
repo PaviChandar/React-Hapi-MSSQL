@@ -6,7 +6,7 @@ import "../../assets/header.css"
 const Header = () => {
     const { i18n } = useTranslation();
 
-    const handleClick = (lang: any) => {
+    const handleClick = (lang: string) => {
         i18n.changeLanguage(lang)
     }
 
