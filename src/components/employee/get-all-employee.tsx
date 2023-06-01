@@ -9,7 +9,6 @@ import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/get-all.css"
 import employeeContainer from "../../store/action/employee_action";
-import { RootState } from "../../store/store";
 import { InputField } from "../../shared/interface/employee.interface";
 
 const GetAllEmployee = () => {
@@ -78,8 +77,8 @@ const GetAllEmployee = () => {
       key: 'Action',
       render: (userdata: { Employee_ID: number }) => (
         <Space size="middle">
-          <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action" id="update">Update</Button>
-          <Button onClick={() => handleDelete(userdata.Employee_ID)} className="action" id="delete">Delete</Button>
+          <Button onClick={() => handleUpdate(userdata.Employee_ID)} className="action" id="update">{t("update_btn")}</Button>
+          <Button onClick={() => handleDelete(userdata.Employee_ID)} className="action" id="delete">{t("delete_btn")}</Button>
         </Space>
       )
   },

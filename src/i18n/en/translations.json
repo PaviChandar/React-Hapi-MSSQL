@@ -7,8 +7,10 @@
     "details": "Employee Details",
     "add": "Add Employee",
     "update": "Update",
+    "update_btn":"Update",
     "getall": "Get All Employees",
     "delete": "Delete Employee",
+    "delete_btn":"Delete",
     "login": "Login",
     "sign_up": "Sign Up"
 }

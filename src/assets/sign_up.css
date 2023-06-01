@@ -5,7 +5,7 @@
 .signUpInput {
     display: flex;
     flex-direction: column;
-    margin-left: 350px;
+    margin-left: 650px;
     margin-top: 180px;
 }
 
@@ -15,7 +15,18 @@
     background-color: black;
     color: white;
     padding: 5px 8px;
-    margin-left: -100px;
+    margin-left: -40px;
+    cursor: pointer;
+}
+
+.signUpLoginButton {
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    margin-left: 40px;
+    cursor: pointer;
 }
 
 h1 {

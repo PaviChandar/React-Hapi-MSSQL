@@ -32,7 +32,8 @@ const SignUp = () => {
                 <input type="text" placeholder="email" name="email" value={credentials.email} onChange={changeHandler} />
                 <input type="text" placeholder="password" name="password" value={credentials.password} onChange={changeHandler} />
             </form>
-            <button onClick={() => registerHandler()} className="signUpButton">Register User</button>
+            <button onClick={() => registerHandler()} className="signUpButton">Register</button>
+            <button onClick={() => navigate('/login')} className="signUpLoginButton" >Login</button>
         </div>
     )
 }

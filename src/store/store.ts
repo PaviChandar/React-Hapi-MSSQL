@@ -17,3 +17,4 @@ const middleware = applyMiddleware(thunk, logicMiddleware)
 export const store = createStore(rootReducer, composeWithDevTools(middleware))
 
 export type RootState = ReturnType<typeof store.getState>
+console.log("type of state : ", typeof store.getState)

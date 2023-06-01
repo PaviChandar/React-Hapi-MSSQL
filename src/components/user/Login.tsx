@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -44,10 +44,10 @@ const Login = () => {
                 navigate('/admin')
             } else {
                 alert("Successfully user logged in!")
-                navigate('/user')
+                navigate('/')
             }
         }
-    }, [success, user])
+    }, [success, user, navigate])
 
     return(
         <div className="loginContainer">
