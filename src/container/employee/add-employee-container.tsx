@@ -14,7 +14,7 @@ interface State {
 
 class AddEmployeeClass extends Component<any, State> {
     
-    constructor(props:Object) {
+    constructor(props: Object) {
         super(props)
         this.state = {
             credentials: {
@@ -29,29 +29,6 @@ class AddEmployeeClass extends Component<any, State> {
 
         this.handleChange = this.handleChange.bind(this)
         this.addHandler = this.addHandler.bind(this)
-        this.validate = this.validate.bind(this)
-    }
-
-    validate = (value: InputField) => {
-        const errors: any = {}
-    
-        if(!value.id) {
-            errors.id = "*Employee ID is required"
-        }
-        if(!value.name) {
-            errors.name = "*Employee name is required"
-        }
-        if(!value.age) {
-            errors.age = "*Employee age is required"
-        }
-        if(!value.city) {
-            errors.city = "*Employee city is required"
-        }
-        if(!value.salary) {
-            errors.salary = "*Employee salary is required"
-        }
-    
-        return errors
     }
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -62,7 +39,7 @@ class AddEmployeeClass extends Component<any, State> {
                 ...prev.credentials,
                 [name] : value
             }
-        }), () => this.validate(this.state.credentials))
+        }))
     }
 
     addHandler = () => {
@@ -84,16 +61,6 @@ class AddEmployeeClass extends Component<any, State> {
     }
 }
 
-const mapStateToProps = (state: any) => {
-    console.log("state in map : ", typeof state)
-    console.log("data in state : ", state)
-    console.log("emp data type : ", state.employeeData)
-
-    return {
-        employee: state.employeeData.employee
-    }
-}
-
 const mapDispatchToProps = (dispatch: Dispatch) => { 
     
     return {
@@ -101,5 +68,5 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(AddEmployeeClass)
+export default connect (null, mapDispatchToProps)(AddEmployeeClass)
 
