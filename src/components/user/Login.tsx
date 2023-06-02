@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { UserInputField } from "../../shared/interface/user.interface"
+import { User, UserInputField, UserState } from "../../shared/interface/user.interface"
 import { validateUser } from "../../shared/validation/validate"
 import "../../assets/login.css"
 import UserAction from "../../store/action/user_action"
@@ -21,7 +21,7 @@ const Login = () => {
     const [submit, setSubmit] = useState(false)
     const [success, setSuccess] = useState(false)
 
-    const user = useSelector((state:any) => state.userData.user)
+    const user = useSelector((state:User) => state.userData.user)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))

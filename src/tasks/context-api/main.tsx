@@ -4,7 +4,8 @@ import Profile from "./profile"
 import SampleLogin from "./sample-login"
 import { LoginContext } from "./login-context"
 
-const MainContext = () => {
+const MainComponent = () => {
+
     const [showProfile, setShowProfile] = useState(false)
     const [username, setUsername] = useState("")
     
@@ -17,4 +18,4 @@ const MainContext = () => {
     )
 }
 
-export default MainContext
+export default MainComponent

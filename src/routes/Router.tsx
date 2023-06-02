@@ -10,28 +10,30 @@ import Home from "../components/employee/home"
 import UpdateEmployee from "../components/employee/update-employee"
 import Login from "../components/user/login"
 import AddEmployeeClass from "../container/employee/add-employee-container"
-import click from "../tasks/hoc/click"
 import ClickCounter from "../tasks/hoc/click"
 import HoverCounter from "../tasks/hoc/hover"
-import MainContext from "../tasks/context-api/main"
+import MainComponent from "../tasks/context-api/main"
+import Employees from "../tasks/custom-hooks/employees"
 
 const Router = () => {
 
-    // ValidateSession()
+    ValidateSession()
 
     return(
        <>
             <Routes>
 
-                <Route path='/login' element={<Login />} />
-                <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/tasks' element={
                     <>
                         <ClickCounter />
                         <HoverCounter />
                     </>
                 } />
-                <Route path='/context' element={<MainContext />} />
+                <Route path='/context' element={<MainComponent />} />
+                <Route path='/hooks' element={<Employees />} />
+
+                <Route path='/login' element={<Login />} />
+                <Route path='/sign-up' element={<SignUp />} />
 
                 <Route path='/' element={
                     <ProtectedRoutes>

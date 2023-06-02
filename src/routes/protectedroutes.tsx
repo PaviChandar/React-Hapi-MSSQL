@@ -10,7 +10,7 @@ const ProtectedRoutes = ({ children }: any ) => {
     
     const login = localStorage.getItem('login')
 
-    return !login ? children : <Navigate to='/admin' />
+    return login ? children : <Navigate to='/admin' />
 }
 
 export default ProtectedRoutes

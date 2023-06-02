@@ -9,7 +9,7 @@ import Header from "../../shared/components/header";
 import Navbar from "../../shared/components/navbar";
 import "../../assets/get-all.css"
 import employeeContainer from "../../store/action/employee_action";
-import { InputField } from "../../shared/interface/employee.interface";
+import { Employee, InputField } from "../../shared/interface/employee.interface";
 
 const GetAllEmployee = () => {
 
@@ -18,7 +18,7 @@ const GetAllEmployee = () => {
 
   const [data, setdata] = useState([])
   const [success, setSuccess] = useState(false)
-  const userdata  = useSelector((state: any) => state.employeeData.employees)
+  const userdata  = useSelector((state: Employee) => state.employeeData.employees)
   const navigate = useNavigate()
 
   const handleUpdate = (id: number) => {

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { InputField } from "../../shared/interface/employee.interface";
+import { Employee, InputField } from "../../shared/interface/employee.interface";
 import { validate } from "../../shared/validation/validate";
 import employeeContainer from "../../store/action/employee_action";
 import "../../assets/update.css"
@@ -15,7 +15,7 @@ const UpdateEmployee = () => {
     const { updateEmployee, getSingleEmployee } = employeeContainer()
     
     let { id }: any= useParams()
-    const data = useSelector((state: any) => state.employeeData.employee)
+    const data = useSelector((state: Employee) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
         name:'',

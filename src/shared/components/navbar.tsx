@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom"
 
 import { removeToken } from "./remove-token"
 import "../../assets/navbar.css"
+import { User } from "../interface/user.interface"
 
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navigate = useNavigate()
     const { t } = useTranslation()
 
-    const { user } = useSelector((state:any) => state.userData)
+    const { user } = useSelector((state:User) => state.userData)
 
     useEffect(() => {
         if(localStorage.getItem("token")) {
