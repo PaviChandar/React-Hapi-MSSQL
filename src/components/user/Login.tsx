@@ -47,7 +47,7 @@ const Login = () => {
                 navigate('/')
             }
         }
-    }, [success, user, navigate])
+    }, [success, user])
 
     return(
         <div className="loginContainer">

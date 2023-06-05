@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <div>
             <h1>Hi, {user.username}</h1>
-            <Button onClick={handleLogout} >Logout</Button>
+            <Button onClick={handleLogout} className="logoutButton" >Logout</Button>
         </div>
     )
 }

@@ -54,7 +54,7 @@ class AddEmployeeClass extends Component<any, State> {
             <div>
                 <AddEmployee addHandler= {this.addHandler} handleChange= {this.handleChange} someState= {this.state.credentials} />
                 {
-                    this.state.success? <Navigate to='/admin'></Navigate>: null
+                    this.state.success ? <Navigate to='/admin'></Navigate>: null
                 }
             </div>
         )

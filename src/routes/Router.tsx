@@ -14,10 +14,13 @@ import ClickCounter from "../tasks/hoc/click"
 import HoverCounter from "../tasks/hoc/hover"
 import MainComponent from "../tasks/context-api/main"
 import Employees from "../tasks/custom-hooks/employees"
+import { ClassContext } from "../tasks/context-api/class-context/main"
+import { UncontrolledComponent } from "../tasks/forms/uncontrolled-component"
+import ControlledClassComponent from "../tasks/forms/control-class"
 
 const Router = () => {
 
-    ValidateSession()
+    // ValidateSession()
 
     return(
        <>
@@ -30,7 +33,10 @@ const Router = () => {
                     </>
                 } />
                 <Route path='/context' element={<MainComponent />} />
-                <Route path='/hooks' element={<Employees />} />
+                <Route path='/hooks' element={<Employees />} /> 
+                <Route path='/class-context' element={<ClassContext />} />
+                <Route path='/control-class' element={<ControlledClassComponent />} />
+                <Route path='/uncontrol' element={<UncontrolledComponent />} />
 
                 <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />

@@ -9,7 +9,7 @@ const Employees = () => {
     }
 
     if(error) {
-        console.log("Errorrrrrrrrrr : ", error)
+        console.log("Error : ", error)
     }
 
     return (

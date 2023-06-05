@@ -35,7 +35,7 @@ const UpdateEmployee = () => {
 
     useEffect(() => { 
         getSingleEmployee(id)
-    }, [])
+    }, [id])
 
     const updateHandler = () => {
         setFormError(() => validate(credentials))

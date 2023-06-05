@@ -22,7 +22,7 @@ function ValidateSession() {
         if(!ValidateSession()) {
             navigate('/login')
         }
-    })
+    },[])
 }
 
 export default ValidateSession
