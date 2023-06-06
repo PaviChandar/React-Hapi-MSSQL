@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import Profile from "./profile"
-import SampleLogin from "./sample-login"
+import SampleLogin from "./login"
 import { LoginContext } from "./login-context"
 
 const MainComponent = () => {

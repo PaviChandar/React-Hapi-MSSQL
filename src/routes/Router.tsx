@@ -10,17 +10,17 @@ import Home from "../components/employee/home"
 import UpdateEmployee from "../components/employee/update-employee"
 import Login from "../components/user/login"
 import AddEmployeeClass from "../container/employee/add-employee-container"
-import ClickCounter from "../tasks/hoc/click"
-import HoverCounter from "../tasks/hoc/hover"
+import ClickCounter from "../tasks/hoc/click-counter"
+import HoverCounter from "../tasks/hoc/hover-counter"
 import MainComponent from "../tasks/context-api/main"
 import Employees from "../tasks/custom-hooks/employees"
-import { ClassContext } from "../tasks/context-api/class-context/main"
+import { Context } from "../tasks/context-api/class-context/main"
 import { UncontrolledComponent } from "../tasks/forms/uncontrolled-component"
-import ControlledClassComponent from "../tasks/forms/control-class"
+import ControlledClassComponent from "../tasks/forms/controlled-component"
 
 const Router = () => {
 
-    // ValidateSession()
+    ValidateSession()
 
     return(
        <>
@@ -34,7 +34,7 @@ const Router = () => {
                 } />
                 <Route path='/context' element={<MainComponent />} />
                 <Route path='/hooks' element={<Employees />} /> 
-                <Route path='/class-context' element={<ClassContext />} />
+                <Route path='/class-context' element={<Context />} />
                 <Route path='/control-class' element={<ControlledClassComponent />} />
                 <Route path='/uncontrol' element={<UncontrolledComponent />} />
 

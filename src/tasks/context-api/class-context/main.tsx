@@ -1,13 +1,13 @@
-import { Component } from "react";
-import { MyProvider } from "./context";
-import { MyComponent } from "./message";
+import { UserProvider } from "./user-context"
+import { MyComponent } from "./user"
 
-export class ClassContext extends Component {
-    render() {
-        return(
-            <MyProvider>
-                <MyComponent />
-            </MyProvider>
-        )
-    }
+export const Context = () => {
+
+    const user = { name: 'Pavi' }
+
+    return (
+        <UserProvider value={user}>
+            <MyComponent />
+        </UserProvider>
+    )
 }

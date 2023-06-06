@@ -3,19 +3,21 @@ import { Component } from "react";
 class ControlledClassComponent extends Component<any, any> {
     constructor(props: {}) {
       super(props);
-      this.state = {value: ''};
+      this.state = {
+        value: ''
+      }
   
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this)
+      this.handleSubmit = this.handleSubmit.bind(this)
     }
   
-    handleChange(event: any) {
-      this.setState({value: event.target.value});
+    handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+      this.setState({value: e.target.value});
     }
   
-    handleSubmit(event: any) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
+    handleSubmit(e: any) {
+      e.preventDefault()
+      alert('Hi, ' + this.state.value)
     }
   
     render() {

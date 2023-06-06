@@ -1,28 +1,19 @@
-import { useState } from "react";
+import { useRef } from 'react';
 
-interface IUncontrolled {
-    defaultValue: any
-    placeholder: any
-}
-
-const UncontrolledInput = ({ defaultValue, placeholder }: IUncontrolled) => {
-    const [value, setValue] = useState(defaultValue);
-  
-    return (
-      <input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder={placeholder}
-      />
-    );
-  };
-  
 export const UncontrolledComponent = () => {
-    return (
-      <form>
-        <UncontrolledInput defaultValue="" placeholder="Email" />
-        <UncontrolledInput defaultValue="" placeholder="Password" />
-        <button>Submit</button>
-      </form>
-    );
-  };
+
+  const nameRef = useRef<any>("");
+  const emailRef = useRef<any>("");
+
+  const onSubmit = () => {
+    alert("Hi , "+ nameRef.current.value + " and your email is : "+emailRef.current.value )
+  }
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" name="name" ref={nameRef} required />
+      <input type="email" name="email" ref={emailRef} required />
+      <input type="submit" value="Submit" />
+    </form>
+  );
+}
