@@ -5,7 +5,6 @@ import { Dispatch } from "redux";
 
 import AddEmployee from "../../components/employee/add-employee";
 import { InputField } from "../../shared/interface/employee.interface";
-// import { validate } from "../../shared/validation/validate";
 import { addEmployee } from "../../store/action/add_action";
 
 interface State {
@@ -30,15 +29,13 @@ class AddEmployeeClass extends Component<any, State> {
 
         this.handleChange = this.handleChange.bind(this)
         this.addHandler = this.addHandler.bind(this)
-        this.validate = this.validate.bind(this)
+        // this.validate = this.validate.bind(this)
     }
 
     validate = (value: any) => {
         const errors: any = {}
-        console.log("inside validate", value.target.value)
     
         if(!value.id) {
-            console.log("inside val id", value.id)
             errors.id = "*Employee ID is required"
         }
         if(!value.name) {
@@ -78,7 +75,7 @@ class AddEmployeeClass extends Component<any, State> {
 
         return(
             <div>
-                <AddEmployee addHandler= {this.addHandler} handleChange= {this.handleChange} someState= {this.state.credentials} validate= {this.validate}  />
+                <AddEmployee addHandler= {this.addHandler} handleChange= {this.handleChange} someState= {this.state.credentials}  />
                 {
                     this.state.success ? <Navigate to='/admin'></Navigate>: null
                 }

@@ -7,20 +7,16 @@ type ClassProps = {
     addHandler: () => void
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void
     someState: InputField
-    validate: (values: any) => void
 }
 
-const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState, validate }) => {
-    // console.log("valval", validate);
+const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState }) => {
     
-
     return(
         <div className="addContainer" >
             <h2>Create New Employee</h2>
             <div className="addInputContainer" >
                 <div>
-                    <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={someState.id} onClick={(id) => validate(id)} />
-                    {/* <span>{validate(someState.id)}</span> */}
+                    <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={someState.id} />
                 </div>
                 <div>
                     <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={someState.name} />
