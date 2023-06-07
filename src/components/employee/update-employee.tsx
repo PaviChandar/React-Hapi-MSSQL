@@ -14,7 +14,7 @@ const UpdateEmployee = () => {
 
     const { updateEmployee, getSingleEmployee } = employeeContainer()
     
-    let { id }: any= useParams()
+    const { id }: any= useParams()
     const data = useSelector((state: Employee) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
