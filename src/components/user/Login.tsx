@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { User, UserInputField, UserState } from "../../shared/interface/user.interface"
+import { User, UserInputField } from "../../shared/interface/user.interface"
 import { validateUser } from "../../shared/validation/validate"
 import "../../assets/login.css"
 import UserAction from "../../store/action/user_action"
@@ -47,7 +47,7 @@ const Login = () => {
                 navigate('/')
             }
         }
-    }, [success, user])
+    }, [success, user, navigate])
 
     return(
         <div className="loginContainer">

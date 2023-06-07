@@ -2,11 +2,11 @@ import ReactDOM from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
-
-import App from './App';
 import i18next from './i18n/config';
-import  { store }  from './store/store';
 import reportWebVitals from './reportWebVitals';
+
+import  { store }  from './store/store';
+import App from './App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

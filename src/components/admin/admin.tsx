@@ -1,9 +1,10 @@
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 import EmployeeContainer from "../../store/action/employee_action"
 import GetAllEmployee from "../employee/get-all-employee"
 import "../../assets/admin.css"
-import { useTranslation } from "react-i18next"
+
 
 const Admin = () => {
     const { getAllEmployee } = EmployeeContainer()
