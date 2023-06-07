@@ -1,7 +1,7 @@
 import { createLogic } from "redux-logic"
 
 import axiosInstance from "../../shared/utils/axios"
-import { isLogin, loggedInUser } from "../action/action"
+import { getErrorMessage, getSuccessMessage, isLogin, loggedInUser } from "../action/action"
 
 const loginUserApiLogic = createLogic({
     type: 'LOG_USER',
@@ -13,10 +13,12 @@ const loginUserApiLogic = createLogic({
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('login', response.data.data.login)
             dispatch(isLogin())
+            console.log("res msg : ", response.data.message)
         } catch (error) {
             console.log("error in login user-logic : ", error)
         }
         done()
+
     }
 })
 

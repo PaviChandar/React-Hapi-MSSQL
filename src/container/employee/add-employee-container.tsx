@@ -29,7 +29,7 @@ class AddEmployeeClass extends Component<any, State> {
 
         this.handleChange = this.handleChange.bind(this)
         this.addHandler = this.addHandler.bind(this)
-        // this.validate = this.validate.bind(this)
+        this.validate = this.validate.bind(this)
     }
 
     validate = (value: any) => {
@@ -57,6 +57,7 @@ class AddEmployeeClass extends Component<any, State> {
     handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault()
         const { name, value } = e.target
+
         this.setState((prev) => ({ 
             credentials: {
                 ...prev.credentials,

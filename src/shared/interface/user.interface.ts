@@ -6,8 +6,10 @@ export interface UserInputField {
 
 export interface UserState {
     user?: UserInputField;
-    users?: Array<UserInputField>;
+    users?: Array<UserInputField>
     login?: boolean
+    success_message: string
+    error_message: string
 }
 
 export interface User {

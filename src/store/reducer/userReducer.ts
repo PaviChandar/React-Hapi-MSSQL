@@ -8,7 +8,9 @@ const initialState: UserState | UserInputField = {
         password:'',
         username:''
     },
-    login: false
+    login: false,
+    success_message: '',
+    error_message: ''
 }
 
 const userReducer = (state: UserState = initialState, action: UserActionType) => {
@@ -26,6 +28,16 @@ const userReducer = (state: UserState = initialState, action: UserActionType) =>
             return {
                 ...state,
                 login: action.payload
+            }
+        case types.GET_SUCCESS_MESSAGE:
+            return {
+                ...state,
+                success_message: action.payload
+            }
+        case types.GET_SUCCESS_MESSAGE:
+            return {
+                ...state,
+                error_message: action.payload
             }
         default:
             return state
