@@ -2,6 +2,7 @@ export interface UserInputField {
     email: string,
     password: string
     username?: string
+    message?: string
 }
 
 export interface UserState {

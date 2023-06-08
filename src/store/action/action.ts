@@ -1,5 +1,5 @@
 import { InputField } from "../../shared/interface/employee.interface"
-import { UserInputField, UserState } from "../../shared/interface/user.interface"
+import { UserInputField } from "../../shared/interface/user.interface"
 import * as types from "../action/action-type"
 
 export const retreiveEmployees = (employee: InputField) => ({
@@ -40,12 +40,12 @@ export const isLogin = () => ({
     type: types.ISLOGIN
 })
 
-export const getSuccessMessage = (message: UserState) => ({
+export const success_message = (message: UserInputField) => ({
     type: types.GET_SUCCESS_MESSAGE,
     payload: message
 })
 
-export const getErrorMessage = (message: UserState) => ({
+export const error_message = (message: UserInputField) => ({
     type: types.GET_ERROR_MESSAGE,
     payload: message
 })

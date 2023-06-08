@@ -17,11 +17,16 @@ const Login = () => {
         email:'',
         password:''
     })
+    
     const [formError, setFormError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
     const [success, setSuccess] = useState(false)
 
     const user = useSelector((state:User) => state.userData.user)
+    console.log("user pw from state : ", user.userpassword)
+
+    // const { success_message } = useSelector((state:any) => state.userData)
+    // console.log( success_message)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -34,7 +39,27 @@ const Login = () => {
         if(Object.keys(formError).length === 0 && submit) { 
            loginUser(credentials)
            setSuccess(true)
-        }
+        } 
+        // else {
+        //     alert("enter correct password")
+        //     navigate('/login')
+        //     setSuccess(false)
+        // }
+
+        // if(Object.keys(formError).length === 0 && submit) {
+        //     console.log("inside main if")
+        //     console.log("cred pw : ", credentials.password)
+        //     console.log("pw frm stt : ", user.userpassword)
+        //     if(credentials.password !== user.userpassword) {
+        //         alert("enter crct pw")
+        //         navigate('/sign-up')
+        //         setSuccess(false)
+        //     } else {
+        //         console.log("inside else")
+        //         loginUser(credentials)
+        //         setSuccess(true)
+        //     }
+        // }
     }
 
     useEffect(() => {

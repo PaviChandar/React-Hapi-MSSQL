@@ -34,7 +34,7 @@ const userReducer = (state: UserState = initialState, action: UserActionType) =>
                 ...state,
                 success_message: action.payload
             }
-        case types.GET_SUCCESS_MESSAGE:
+        case types.GET_ERROR_MESSAGE:
             return {
                 ...state,
                 error_message: action.payload
