@@ -16,19 +16,19 @@ const AddEmployee: React.FC<ClassProps> = ({ addHandler, handleChange, someState
             <h2>Create New Employee</h2>
             <div className="addInputContainer" >
                 <div>
-                    <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={someState.id} />
+                    <input type="number" placeholder="id" name="id" onChange={(e) => handleChange(e)} min={0} value={someState.id} required />
                 </div>
                 <div>
-                    <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={someState.name} />
+                    <input type="text" placeholder="name" name="name" onChange={(e) => handleChange(e)} value={someState.name} required />
                 </div>
                 <div>
-                    <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={someState.age} />
+                    <input type="number" placeholder="age" name="age" min={1} onChange={(e) => handleChange(e)} value={someState.age} required />
                 </div>
                 <div>
-                    <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={someState.city} />
+                    <input type="text" placeholder="city" name="city" onChange={(e) => handleChange(e)} value={someState.city} required />
                 </div>
                 <div>
-                    <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={someState.salary} />
+                    <input type="number" placeholder="salary" name="salary" onChange={(e) => handleChange(e)} min={0} value={someState.salary} required />
                 </div>
             </div>
             <Button onClick={addHandler} className="addButton" >Add Employee</Button>

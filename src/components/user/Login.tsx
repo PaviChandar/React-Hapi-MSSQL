@@ -23,7 +23,7 @@ const Login = () => {
     const [success, setSuccess] = useState(false)
 
     const user = useSelector((state:User) => state.userData.user)
-    console.log("user pw from state : ", user.userpassword)
+    // console.log("user pw from state : ", user.userpassword)
 
     // const { success_message } = useSelector((state:any) => state.userData)
     // console.log( success_message)

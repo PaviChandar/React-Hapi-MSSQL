@@ -67,9 +67,14 @@ class AddEmployeeClass extends Component<any, State> {
     }
 
     addHandler = () => {
-        this.props.addEmployee(this.state.credentials)
-        alert('Employee added successfully!')
-        this.setState({ success : true })
+        const { id, name, age, city, salary } = this.state.credentials
+        if(!(id && name && age && city && salary)) {
+            alert("Enter required field inputs")
+        } else {
+            this.props.addEmployee(this.state.credentials)
+            alert('Employee added successfully!')
+            this.setState({ success : true })
+        }
     }
 
     render() {
