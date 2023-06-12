@@ -17,10 +17,12 @@ import Employees from "../tasks/custom-hooks/employees"
 import { Context } from "../tasks/context-api/class-context/main"
 import { UncontrolledComponent } from "../tasks/forms/uncontrolled-component"
 import ControlledClassComponent from "../tasks/forms/controlled-component"
+import FunctionalForm from "../tasks/forms/functional-form"
+import ClassForm from "../tasks/forms/class-form"
 
 const Router = () => {
 
-    ValidateSession()
+    // ValidateSession()
 
     return(
        <>
@@ -37,6 +39,8 @@ const Router = () => {
                 <Route path='/class-context' element={<Context />} />
                 <Route path='/control-class' element={<ControlledClassComponent />} />
                 <Route path='/uncontrol' element={<UncontrolledComponent />} />
+                <Route path='/f-form' element={<FunctionalForm />} />
+                <Route path='/c-form' element={<ClassForm />} />
 
                 <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />

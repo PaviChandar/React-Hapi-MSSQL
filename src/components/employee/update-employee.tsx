@@ -11,10 +11,11 @@ import "../../assets/update.css"
 const UpdateEmployee = () => {
 
     const { t } = useTranslation()
+    const navigate = useNavigate()
 
     const { updateEmployee, getSingleEmployee } = employeeContainer()
     
-    const { id }: any= useParams()
+    const { id }: any = useParams()
     const data = useSelector((state: Employee) => state.employeeData.employee)
     const [credentials, setCredentials] = useState<InputField>({
         id:0,
@@ -26,7 +27,6 @@ const UpdateEmployee = () => {
     const [formError, setFormError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
     const [success, setSuccess] = useState(false)
-    const navigate = useNavigate()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))

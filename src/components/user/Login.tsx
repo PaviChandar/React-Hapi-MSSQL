@@ -23,10 +23,6 @@ const Login = () => {
     const [success, setSuccess] = useState(false)
 
     const user = useSelector((state:User) => state.userData.user)
-    // console.log("user pw from state : ", user.userpassword)
-
-    // const { success_message } = useSelector((state:any) => state.userData)
-    // console.log( success_message)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -39,37 +35,22 @@ const Login = () => {
         if(Object.keys(formError).length === 0 && submit) { 
            loginUser(credentials)
            setSuccess(true)
-        } 
-        // else {
-        //     alert("enter correct password")
-        //     navigate('/login')
-        //     setSuccess(false)
-        // }
-
-        // if(Object.keys(formError).length === 0 && submit) {
-        //     console.log("inside main if")
-        //     console.log("cred pw : ", credentials.password)
-        //     console.log("pw frm stt : ", user.userpassword)
-        //     if(credentials.password !== user.userpassword) {
-        //         alert("enter crct pw")
-        //         navigate('/sign-up')
-        //         setSuccess(false)
-        //     } else {
-        //         console.log("inside else")
-        //         loginUser(credentials)
-        //         setSuccess(true)
-        //     }
-        // }
+        }
     }
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            if (localStorage.getItem('login') === 'true') {
-                alert("Successfully admin logged in!")
-                navigate('/admin')
+            if (localStorage.getItem('token') === 'undefined') {
+                alert("Enter correct password or email")
+                navigate('/login')
             } else {
-                alert("Successfully user logged in!")
-                navigate('/')
+                if (localStorage.getItem('login') === 'true') {
+                    alert("Successfully admin logged in!")
+                    navigate('/admin')
+                } else {
+                    alert("Successfully user logged in!")
+                    navigate('/')
+                }
             }
         }
     }, [success, user, navigate])

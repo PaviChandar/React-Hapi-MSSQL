@@ -10,16 +10,17 @@ import Navbar from "../../shared/components/navbar";
 import "../../assets/get-all.css"
 import employeeContainer from "../../store/action/employee_action";
 import { Employee, InputField } from "../../shared/interface/employee.interface";
+import useFetch from "../../tasks/custom-hooks/hook";
 
 const GetAllEmployee = () => {
 
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const { deleteEmployee } = employeeContainer()
 
   const [data, setdata] = useState([])
   const [success, setSuccess] = useState(false)
   const userdata  = useSelector((state: Employee) => state.employeeData.employees)
-  const navigate = useNavigate()
 
   const handleUpdate = (id: number) => {
     navigate(`/admin/update/${id}`)
@@ -38,6 +39,9 @@ const GetAllEmployee = () => {
     }
   }, [success, userdata])
 
+  // const { response, loading, error } = useFetch("http://localhost:4000/api/employees")
+  // console.log("res from get : ", response)
+  
   useEffect(() => {
     const dataSource = userdata.map((e: InputField) => {
       return({
