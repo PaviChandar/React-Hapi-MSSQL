@@ -26,35 +26,34 @@ class ClassForm extends Component<any, any> {
     }
 
     validateClass = (credentials: any) => {
-        console.log("inside val")
         const errors: any = {}
     
         if(!credentials.firstname) {
-            errors.firstname = "Firstname is required"
+            errors.firstname = "*Firstname is required"
         } else if (!nameRegex.test(credentials.firstname)) {
             errors.firstname = "*Name can contain alphabets,space and length should be minimum 4 characters"
         }
     
         if(!credentials.lastname) {
-            errors.lastname = "Lastname is required"
+            errors.lastname = "*Lastname is required"
         } else if (!nameRegex.test(credentials.lastname)) {
             errors.lastname = "*Name should contain only alphabets and space"
         }
     
         if(!credentials.email) {
-            errors.email = "Email is required"
+            errors.email = "*Email is required"
         }  else if (!emailRegex.test(credentials.email)) {
             errors.email = "*Invalid email"
         }
     
         if(!credentials.age) {
-            errors.age = "Age is required"
+            errors.age = "*Age is required"
         } else if (!ageRegex.test(credentials.age)) {
             errors.age = "*Invalid age"
         }
     
         if(!credentials.gender) {
-            errors.gender = "Gender is required"
+            errors.gender = "*Gender is required"
         }
 
         this.setState({ errors })
@@ -98,7 +97,7 @@ class ClassForm extends Component<any, any> {
             this.setState({ success: true })
             alert("Hi, "+credentials.firstname+" "+credentials.lastname)
         } else {
-            this.setState({errors})
+            this.setState({ errors })
         }
     }
 
@@ -113,22 +112,22 @@ class ClassForm extends Component<any, any> {
                     <div>
                         <label>Firstname</label>
                         <input type="text" name="firstname" placeholder="firstname" onChange={(e) => this.handleChange(e)} value={firstname} />
-                        {<span>{errors.firstname}</span>}
+                        {errors.firstname && <span>{errors.firstname}</span>}
                     </div>
                     <div>
                         <label>Lastname</label>
                         <input type="text" name="lastname" placeholder="lastname" onChange={(e) => this.handleChange(e)} value={lastname} />
-                        <span>{errors.lastname}</span>
+                        { errors.lastname && <span>{errors.lastname}</span> }
                     </div>
                     <div>
                         <label>Email</label>
                         <input type="email" name="email" placeholder="email" onChange={(e) => this.handleChange(e)} value={email} />
-                        <span>{errors.email}</span>
+                        { errors.email && <span>{errors.email}</span> }
                     </div>
                     <div>
                         <label>Age</label>
                         <input type="number" name="age" placeholder="age" onChange={(e) => this.handleChange(e)} value={age} />
-                        <span>{errors.age}</span>
+                        { errors.age && <span>{errors.age}</span> }
                     </div>
                     <div>
                         <label>Gender</label>
@@ -138,7 +137,7 @@ class ClassForm extends Component<any, any> {
                             <option value="female" >Female</option>
                             <option value="others" >Others</option>
                         </select>
-                        <span>{errors.gender}</span>
+                        { errors.gender && <span>{errors.gender}</span> }
                     </div>
                 </form>
                 <button onClick={this.handleSubmit} >Submit</button>
