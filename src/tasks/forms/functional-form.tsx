@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+import { validate } from "./validate"
+
 const FunctionalForm = () => {
 
     const [credentials, setCredentials] = useState({
@@ -14,37 +16,6 @@ const FunctionalForm = () => {
     })
     const [formError, setFormError] = useState<any>(false)
     const [submit, setSubmit] = useState(false)
-    const [success, setSuccess] = useState(false)
-
-    const validate = (values: any) => {
-        const errors: any = {}
-        if(!values.firstname) {
-            errors.firstname = "*Firstname is required"
-        }
-        if(!values.lastname) {
-            errors.lastname = "*Lastname is required"
-        }
-        if(!values.age) {
-            errors.age = "*Age is required"
-        }
-        if(!values.gender) {
-            errors.gender = "*Gender is required"
-        }
-        if(!values.city) {
-            errors.city = "*City is required"
-        }
-        if(!values.email) {
-            errors.email = "*Email is required"
-        }
-        if(!values.phone) {
-            errors.phone = "*Phone number is required"
-        }
-        if(!values.address) {
-            errors.address = "*Address is required"
-        }
-
-        return errors
-    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         e.preventDefault()

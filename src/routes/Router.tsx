@@ -41,6 +41,7 @@ const Router = () => {
                 <Route path='/uncontrol' element={<UncontrolledComponent />} />
                 <Route path='/f-form' element={<FunctionalForm />} />
                 <Route path='/c-form' element={<ClassForm />} />
+                
 
                 <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
