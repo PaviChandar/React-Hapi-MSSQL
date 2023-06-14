@@ -19,6 +19,7 @@ import { UncontrolledComponent } from "../tasks/forms/uncontrolled-component"
 import ControlledClassComponent from "../tasks/forms/controlled-component"
 import FunctionalForm from "../tasks/forms/functional-form"
 import ClassForm from "../tasks/forms/class-form"
+import ExampleComponent from "../tasks/class-lifecycle/class-component"
 
 const Router = () => {
 
@@ -41,7 +42,7 @@ const Router = () => {
                 <Route path='/uncontrol' element={<UncontrolledComponent />} />
                 <Route path='/f-form' element={<FunctionalForm />} />
                 <Route path='/c-form' element={<ClassForm />} />
-                
+                <Route path='/class-comp' element={<ExampleComponent /> } />
 
                 <Route path='/login' element={<Login />} />
                 <Route path='/sign-up' element={<SignUp />} />
