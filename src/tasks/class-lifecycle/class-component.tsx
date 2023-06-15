@@ -36,7 +36,8 @@ class ExampleComponent extends Component<any, any> {
         <button onClick={this.incrementCount}>Increment</button>
       </div>
     );
-  }
+  } 
+
 }
 
-export default ExampleComponent;
+export default ExampleComponent
