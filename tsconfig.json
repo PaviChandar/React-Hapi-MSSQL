@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "tests"  ]
+, "src/components/user/__test__"  ]
 }
