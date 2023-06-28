@@ -23,7 +23,7 @@ import ExampleComponent from "../tasks/class-lifecycle/class-component"
 
 const Router = () => {
 
-    // ValidateSession()
+    ValidateSession()
 
     return(
        <>
